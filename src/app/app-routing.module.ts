@@ -9,20 +9,20 @@ import { ErrorComponent } from './components/error/error/error.component';
 
 const routes: Routes = [{
   component: AssociateHomeComponent,
-  path: '/'
-  }, {
-    component: SearchComponent,
-    path: '/search'
-  }, {
-    component: ReservationsComponent,
-    path: '/reservations'
-  }, {
-    component: SuccessComponent,
-    path: '/success'
-  }, {
-    component: ErrorComponent,
-    path: '/error'
-  },
+  path: ''
+}, {
+  component: SearchComponent,
+  path: 'search'
+}, {
+  component: ReservationsComponent,
+  path: 'reservations'
+}, {
+  component: SuccessComponent,
+  path: 'success'
+}, {
+  component: ErrorComponent,
+  path: 'error'
+},
 ];
 
 @NgModule({
