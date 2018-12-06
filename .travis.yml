@@ -19,7 +19,7 @@ jobs:
         - export DISPLAY=:99.0
         - sh -e /etc/init.d/xvfb start
         - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-        - ng tests --watch=false
+        - ng test --watch=false
 
     - stage: build
       script: ng build --prod
