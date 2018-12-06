@@ -16,6 +16,9 @@ import { ViewResourcesComponent } from './components/search/view-resources/view-
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
 import { SuccessComponent } from './components/success/success/success.component';
 import { ErrorComponent } from './components/error/error/error.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { ErrorComponent } from './components/error/error/error.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
