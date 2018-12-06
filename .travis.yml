@@ -13,18 +13,11 @@ apt:
 jobs:
   include:
 
-    - stage: before_install
+    - stage: test
       script: export CHROME_BIN=chromium-browser
       script: export DISPLAY=:99.0
       script: sh -e /etc/init.d/xvfb start
       script: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-
-    - stage: pre-build
-      script: npm install -g @angular/cli
-      script: npm install -g karma
-      script: npm install
-
-    - stage: test
       script: npm test
 
     - stage: build
