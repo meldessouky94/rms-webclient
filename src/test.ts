@@ -9,12 +9,17 @@ import {
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatIconModule } from '@angular/material/icon';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  [BrowserDynamicTestingModule, RouterTestingModule, NgbModule, FormsModule],
+  [BrowserDynamicTestingModule,
+    RouterTestingModule,
+    NgbModule,
+    FormsModule,
+    MatIconModule],
   platformBrowserDynamicTesting(),
 );
 
