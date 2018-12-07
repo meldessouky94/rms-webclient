@@ -2,7 +2,7 @@
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel title="Simple">
       <ng-template ngbPanelContent>
-        <ngb-timepicker  [meridian]="meridian"></ngb-timepicker>
+        <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
         <button class="btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
           Meridian - {{meridian ? "ON" : "OFF"}}
         </button>
@@ -15,7 +15,7 @@
         <span>&#9733; <b>Fancy</b> title &#9733;</span>
       </ng-template>
       <ng-template ngbPanelContent>
-        <ngb-timepicker [meridian]="meridian"></ngb-timepicker>
+        <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
         <button class="btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
           Meridian - {{meridian ? "ON" : "OFF"}}
         </button>
@@ -26,7 +26,7 @@
     <ngb-panel title="Third">
 
       <ng-template ngbPanelContent>
-        <ngb-timepicker [meridian]="meridian"></ngb-timepicker>
+        <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
         <button class="btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
           Meridian - {{meridian ? "ON" : "OFF"}}
         </button>
