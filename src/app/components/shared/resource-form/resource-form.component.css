@@ -1,0 +1,53 @@
+fieldset{
+    display:flex;
+    flex-direction: column;
+    background: white;
+    border: rgb(56, 140, 250) solid 2px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.formItem {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:  rgb(12, 102, 219);
+    padding:0px;
+    margin: 5px;
+}
+input{
+    border-radius: 15px;
+    border: rgb(56, 140, 250) solid 1px;
+    padding-left: 10px;
+    padding:3px;
+}
+select{
+    border-radius: 10px;
+    border: rgb(119, 173, 245) solid 1px;
+    padding-left: 10px;
+    padding:3px;
+}
+span{
+    font-size: .75em;
+}
+
+#buttonCon{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+#createBTN{
+    border: rgb(56, 140, 250) solid 1px;
+    color:rgb(56, 140, 250);
+    background: white;
+}
+
+#createBTN:hover{
+    color:white;
+    background:rgb(56, 140, 250);
+}
+
+#cancelBTN{
+    border: rgb(248, 43, 43) solid 1px;
+    color:rgb(248, 43, 43);
+    background: white;
+}
