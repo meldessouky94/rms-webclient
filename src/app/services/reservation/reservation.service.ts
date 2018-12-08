@@ -12,6 +12,8 @@ import { UserService } from '../user/user.service';
 })
 export class ReservationService {
 
+  formInput: SearchDto;
+
   currentReservation: Reservation;
   $currentReservation = new Subject<Reservation>();
 
@@ -61,7 +63,7 @@ ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
     return this.httpClient.get<Reservation[]>(url, { withCredentials: true });
   }
 
-  cancelReservations(id: number){
+  cancelReservations(id: number) {
     const url = `${this.apiUrl}cancel/${id}`;
     return this.httpClient.put(url, null, {withCredentials: true});
   }
