@@ -20,6 +20,7 @@ import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { ReservationService } from './services/reservation/reservation.service';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    ReservationService
+  ],
   bootstrap: [AppComponent]
 })
 
