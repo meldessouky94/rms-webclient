@@ -1,15 +1,68 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { Reservation } from 'src/app/models/reservation';
+import { Resource } from 'src/app/models/resource';
 
 @Component({
   selector: 'app-quick-res-view',
   templateUrl: './quick-res-view.component.html',
   styleUrls: ['./quick-res-view.component.sass']
 })
-export class QuickResViewComponent implements OnInit {
+export class QuickResViewComponent implements OnInit, OnDestroy {
+  userReservations = [];
 
-  constructor() { }
+  loaded: boolean;
+  error; boolean;
+
+
+  constructor(private reservationService: ReservationService) {
+    //////////////////////////////////////////////////
+    // Below is implementation for when the server is running:
+    ////////////////////////////////////////////////////////
+    // // Hides results while the HTTP request is waiting for a response
+    // this.loaded = false;
+    // this.reservationService.getUserReservations().subscribe( (list) => {
+    //   // Updates list here and updates list, as /resverations will
+    //   // share the same list.
+    //   this.userReservations = list;
+    //   this.reservationService.pushNewUserReservations(list);
+    //   this.loaded = true;
+    //   this.error = false;
+    // }, (err) => {
+    //   // Error handling in case of connection issues.
+    //   this.error = true;
+    //   this.loaded = true;
+    // });
+    /////////////////////////////////
+    /// Testing implementation
+    ////////////////////////////////
+    this.loaded = true;
+    this.error= false;
+    this.userReservations = [
+      {    id: 2,
+        purpose: 'INTERVIEW',
+        startTime:  Date.now.toString(),
+        endTime:  Date.now.toString(),
+        resource: {name: 'block A'},
+        userId: 1245,
+        cancelled: false,
+        approved: true
+    } , {    id: 3,
+      purpose: 'PANEL',
+      startTime: Date.now.toString(),
+      endTime: Date.now.toString(),
+      resource: {name: 'block A'},
+      userId: 1245,
+      cancelled: false,
+      approved: true
+    }];
+    console.log(this.userReservations[0].purpose.toLowerCase());
+   }
 
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+
+  }
 }
