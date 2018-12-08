@@ -12,13 +12,26 @@ import { UserService } from '../user/user.service';
 })
 export class ReservationService {
 
+  // A user will be able to navigate to a different page and see the same
+  // input on the form for creating a reservation with this
   formInput: SearchDto;
 
+  // This is the current reservation in the process or being created or updated.
+  // This is the reservation that needs to be passed around components that are
+  // involved with creating a new reservation or editing (cancelling) and existing one
   currentReservation: Reservation;
   $currentReservation = new Subject<Reservation>();
 
+  // This is the list of resources.
+  // We actually might not need this variable saved, as only 1 components needs it.
   currentResourceList: Resource[];
   $currentResourceList = new Subject<Resource[]>();
+
+  // This is the list of current reservations that a user has.
+  // This is chared by a component on the home page and on the
+  // current reservations (/reservations) view
+  userReservations: Reservation[];
+  $userReservations = new Subject<Reservation[]>();
 
   apiUrl = `${environment.apiUrl}reservations`;
 
