@@ -19,6 +19,7 @@ import { SuccessComponent } from './components/success/success/success.component
 import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -39,9 +40,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
