@@ -4,7 +4,7 @@
       <div class="formItem">
         <label>Campuses:&nbsp;</label>
         <select required [(ngModel)]="formInput.campusId" name="campus" id="campuses" class="form-control form-control-sm formItem">
-          <ng-container *ngFor="key of campus">
+          <ng-container *ngFor="let key of campus">
             <option></option>
           </ng-container>
         </select>
@@ -12,7 +12,7 @@
       <div class="formItem">
         <label>Building:&nbsp;</label>
         <select required [(ngModel)]="formInput.buildingId" name="building" id="building" class="form-control form-control-sm formItem">
-          <ng-container *ngFor = "building of campus.building"> 
+          <ng-container *ngFor = "let building of campus.building"> 
             <option>{{building.name}}</option>
           </ng-container>
         </select>
