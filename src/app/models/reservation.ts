@@ -1,4 +1,5 @@
 import { Resource } from './resource';
+import { SearchDto } from './search-dto';
 
 export class Reservation {
     id: number;
@@ -6,9 +7,16 @@ export class Reservation {
     startTime: string;
     endTime: string;
     resource: Resource;
-    userEmail: string;
+    userId: string;
     cancelled: boolean;
     approved: boolean;
 
-    constructor() {}
+    constructor() {
+    }
+
+    newReservationObject(dto: SearchDto) {
+        this.purpose = dto.purpose;
+        this.endTime = dto.endTime;
+        this.startTime = dto.startTime;
+    }
 }
