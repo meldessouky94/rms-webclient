@@ -22,7 +22,7 @@ export class ReservationService {
 
   apiUrl = `${environment.apiUrl}reservations`;
 
-  constructor(private httpClient: HttpClient, userService: UserService) { }
+  constructor(private httpClient: HttpClient, private userService: UserService) { }
 
   ///////////////////////////////////////////////////
   // Methods pertaining to objects that need to be
