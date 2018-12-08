@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceService } from 'src/app/services/resource/resource.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { SearchDto } from 'src/app/models/search-dto';
 import { Reservation } from 'src/app/models/reservation';

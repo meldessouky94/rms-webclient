@@ -1,6 +1,4 @@
-<p>
-  resource-form works!
-</p>
+
 <fieldset>
     <form>
       <div class="formItem">
@@ -14,7 +12,7 @@
       <div class="formItem">
         <label>Building:&nbsp;</label>
         <select required [(ngModel)]="formInput.buildingId" name="building" id="building" class="form-control form-control-sm formItem">
-          <ng-container *ngFor="building of campus.building"> 
+          <ng-container *ngFor = "building of campus.building"> 
             <option>{{building.name}}</option>
           </ng-container>
         </select>
