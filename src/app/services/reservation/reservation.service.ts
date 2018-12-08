@@ -4,6 +4,7 @@ import { Reservation } from 'src/app/models/reservation';
 import { Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { SearchDto } from 'src/app/models/search-dto';
+import { Resource } from 'src/app/models/resource';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,26 @@ export class ReservationService {
   currentReservation: Reservation;
   $currentReservation = new Subject<Reservation>();
 
+  currentResourceList: Resource[];
+  $currentResourceList = new Subject<Resource[]>();
+
   apiUrl = `${environment.apiUrl}reservations`;
 
   constructor(private httpClient: HttpClient) { }
 
   ///////////////////////////////////////////////////
-  // Methods pertaining to objects that need to be 
+  // Methods pertaining to objects that need to be
   // shared among various components
   //////////////////////////////////////////////////
+  pushNewCurrentReservation(reservation: Reservation) {
+    this.currentReservation = reservation;
+    this.$currentReservation.next(reservation);
+  }
+
+  pushNewCurrentResourceList(resourceList: Resource[]) {
+    this.currentResourceList = resourceList;
+    this.$currentResourceList.next(resourceList);
+  }
 
   //////////////////////////////////////////////////
   // Methods Pertianing to HTTP requests to the
