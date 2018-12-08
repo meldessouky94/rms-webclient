@@ -51,6 +51,11 @@ export class ReservationService {
     this.$currentResourceList.next(resourceList);
   }
 
+  pushNewUserReservations(reservationList: Reservation[]) {
+    this.userReservations = reservationList;
+    this.$userReservations.next(reservationList);
+  }
+
   //////////////////////////////////////////////////
   // Methods Pertianing to HTTP requests to the
   // Reservation service
