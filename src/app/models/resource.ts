@@ -1,6 +1,6 @@
 export class Resource {
     id: number;
-    name: number;
+    name: string;
     buildingId: number;
     type: string;
     enabled: boolean;
