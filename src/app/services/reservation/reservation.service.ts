@@ -10,25 +10,39 @@ import { SearchDto } from 'src/app/models/search-dto';
 })
 export class ReservationService {
 
-  reservationSearch: Reservation;
-  $reservationSearch = new Subject<Reservation>();
+  currentReservation: Reservation;
+  $currentReservation = new Subject<Reservation>();
 
   apiUrl = `${environment.apiUrl}reservations`;
 
   constructor(private httpClient: HttpClient) { }
 
+  ///////////////////////////////////////////////////
+  // Methods pertaining to objects that need to be 
+  // shared among various components
+  //////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////
+  // Methods Pertianing to HTTP requests to the
+  // Reservation service
+  //////////////////////////////////////////////////
   getAvailableResources(search: SearchDto) {
-    // Create the query to find availabel resources
+    // Create the query to find available resources
     const query = `${this.apiUrl}?startTime=${search.startTime}\
 &endTime=${search.endTime}\
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\
 ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
+
+    // Return the get method so the component can manage the results as needed
     return this.httpClient.get(query, {withCredentials: true});
   }
 
-  queryNewReservation(reservation: Reservation) {
-    // const url = `http...`
-    // return this.httpclient.post(url, this.reservation)
+  createNewReservation(reservation: Reservation) {
+    return this.httpClient.post(this.apiUrl, JSON.stringify(reservation));
   }
+
+
+
+
 }
