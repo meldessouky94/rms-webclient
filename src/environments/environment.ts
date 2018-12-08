@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  localUrl: "http://localhost:8080/",
+  apuUrl: "http://localhost:8080/",
   ec2Url: ""
 };
 
