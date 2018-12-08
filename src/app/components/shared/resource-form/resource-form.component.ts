@@ -17,7 +17,7 @@ export class ResourceFormComponent implements OnInit {
 
   formInput = new SearchDto();
 
-  constructor(private resourceServ: ResourceService, private resServ: ReservationService) { }
+  constructor(private resServ: ReservationService) { }
 
 ngOnInit() {
 
@@ -28,14 +28,20 @@ submit() {
 
 this.formInput.startTime = this.date + ' ' + this.time1 + ':000';
 this.formInput.endTime = this.date + ' ' + this.time2 + ':000';
+// cycle through form input to make sure each input is used
+for (const i in this.formInput) {
+  if (i) {
+    console.log(this.formInput);
+    console.log(i);
+    console.log(this.formInput[i]);
+  }
+}
 
-
-this.resServ.getAvailableResources(formInput).subscribe( (data) => { 
+this.resServ.getAvailableResources(this.formInput).subscribe( (data) => {
   const reservation = new Reservation();
   reservation.newReservationObject(this.formInput);
+  this.resServ.pushNewCurrentReservation(reservation);
+  this.resServ.pushNewCurrentResourceList(data);
 });
-this.resServ.reservation = reservation;
-
-console.log(reservation);
 }
 }
