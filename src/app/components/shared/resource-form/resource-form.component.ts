@@ -9,6 +9,12 @@ import { Reservation } from 'src/app/models/reservation';
   styleUrls: ['./resource-form.component.css']
 })
 export class ResourceFormComponent implements OnInit {
+campuses = [
+    { id: 1, name: 'USF', buildings:
+      [{id: 1, name: 'Main'}, {id: 2, name: 'MUMA college'}]},
+    { id: 2, name: 'Reston', buildings:
+      [{id: 3, name: 'Office A'}]
+    }];
 
   date;
   time1;

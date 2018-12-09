@@ -1,19 +1,18 @@
-
 <fieldset>
     <form>
       <div class="formItem">
         <label>Campuses:&nbsp;</label>
         <select required [(ngModel)]="formInput.campusId" name="campus" id="campuses" class="form-control form-control-sm formItem">
-          <ng-container *ngFor="let key of campus">
-            <option></option>
+          <ng-container *ngFor="let key of campuses">
+            <option value=''>{{key.name}}</option>
           </ng-container>
         </select>
       </div>
       <div class="formItem">
         <label>Building:&nbsp;</label>
         <select required [(ngModel)]="formInput.buildingId" name="building" id="building" class="form-control form-control-sm formItem">
-          <ng-container *ngFor = "let building of campus.building"> 
-            <option>{{building.name}}</option>
+          <ng-container *ngFor = "let buildings of  "> 
+            <option>{{buildings.name}}</option>
           </ng-container>
         </select>
       </div>
@@ -39,6 +38,6 @@
     </form>
     <div id="buttonCon">
       <button (click)="submit()" id="createBTN" class="btn btn-primary">Create</button>
-      <button type="button" id="cancelBTN" class="btn btn-primary">Cancel</button>
+      <button type="button" id="cancelBTN" class="btn btn-primary">Reset</button>
     </div>
   </fieldset>

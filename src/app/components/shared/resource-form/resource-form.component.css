@@ -12,6 +12,7 @@ fieldset{
     color:  rgb(12, 102, 219);
     padding:0px;
     margin: 5px;
+    display: flex;
 }
 input{
     border-radius: 15px;
