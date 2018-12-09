@@ -56,7 +56,6 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
       cancelled: false,
       approved: true
     }];
-    console.log(this.userReservations[0].purpose.toLowerCase());
    }
 
   ngOnInit() {
