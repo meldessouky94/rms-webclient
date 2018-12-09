@@ -22,11 +22,6 @@ export class ReservationService {
   currentReservation: Reservation;
   $currentReservation = new Subject<Reservation>();
 
-  // This is the list of resources.
-  // We actually might not need this variable saved, as only 1 components needs it.
-  currentResourceList: Resource[];
-  $currentResourceList = new Subject<Resource[]>();
-
   // This is the list of current reservations that a user has.
   // This is chared by a component on the home page and on the
   // current reservations (/reservations) view
@@ -34,6 +29,8 @@ export class ReservationService {
   $userReservations = new Subject<Reservation[]>();
 
   apiUrl = `${environment.apiUrl}reservations`;
+
+
 
   constructor(private httpClient: HttpClient, private userService: UserService) { }
 
@@ -46,11 +43,6 @@ export class ReservationService {
     this.$currentReservation.next(reservation);
   }
 
-  pushNewCurrentResourceList(resourceList: Resource[]) {
-    this.currentResourceList = resourceList;
-    this.$currentResourceList.next(resourceList);
-  }
-
   pushNewUserReservations(reservationList: Reservation[]) {
     this.userReservations = reservationList;
     this.$userReservations.next(reservationList);
@@ -60,17 +52,6 @@ export class ReservationService {
   // Methods Pertianing to HTTP requests to the
   // Reservation service
   //////////////////////////////////////////////////
-  getAvailableResources(search: SearchDto) {
-    // Create the query to find available resources
-    const query = `available/${this.apiUrl}?startTime=${search.startTime}\
-&endTime=${search.endTime}\
-&purpose=${search.purpose}\
-${search.campusId ? `&campusId=${search.campusId}` : ''}\
-${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
-
-    // Return the get method so the component can manage the results as needed
-    return this.httpClient.get<Resource[]>(query, {withCredentials: true});
-  }
 
   createNewReservation(reservation: Reservation) {
     return this.httpClient.post<Reservation>(this.apiUrl, JSON.stringify(reservation));
