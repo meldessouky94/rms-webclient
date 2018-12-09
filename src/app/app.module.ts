@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { ReservationService } from './services/reservation/reservation.service';
+import { ResourceService } from './services/resource/resource.service';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ReservationService } from './services/reservation/reservation.service';
     MatIconModule
   ],
   providers: [
-    ReservationService
+    ReservationService,
+    ResourceService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,7 @@ export class Reservation {
     startTime: string;
     endTime: string;
     resource: Resource;
-    userId: string;
+    userId: number;
     cancelled: boolean;
     approved: boolean;
 
