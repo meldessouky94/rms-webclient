@@ -37,7 +37,7 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
     /// Testing implementation
     ////////////////////////////////
     this.loaded = true;
-    this.error= false;
+    this.error = false;
     this.userReservations = [
       {    id: 2,
         purpose: 'INTERVIEW',
