@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { SearchDto } from 'src/app/models/search-dto';
 import { Reservation } from 'src/app/models/reservation';
+import { ResourceService } from 'src/app/services/resource/resource.service';
 
 @Component({
   selector: 'app-resource-form',
@@ -16,7 +17,8 @@ export class ResourceFormComponent implements OnInit {
 
   formInput = new SearchDto();
 
-  constructor(private resServ: ReservationService) { }
+  constructor(private resServ: ReservationService,
+    private resourceServ: ResourceService) { }
 
 ngOnInit() {
 
@@ -36,11 +38,11 @@ for (const i in this.formInput) {
   }
 }
 
-this.resServ.getAvailableResources(this.formInput).subscribe( (data) => {
+this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
   const reservation = new Reservation();
   reservation.newReservationObject(this.formInput);
   this.resServ.pushNewCurrentReservation(reservation);
-  this.resServ.pushNewCurrentResourceList(data);
+  this.resourceServ.pushNewCurrentResourceList(data);
 });
 }
 }
