@@ -19,10 +19,12 @@ import { SuccessComponent } from './components/success/success/success.component
 import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
-
+import { LoginComponent } from './components/login/login/login.component';
+import { UserService } from './services/user/user.service';
+import { LoadingComponent } from './components/loading/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ResourceService } from './services/resource/resource.service';
     ViewResourcesComponent,
     ReservationsComponent,
     SuccessComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoginComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +49,12 @@ import { ResourceService } from './services/resource/resource.service';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     ReservationService,
-    ResourceService
+    ResourceService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

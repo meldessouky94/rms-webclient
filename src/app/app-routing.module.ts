@@ -5,11 +5,18 @@ import { SearchComponent } from './components/search/search/search.component';
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
 import { SuccessComponent } from './components/success/success/success.component';
 import { ErrorComponent } from './components/error/error/error.component';
-
+import { LoginComponent } from './components/login/login/login.component';
+import { LoadingComponent } from './components/loading/loading/loading.component';
 
 const routes: Routes = [{
-  component: AssociateHomeComponent,
+  component: LoginComponent,
   path: ''
+}, {
+  component: LoadingComponent,
+  path: 'loading'
+}, {
+  component: AssociateHomeComponent,
+  path: 'home'
 }, {
   component: SearchComponent,
   path: 'search'
