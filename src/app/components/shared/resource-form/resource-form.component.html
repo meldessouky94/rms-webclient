@@ -1,3 +1,43 @@
-<p>
-  resource-form works!
-</p>
+<fieldset>
+    <form>
+      <div class="formItem">
+        <label>Campuses:&nbsp;</label>
+        <select required [(ngModel)]="campusIndex" (change)= "onChange($event)" name="campus" id="campuses" class="form-control form-control-sm formItem">
+          <ng-container *ngFor="let key of campuses; let i = index" [attr.date-index]="i">
+            <option value="{{i}}">{{key.name}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="formItem">
+        <label>Building:&nbsp;</label>
+        <select required [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
+          <ng-container *ngFor = "let key of campuses[campusIndex]?.buildings; let j = index" [attr.date-index]="j">  
+            <option value="{{j}}">{{key.name}}</option>
+          </ng-container>
+        </select> 
+      </div>
+      <span class="note">*Office hours from 9:00 AM to 5:00 PM</span>
+      <div class="formItem">
+        <label>Date & Time&nbsp;&nbsp;</label>
+        <input required [(ngModel)]="date" type="date" name="date" class="formInput">
+        <br>
+      </div>
+      <div class="formItem">
+        <label>Start*&nbsp;</label>
+        <input [(ngModel)]="time1" type="time" name="time1" min="9:00" max="17:00" placeholder="09:00 AM" required class="formItem">
+        <label>&nbsp;End*&nbsp;&nbsp;</label>
+        <input [(ngModel)]="time2" type="time" name="time2" min="9:00" max="17:00" required class="formItem">
+      </div>
+      <div class="formItem">
+        <label>Purpose:&nbsp;</label>
+        <select required [(ngModel)]="purpose" name="purpose" id="purpose" class="form-control form-control-sm formItem">
+          <option>Panel</option>
+          <option>Interview</option>
+        </select>
+      </div>
+    </form>
+    <div id="buttonCon">
+      <button (click)="submit()" id="createBTN" class="btn btn-primary">Create</button>
+      <button type="button" id="cancelBTN" class="btn btn-primary">Reset</button>
+    </div>
+  </fieldset>

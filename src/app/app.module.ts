@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,8 @@ import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { ReservationService } from './services/reservation/reservation.service';
+import { ResourceService } from './services/resource/resource.service';
 
 
 @NgModule({
@@ -39,11 +42,15 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule,
     FormsModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    ReservationService,
+    ResourceService
+  ],
   bootstrap: [AppComponent]
 })
 

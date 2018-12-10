@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResourceFormComponent } from './resource-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ResourceFormComponent', () => {
   let component: ResourceFormComponent;
@@ -8,7 +9,11 @@ describe('ResourceFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourceFormComponent ]
+      declarations: [ ResourceFormComponent
+       ],
+       imports: [
+         HttpClientModule
+       ]
     })
     .compileComponents();
   }));
