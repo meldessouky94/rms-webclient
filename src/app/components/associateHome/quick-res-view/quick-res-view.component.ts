@@ -6,7 +6,7 @@ import { Resource } from 'src/app/models/resource';
 @Component({
   selector: 'app-quick-res-view',
   templateUrl: './quick-res-view.component.html',
-  styleUrls: ['./quick-res-view.component.sass']
+  styleUrls: ['./quick-res-view.component.css']
 })
 export class QuickResViewComponent implements OnInit, OnDestroy {
   userReservations = [];
@@ -41,17 +41,17 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
     this.userReservations = [
       {    id: 2,
         purpose: 'INTERVIEW',
-        startTime:  Date.now.toString(),
-        endTime:  Date.now.toString(),
+        startTime: '2018-03-04T12:25:23.00',
+        endTime:  '2018-03-04T13:25:23.00',
         resource: {name: 'block A'},
         userId: 1245,
         cancelled: false,
         approved: true
     } , {    id: 3,
       purpose: 'PANEL',
-      startTime: Date.now.toString(),
-      endTime: Date.now.toString(),
-      resource: {name: 'block A'},
+      startTime: '2018-03-07T12:25:23.00',
+      endTime:  '2018-03-07T13:25:23.00',
+      resource: {name: 'block 8'},
       userId: 1245,
       cancelled: false,
       approved: true

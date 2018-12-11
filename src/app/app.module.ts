@@ -25,6 +25,8 @@ import { ResourceService } from './services/resource/resource.service';
 import { LoginComponent } from './components/login/login/login.component';
 import { UserService } from './services/user/user.service';
 import { LoadingComponent } from './components/loading/loading/loading.component';
+import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { LoadingComponent } from './components/loading/loading/loading.component
     SuccessComponent,
     ErrorComponent,
     LoginComponent,
-    LoadingComponent
+    LoadingComponent,
+    CancelReservationPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,9 @@ import { LoadingComponent } from './components/loading/loading/loading.component
     ReservationService,
     ResourceService,
     UserService,
+  ],
+  entryComponents: [
+    CancelReservationPopupComponent
   ],
   bootstrap: [AppComponent]
 })

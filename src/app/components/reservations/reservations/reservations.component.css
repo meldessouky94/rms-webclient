@@ -1,0 +1,42 @@
+div>span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f26925;
+  text-decoration-color: #f26925;
+  /* background-color: #f26925; */
+  /* justify-content: space-around; */
+}
+
+/* div {
+  background-color: #f26925;
+} */
+
+/* ngbPanelTitle {
+  box-shadow: 3px 2px #223;
+  background-color: #f26925;
+} */
+
+#resHeader {
+  background-color: #f26925;
+}
+
+/* unvisited link */
+a:link {
+  color: red;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: purple;
+}

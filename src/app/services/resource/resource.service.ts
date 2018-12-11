@@ -11,7 +11,7 @@ import { SearchDto } from 'src/app/models/search-dto';
 export class ResourceService {
 
   // This is the list of resources.
-  // We actually might not need this variable saved, 
+  // We actually might not need this variable saved,
   // as only 1 components needs it.
   currentResourceList: Resource[];
   $currentResourceList = new Subject<Resource[]>();
@@ -29,7 +29,7 @@ export class ResourceService {
     this.$currentResourceList.next(resourceList);
   }
 
-    //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
   // Methods Pertianing to HTTP requests to the
   // Reservation service
   //////////////////////////////////////////////////
@@ -42,13 +42,13 @@ ${search.campusId ? `&campusId=${search.campusId}` : ''}\
 ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
 
     // Return the get method so the component can manage the results as needed
-    return this.httpClient.get<Resource[]>(query, {withCredentials: true});
+    return this.httpClient.get<Resource[]>(query, { withCredentials: true });
   }
 
   // Returns an array of campuse objects. Each campus object contains a list of building objects.
   getCampuses() {
     let url = this.apiUrl;
     url += '/campuses';
-    return this.httpClient.get(url, {withCredentials: true});
+    return this.httpClient.get(url, { withCredentials: true });
   }
 }
