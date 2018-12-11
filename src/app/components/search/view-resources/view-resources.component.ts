@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-view-resources',
   templateUrl: './view-resources.component.html',
-  styleUrls: ['./view-resources.component.sass']
+  styleUrls: ['./view-resources.component.css']
 })
 export class ViewResourcesComponent implements OnInit, OnDestroy {
 

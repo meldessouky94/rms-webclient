@@ -30,8 +30,8 @@ export class ResourceFormComponent implements OnInit {
 
 
   date;
-  time1;
-  time2;
+  time1 ='';
+  time2 ='';
   selected;
   formInput = new SearchDto();
   resourceForm;
@@ -78,34 +78,42 @@ timeCheck() {
       alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
     }
   }
-    submit() {
-    this.formInput.purpose = this.purpose;
-    this.formInput.campusId = this.campusIndex;
-    this.formInput.buildingId = Number(this.buildingId);
-    this.formInput.startTime = this.date + ' ' + this.time1 + ':00';
-    this.formInput.endTime = this.date + ' ' + this.time2 + ':00';
+    
+  reset() {
+    this.date = '';
+    this.time1 = '';
+    this.time2 = '';
+    this.formInput = new SearchDto();
+  }
 
-    const objectKey = Object.values(this.formInput);
-    let success = true;
-    for (const key of objectKey) {
-      if ((key === undefined) || (key === null)) {
-        success = false;
-      }
+  submit() {
+  this.formInput.purpose = this.purpose;
+  this.formInput.campusId = this.campusIndex;
+  this.formInput.buildingId = Number(this.buildingId);
+  this.formInput.startTime = this.date + ' ' + this.time1 + ':00';
+  this.formInput.endTime = this.date + ' ' + this.time2 + ':00';
+
+  const objectKey = Object.values(this.formInput);
+  let success = true;
+  for (const key of objectKey) {
+    if ((key === undefined) || (key === null)) {
+      success = false;
     }
+  }
 
-     if (!success) {
-       alert(`Please fill in all required input.`);
-     } else {
+    if (!success) {
+      alert(`Please fill in all required input.`);
+    } else {
 
-       console.log('else');
-       this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
-        const reservation = new Reservation();
-        reservation.newReservationObject(this.formInput);
-        this.resServ.pushNewCurrentReservation(reservation);
-        this.resourceServ.pushNewCurrentResourceList(data);
-        if (!this.router.url.includes('search')) {
-          this.router.navigate(['search']);
-        }
+      console.log('else');
+      this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
+      const reservation = new Reservation();
+      reservation.newReservationObject(this.formInput);
+      this.resServ.pushNewCurrentReservation(reservation);
+      this.resourceServ.pushNewCurrentResourceList(data);
+      if (!this.router.url.includes('search')) {
+        this.router.navigate(['search']);
+      }
       }, () => {
         // For testing, use this in place of an actual response from the server.
         const resource1: Resource = {
