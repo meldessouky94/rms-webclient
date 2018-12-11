@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbAccordionConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Reservation } from 'src/app/models/reservation';
+import { CancelReservationPopupComponent } from '../cancel-reservation-popup/cancel-reservation-popup.component';
 
 @Component({
   selector: 'app-reservations',
@@ -31,7 +34,7 @@ export class ReservationsComponent implements OnInit {
       startTime: '2018 Dec 04 13:30:00',
       endTime: '2018 Dec 04 14:30:00'
     },
-  ]
+  ];
   // id: number;
   // purpose: string;
   // startTime: string;
@@ -42,7 +45,18 @@ export class ReservationsComponent implements OnInit {
   // approved: boolean;
   time = { hour: 9, minute: 30 };
   meridian = true;
-  constructor() { }
+
+  constructor(config: NgbAccordionConfig, private modalService: NgbModal) {
+    // customize default values of accordions used by this component tree
+    config.closeOthers = true;
+    config.type = 'dark';
+  }
+
+  open(selectedReservation: Reservation) {
+    const modalRef = this.modalService.open(CancelReservationPopupComponent, { centered: true });
+    modalRef.componentInstance.reservation = selectedReservation;
+    modalRef.componentInstance.loaded = true;
+  }
 
   ngOnInit() {
   }

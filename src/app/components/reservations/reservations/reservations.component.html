@@ -2,7 +2,7 @@
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of reservations">
       <div class="resHeader">
-        <ng-template id="resHeader" ngbPanelTitle>
+        <ng-template id="resHeader" ngbPanelTitle type="dark">
           <div class="row">
             <span class="col"> {{ reservation.purpose | titlecase }} </span>
             <span class="col">{{reservation.startTime | date: 'MMM d, y @ h:mm a'}}</span>
@@ -22,7 +22,9 @@
         <p><strong>Reserved until:</strong> {{reservation.endTime | date: 'MMM d, y @ h:mm a'}}</p>
 
         <hr>
-
+        <button type="button" placement="bottom" class="btn btn-outline-warning" (click)="this.open(reservation)">
+          Cancel Reservation
+        </button>
       </ng-template>
     </ngb-panel>
 
