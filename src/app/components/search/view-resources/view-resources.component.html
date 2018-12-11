@@ -1,3 +1,15 @@
-<p>
-  view-resources works!
-</p>
+<form id="resource-tab" *ngFor="let resource of resources">
+<ul *ngIf="resource">
+<button class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model" (click)="open(resource)">
+  <li>{{resource.name}} </li>
+  <li>{{resource.type}} </li>
+  <li *ngIf="resource.hasEthernet"><button type="button" class="btn btn-outline-secondary" ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
+  <mat-icon>network_wifi</mat-icon></button></li>
+  <li *ngIf="resource.hasComputer"><button type="button" class="btn btn-outline-secondary" ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+  <mat-icon>computer</mat-icon></button></li>
+  <li><button type="button" class="btn btn-outline-secondary" ngbPopover="Outlets available" triggers="mouseenter:mouseleave"><mat-icon>power</mat-icon>{{resource.numberOfOutlets}}</button></li>
+  <li *ngIf="resource.hasMicrophone"><button type="button" class="btn btn-outline-secondary" ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+  <mat-icon>headset_mic</mat-icon></button></li>
+</button>
+</ul>
+</form>

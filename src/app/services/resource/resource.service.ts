@@ -35,7 +35,7 @@ export class ResourceService {
   //////////////////////////////////////////////////
   getAvailableResources(search: SearchDto) {
     // Create the query to find available resources
-    const query = `available/${this.apiUrl}?startTime=${search.startTime}\
+    const query = `${this.apiUrl}/available?startTime=${search.startTime}\
 &endTime=${search.endTime}\
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\

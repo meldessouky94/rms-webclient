@@ -31,15 +31,8 @@ export class ReservationsComponent implements OnInit {
       startTime: '2018 Dec 04 13:30:00',
       endTime: '2018 Dec 04 14:30:00'
     },
-  ]
-  // id: number;
-  // purpose: string;
-  // startTime: string;
-  // endTime: string;
-  // resource: Resource;
-  // userId: number;
-  // cancelled: boolean;
-  // approved: boolean;
+  ];
+
   time = { hour: 9, minute: 30 };
   meridian = true;
   constructor() { }
