@@ -10,7 +10,7 @@
       </div>
       <div class="formItem">
         <label>Building:&nbsp;</label>
-        <select (keydown.enter)="submit()" required [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
+        <select (keydown.enter)="submit()" [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
           <ng-container *ngFor = "let key of campuses[campusIndex]?.buildings; let j = index" [attr.date-index]="j">  
             <option value="{{j}}">{{key.name}}</option>
           </ng-container>
@@ -23,10 +23,10 @@
         <br>
       </div>
       <div class="formItem">
-        <label>Start*&nbsp;</label>
-        <input  [(ngModel)]="time1" type="time" name="time1" min="9:00" max="17:00" placeholder="09:00 AM" required class="formItem">
-        <label>&nbsp;End*&nbsp;&nbsp;</label>
-        <input [(ngModel)]="time2" type="time" name="time2" min="9:00" max="17:00" required class="formItem">
+        <label for="time1">Start*&nbsp;&nbsp;</label>
+        <input [(ngModel)]="time1" type="time" name="time1" class="formItem">
+        <label for="time2">&nbsp;End*&nbsp;&nbsp;</label>
+        <input [(ngModel)]="time2" type="time" name="time2" class="formItem">
       </div>
       <div class="formItem">
         <label>Purpose:&nbsp;</label>
@@ -37,7 +37,7 @@
       </div>
     </form>
     <div id="buttonCon">
-      <button (click)="submit()" id="createBTN" class="btn btn-primary">Create</button>
+      <button (click)="timeCheck()" id="createBTN" class="btn btn-primary">Create</button>
       <button type="button" id="cancelBTN" onkeypress="submit()" class="btn btn-primary">Reset</button>
     </div>
   </fieldset>

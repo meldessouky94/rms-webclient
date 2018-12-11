@@ -1,7 +1,7 @@
 fieldset{
     display:flex;
     flex-direction: column;
-    background: white;
+    background: rgb(236, 236, 236);
     border: rgb(56, 140, 250) solid 2px;
     border-radius: 5px;
     padding: 2px;

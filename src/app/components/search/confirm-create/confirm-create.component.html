@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title">Reservation Info</h4>
+<form>
+<ul>
+<li>ID: {{reservation.id}} </li>
+<li>Purpose: {{reservation.purpose}} </li>
+<li>Start time: {{reservation.startTime}}</li>
+<li>End time: {{reservation.endTime}}</li>
+<li>Resource: {{reservation.endTime}}</li>
+<li>User: {{reservation.userId}}</li>
+<li>Resource: {{reservation.resource}}</li>
+</ul>
+</form>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p></p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="confirmReservation()">Confirm</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss()">Exit Window</button>
+</div>

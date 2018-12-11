@@ -1,3 +1,16 @@
-<p>
-  search works!
-</p>
+<button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="resourceForm">
+  <ng-container *ngIf="isCollapsed">
+    Show Reservation Form
+  </ng-container>
+  <ng-container *ngIf="!isCollapsed">
+      Hide Reservation Form
+    </ng-container>
+</button>
+
+<div id="resourceForm" [ngbCollapse]="isCollapsed">
+  <app-resource-form></app-resource-form>
+</div>
+
+
+<app-view-resources></app-view-resources>
