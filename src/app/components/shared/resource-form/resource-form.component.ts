@@ -57,15 +57,28 @@ export class ResourceFormComponent implements OnInit {
       this.campusIndex = Number(this.campusIndex);
     }
 
+// Converts the timestamp from String to Number
+// Checks to see if your first timestamp(time1) is greater than 9:00 AM
+// and less than the second timestamp(time2)
+// Also checks to see if time2 is greater than time1 and less than 5:00 PM
+timeCheck() {
+    const t1 = this.time1.replace(':', '.');
+    const t2 = this.time2.replace(':', '.');
+    const Num1 = Number(t1);
+    const Num2 = Number(t2);
 
-
+    if (((9.00 <= Num1) && (Num1 < Num2)) && ((Num1 < Num2) && (Num2 < 17.00))) {
+    this.submit();
+    } else {
+      alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
+    }
+  }
     submit() {
-
     this.formInput.purpose = this.purpose;
     this.formInput.campusId = this.campusIndex;
     this.formInput.buildingId = Number(this.buildingId);
-    this.formInput.startTime = this.date + ' ' + this.time1 + ':000';
-    this.formInput.endTime = this.date + ' ' + this.time2 + ':000';
+    this.formInput.startTime = this.date + ' ' + this.time1 + ':00';
+    this.formInput.endTime = this.date + ' ' + this.time2 + ':00';
 
     const objectKey = Object.values(this.formInput);
     let success = true;
@@ -78,13 +91,14 @@ export class ResourceFormComponent implements OnInit {
      if (!success) {
        alert(`Please fill in all required input.`);
      } else {
+
        console.log('else');
        this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
         const reservation = new Reservation();
         reservation.newReservationObject(this.formInput);
         this.resServ.pushNewCurrentReservation(reservation);
         this.resourceServ.pushNewCurrentResourceList(data);
-        if(!this.router.url.includes('search')) {
+        if (!this.router.url.includes('search')) {
           this.router.navigate(['search']);
         }
       }, () => {
