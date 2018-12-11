@@ -54,7 +54,7 @@ import { LoadingComponent } from './components/loading/loading/loading.component
   providers: [
     ReservationService,
     ResourceService,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

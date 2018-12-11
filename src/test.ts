@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 declare const __karma__: any;
 declare const require: any;
@@ -23,7 +24,8 @@ getTestBed().initTestEnvironment(
     RouterTestingModule,
     NgbModule,
     FormsModule,
-    MatIconModule],
+    MatIconModule,
+    HttpClientModule],
   platformBrowserDynamicTesting(),
 );
 
