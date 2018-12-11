@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   public isCollapsed = true;
-  constructor() { }
+  constructor(private route: ActivatedRoute){
+    const open = this.route.snapshot.paramMap.get('openForm');
+    if(open) {
+      this.isCollapsed = false;
+    }
+   }
 
   ngOnInit() {
   }
