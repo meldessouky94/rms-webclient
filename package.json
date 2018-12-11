@@ -18,16 +18,9 @@
     "@angular/core": "^7.1.2",
     "@angular/forms": "^7.1.2",
     "@angular/material": "^7.1.1",
-<<<<<<< HEAD
-    "@angular/platform-browser": "~7.1.0",
-    "@angular/platform-browser-dynamic": "~7.1.0",
-    "@angular/router": "^7.1.2",
-    "@auth0/angular-jwt": "^2.1.0",
-=======
     "@angular/platform-browser": "^7.1.2",
     "@angular/platform-browser-dynamic": "^7.1.2",
     "@angular/router": "^7.1.2",
->>>>>>> 2ccd915c832320f9aa0d29413ab2012a82c68cd4
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "angular": "^1.7.5",
     "bootstrap": "^4.1.3",
