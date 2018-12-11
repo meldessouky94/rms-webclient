@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Cancel Resoruce Reservation</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -36,16 +36,16 @@
         <ng-container *ngIf="error">
           Error! Please try again later.
         </ng-container>
-      </div>
-    </ng-container>
-    
-    <div class="modal-footer">
-      <ng-container *ngIf="resolved || error">
-        <button  type="button" class="btn btn-primary" (click)="activeModal.dismiss('close')">Close</button>  
-      </ng-container>
-    
-      <ng-container *ngIf="!resolved && !error">
-          <button  *ngIf="reservation" type="button" class="btn btn-primary" (click)="activeModal.dismiss('cancel')">Close Window</button>
-          <button  *ngIf="reservation" type="button" class="btn btn-danger" (click)="cancelReservation()">Cancel Reservation</button>
       </ng-container>
     </div>
+    
+<div class="modal-footer">
+  <ng-container *ngIf="resolved || error">
+    <button  type="button" class="btn btn-primary" (click)="activeModal.dismiss('close')">Close</button>  
+  </ng-container>
+
+  <ng-container *ngIf="!resolved && !error">
+      <button  *ngIf="reservation" type="button" class="btn btn-primary" (click)="activeModal.dismiss()">Close Window</button>
+      <button  *ngIf="reservation" type="button" class="btn btn-danger" (click)="cancelReservation()">Cancel Reservation</button>
+  </ng-container>
+</div>
