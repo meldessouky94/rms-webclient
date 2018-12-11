@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
+import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ResourceService } from './services/resource/resource.service';
     ViewResourcesComponent,
     ReservationsComponent,
     SuccessComponent,
-    ErrorComponent
+    ErrorComponent,
+    CancelReservationPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,9 @@ import { ResourceService } from './services/resource/resource.service';
   providers: [
     ReservationService,
     ResourceService
+  ],
+  entryComponents: [
+    CancelReservationPopupComponent
   ],
   bootstrap: [AppComponent]
 })
