@@ -6,14 +6,15 @@ Testing quick-res-component:
     <div class="alert alert-info" role="alert">
       <ng-container *ngIf="userReservations.length == 1">
         You have 1 upcoming appointment! <br>
-        {{userReservations[0].startTime}} to {{userReservations[0].startTime}} in {{userReservations[0].resource.name}}! <br>
+        {{userReservations[0].startTime | date: 'MM/dd from h:mm a'}} to 
+       to {{userReservations[0].endTime | date: 'h:mm a'}} in {{userReservations[0].resource.name}}! <br>
         Good luck on your {{this.userReservations[0].purpose.toLowerCase()}}!
       </ng-container>
       <ng-container *ngIf="userReservations.length > 1">
           You have {{userReservations?.length}} upcoming appointments! <br>
-          Your next scheduled appointment is 
-          {{userReservations[0].startTime}} to {{userReservations[0].startTime}} in {{userReservations[0].resource.name}}! <br>
-          Good luck on your {{this.userReservations[0].purpose.toLowerCase()}}!
+          Your next scheduled appointment is
+            on {{userReservations[0].startTime | date: 'MM/dd from h:mm a'}} to 
+          to {{userReservations[0].endTime | date: 'h:mm a'}} in {{userReservations[0].resource.name}}!
       </ng-container>
       <ng-container *ngIf="userReservations.length == 0">
         You have no upcoming reservations for resources!

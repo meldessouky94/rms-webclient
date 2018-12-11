@@ -64,7 +64,7 @@ export class ReservationService {
 
   cancelReservations(id: number) {
     const url = `${this.apiUrl}cancel/${id}`;
-    return this.httpClient.put(url, null, {withCredentials: true});
+    return this.httpClient.put(url, null, { withCredentials: true });
   }
 
 }

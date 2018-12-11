@@ -1,3 +1,30 @@
-<p>
-  reservations works!
-</p>
+<div class="container">
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel *ngFor="let reservation of reservations">
+      <div class="resHeader">
+        <ng-template id="resHeader" ngbPanelTitle>
+          <div class="row">
+            <span class="col"> {{ reservation.purpose | titlecase }} </span>
+            <span class="col">{{reservation.startTime | date: 'MMM d, y @ h:mm a'}}</span>
+            <span class="col">Building: {{reservation.building}}</span>
+          </div>
+
+        </ng-template>
+      </div>
+
+      <ng-template ngbPanelContent>
+        <p>{{reservation.name}}</p>
+        <hr>
+        <p><strong>Reservation for:</strong> {{ reservation.purpose | titlecase }}</p>
+        <p><strong>Campus:</strong> {{reservation.campus}}</p>
+        <p><strong>Building:</strong> {{reservation.building}}</p>
+        <p> <strong>Reserved from:</strong> {{reservation.startTime | date: 'MMM d, y @ h:mm a'}}</p>
+        <p><strong>Reserved until:</strong> {{reservation.endTime | date: 'MMM d, y @ h:mm a'}}</p>
+
+        <hr>
+
+      </ng-template>
+    </ngb-panel>
+
+  </ngb-accordion>
+</div>
