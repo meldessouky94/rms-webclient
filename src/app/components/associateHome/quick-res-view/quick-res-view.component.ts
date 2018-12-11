@@ -6,7 +6,7 @@ import { Resource } from 'src/app/models/resource';
 @Component({
   selector: 'app-quick-res-view',
   templateUrl: './quick-res-view.component.html',
-  styleUrls: ['./quick-res-view.component.sass']
+  styleUrls: ['./quick-res-view.component.css']
 })
 export class QuickResViewComponent implements OnInit, OnDestroy {
   userReservations = [];
