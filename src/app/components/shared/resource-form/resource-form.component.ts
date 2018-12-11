@@ -72,11 +72,6 @@ timeCheck() {
     const Num1 = Number(t1);
     const Num2 = Number(t2);
 
-<<<<<<< HEAD
-
-  submit() {
-
-=======
     if (((9.00 <= Num1) && (Num1 < Num2)) && ((Num1 < Num2) && (Num2 < 17.00))) {
     this.submit();
     } else {
@@ -84,7 +79,6 @@ timeCheck() {
     }
   }
     submit() {
->>>>>>> 7f90eba488d81b77cf7e59dc65f64ecc0ba582d4
     this.formInput.purpose = this.purpose;
     this.formInput.campusId = this.campusIndex;
     this.formInput.buildingId = Number(this.buildingId);
@@ -99,20 +93,12 @@ timeCheck() {
       }
     }
 
-<<<<<<< HEAD
-    if (!success) {
-      alert(`Please fill in all required input.`);
-    } else {
-      console.log('else');
-      this.resourceServ.getAvailableResources(this.formInput).subscribe((data) => {
-=======
      if (!success) {
        alert(`Please fill in all required input.`);
      } else {
 
        console.log('else');
        this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
->>>>>>> 7f90eba488d81b77cf7e59dc65f64ecc0ba582d4
         const reservation = new Reservation();
         reservation.newReservationObject(this.formInput);
         this.resServ.pushNewCurrentReservation(reservation);
