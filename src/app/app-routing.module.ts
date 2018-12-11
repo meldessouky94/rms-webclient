@@ -12,6 +12,10 @@ const routes: Routes = [{
   path: ''
 }, {
   component: SearchComponent,
+  path: 'search/:openForm'
+},
+{
+  component: SearchComponent,
   path: 'search'
 }, {
   component: ReservationsComponent,
