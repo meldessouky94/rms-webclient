@@ -6,16 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./associate-home.component.sass']
 })
 export class AssociateHomeComponent implements OnInit {
-  time = { hour: 9, minute: 30 };
-  meridian = true;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-
-  toggleMeridian() {
-    this.meridian = !this.meridian;
-  }
 
 }

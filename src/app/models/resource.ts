@@ -10,8 +10,8 @@ export class Resource {
     reservableBefore: string;
     availableDays: Array<string>;
     hasEthernet: boolean;
-    hasComputer: number;
-    numberOfOutlets: boolean;
+    hasComputer: boolean;
+    numberOfOutlets: number;
     hasMicrophone: boolean;
 
     constructor() {}

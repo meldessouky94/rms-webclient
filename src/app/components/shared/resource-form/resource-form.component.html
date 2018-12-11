@@ -10,7 +10,7 @@
       </div>
       <div class="formItem">
         <label>Building:&nbsp;</label>
-        <select required [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
+        <select [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
           <ng-container *ngFor = "let key of campuses[campusIndex]?.buildings; let j = index" [attr.date-index]="j">  
             <option value="{{j}}">{{key.name}}</option>
           </ng-container>

@@ -3,6 +3,8 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
 import { SearchDto } from 'src/app/models/search-dto';
 import { Reservation } from 'src/app/models/reservation';
 import { ResourceService } from 'src/app/services/resource/resource.service';
+import { Router } from '@angular/router';
+import { Resource } from 'src/app/models/resource';
 
 @Component({
   selector: 'app-resource-form',
@@ -10,8 +12,7 @@ import { ResourceService } from 'src/app/services/resource/resource.service';
   styleUrls: ['./resource-form.component.css']
 })
 export class ResourceFormComponent implements OnInit {
-  campuses = [
-    { id: 1,
+  campuses: any = [{ id: 1,
       name: 'USF',
       buildings:
       [{id: 1, name: 'Main'}, {id: 2, name: 'MUMA college'}]},
@@ -19,7 +20,7 @@ export class ResourceFormComponent implements OnInit {
       name: 'Reston',
       buildings:
       [{id: 3, name: 'Office A'}]
-  }];
+    }];
   campusIndex: number;
   buildingId: number;
   purpose;
@@ -32,10 +33,22 @@ export class ResourceFormComponent implements OnInit {
   formInput = new SearchDto();
 
   constructor(private resServ: ReservationService,
-    private resourceServ: ResourceService) { }
+    private resourceServ: ResourceService, private router: Router) { }
 
     ngOnInit() {
-
+      this.resourceServ.getCampuses().subscribe( (data) => 
+      {this.campuses = data;}, () =>
+      // For testing, use this in place of an actual response from the server.
+      this.campuses = [
+          { id: 1,
+            name: 'USF',
+            buildings:
+            [{id: 1, name: 'Main'}, {id: 2, name: 'MUMA college'}]},
+          { id: 2,
+            name: 'Reston',
+            buildings:
+            [{id: 3, name: 'Office A'}]
+        }] );
     }
 
     onChange($event) {
@@ -55,6 +68,87 @@ export class ResourceFormComponent implements OnInit {
           reservation.newReservationObject(this.formInput);
           this.resServ.pushNewCurrentReservation(reservation);
           this.resourceServ.pushNewCurrentResourceList(data);
+          if(!this.router.url.includes('search')) {
+            this.router.navigate(['search']);
+          }
+        }, () => {
+      // For testing, use this in place of an actual response from the server.
+      const resource1 : Resource = {
+        'id': 1,
+        'type': 'cubicle',
+        'buildingId': 1,
+        'enabled': true,
+        'retired': false,
+        'availableStartDate': '',
+        'reservableAfter': '',
+        'reservableBefore': '',
+        'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        'name': 'Cubicle 1',
+        'hasEthernet': true,
+        'hasComputer': true,
+        'numberOfOutlets': 2,
+        'hasMicrophone': true
+      };
+    
+      const resource2 : Resource  = {
+        'id': 2,
+        'type': 'cubicle',
+        'buildingId': 1,
+        'enabled': true,
+        'retired': false,
+        'availableStartDate': '',
+        'reservableAfter': '',
+        'reservableBefore': '',
+        'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        'name': 'Cubicle 2',
+        'hasEthernet': false,
+        'hasComputer': true,
+        'numberOfOutlets': 3,
+        'hasMicrophone': true
+      };
+    
+      const resource3 : Resource= {
+        'id': 3,
+        'type': 'room',
+        'buildingId': 2,
+        'enabled': true,
+        'retired': false,
+        'availableStartDate': '',
+        'reservableAfter': '',
+        'reservableBefore': '',
+        'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        'name': 'Room 1',
+        'hasEthernet': true,
+        'hasComputer': false,
+        'numberOfOutlets': 4,
+        'hasMicrophone': true
+      };
+    
+      const resource4: Resource = {
+        'id': 4,
+        'type': 'room',
+        'buildingId': 1,
+        'enabled': true,
+        'retired': false,
+        'availableStartDate': '',
+        'reservableAfter': '',
+        'reservableBefore': '',
+        'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        'name': 'Room 2',
+        'hasEthernet': true,
+        'hasComputer': true,
+        'numberOfOutlets': 6,
+        'hasMicrophone': false
+      };
+    
+      const resources = [resource1, resource2, resource3, resource4];
+      const reservation = new Reservation();
+      reservation.newReservationObject(this.formInput);
+      this.resServ.pushNewCurrentReservation(reservation);
+      this.resourceServ.pushNewCurrentResourceList(resources);
+      if(!this.router.url.includes('search')) {
+        this.router.navigate(['search']);
+      }
         });
     }
 }
