@@ -2,7 +2,7 @@ div>span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #f26925;
+  color: whitesmoke;
 
   /* background-color: #f26925; */
   /* justify-content: space-around; */
@@ -17,12 +17,17 @@ div>span {
   background-color: #f26925;
 } */
 
+h2 {
+  text-align: center;
+}
+
 #resHeader {
   background-color: #f26925;
 }
 
 /* unvisited link */
-a:link, .cancel-button {
+a:link,
+.cancel-button {
   color: red;
 }
 

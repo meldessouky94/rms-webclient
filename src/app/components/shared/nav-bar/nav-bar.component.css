@@ -1,4 +1,11 @@
-
 #navbarNav {
-    border: 0;
+  border: 0;
+}
+
+nav>a>strong {
+  color: whitesmoke;
+}
+
+nav>div>ul>li>a {
+  color: whitesmoke;
 }
