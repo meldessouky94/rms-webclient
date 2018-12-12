@@ -18,7 +18,7 @@ reservationInfo: Reservation;
 resources: Resource[];
 
 resourceSubscription: Subscription;
-  constructor(private reservationService: ReservationService,
+  constructor(public reservationService: ReservationService,
               private modalService: NgbModal,
               public resourceService: ResourceService) {}
 
