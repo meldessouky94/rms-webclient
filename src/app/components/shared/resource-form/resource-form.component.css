@@ -5,7 +5,6 @@ fieldset{
     border: rgb(56, 140, 250) solid 2px;
     border-radius: 5px;
     padding: 2px;
-    max-width: 450px;
 }
 
 .formItem {
