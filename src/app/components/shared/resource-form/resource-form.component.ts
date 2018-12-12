@@ -78,11 +78,13 @@ timeCheck() {
       alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
     }
   }
-    
+
   reset() {
     this.date = '';
     this.time1 = '';
     this.time2 = '';
+    this.campusIndex = null;
+    this.buildingId = null;
     this.formInput = new SearchDto();
   }
 
