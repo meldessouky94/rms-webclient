@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title">Confirm Reservation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p> Confirm the following information if correct. </p>
+    <strong>  Purpose: </strong> {{reservation?.purpose}} 
+    <br>
+    <strong>Date:</strong> {{reservation?.startTime | date: 'MMMM d'}}
+    <br>
+    <strong>Start Time:</strong> {{reservation?.startTime | date: 'h:mm a'}}
+    <br>
+    <strong>End Time:</strong> {{reservation?.endTime | date: 'h:mm a'}}
+    <br>
+    <strong>  Resource Name:</strong> {{reservation?.resource.name}}
+    <p>
+      <em> You cannot edit reservations once they have been created!</em>
+    </p>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="confirmReservation()">Create Reservation</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss()">Cancel</button>
+</div>

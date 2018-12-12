@@ -1,4 +1,6 @@
 <div class="container">
+<h2> Current Reservations </h2>
+
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of userReservations">
       <div class="resHeader">
@@ -20,9 +22,38 @@
 
         <p> <strong>Reserved from:</strong> {{reservation.startTime | date: 'MMM d, y @ h:mm a'}}</p>
         <p><strong>Reserved until:</strong> {{reservation.endTime | date: 'MMM d, y @ h:mm a'}}</p>
-
+        <ng-container *ngIf="reservation.resource">
+          <p><strong>Available Features:</strong></p>
+          <div class="resource-icons">
+            <ng-container *ngIf="reservation.resource.hasEthernet">
+              <button type="button" class="btn btn-outline-secondary" 
+              ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
+              <mat-icon>network_wifi</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="reservation.resource.hasComputer">
+            <button type="button" class="btn btn-outline-secondary" 
+            ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+            <mat-icon>computer</mat-icon>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="reservation.resource.numberOfOutlets > 0">
+          <button type="button" class="btn btn-outline-secondary"
+          ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
+                <mat-icon>power</mat-icon>{{reservation.resource.numberOfOutlets}}
+              </button>
+            </ng-container>
+            <ng-container *ngIf="reservation.resource.hasMicrophone">
+              <button type="button" class="btn btn-outline-secondary"
+              ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+              <mat-icon>headset_mic</mat-icon>
+            </button>
+          </ng-container>
+        </div>
+      </ng-container>
+        
         <hr>
-        <button type="button" placement="bottom" class="btn btn-outline-warning" (click)="this.open(reservation)">
+        <button type="button" placement="bottom" class="cancel-button btn btn-outline-warning" (click)="this.open(reservation)">
           Cancel Reservation
         </button>
       </ng-template>

@@ -1,0 +1,21 @@
+.available-resource {
+    max-width: 450px;
+    padding: 3px;
+    margin: 2px auto;
+    background: lightblue;
+    border:1px solid navy;
+    border-radius: 3px;
+}
+
+.available-resource, .resource-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+ul, li {
+    list-style: none;
+    text-align: center;
+}
