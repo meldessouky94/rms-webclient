@@ -37,8 +37,7 @@ export class ResourceFormComponent implements OnInit {
     private resourceServ: ResourceService, private router: Router) { }
 
     ngOnInit() {
-      this.resourceServ.getCampuses().subscribe( (data) => 
-      {this.campuses = data;}, () =>
+      this.resourceServ.getCampuses().subscribe( (data) => {this.campuses = data; } , () =>
       // For testing, use this in place of an actual response from the server.
       this.campuses = [
           { id: 1,
@@ -103,7 +102,7 @@ timeCheck() {
         }
       }, () => {
     // For testing, use this in place of an actual response from the server.
-    const resource1 : Resource = {
+    const resource1: Resource = {
       'id': 1,
       'type': 'cubicle',
       'buildingId': 1,
@@ -119,8 +118,8 @@ timeCheck() {
       'numberOfOutlets': 2,
       'hasMicrophone': true
     };
-  
-    const resource2 : Resource  = {
+
+    const resource2: Resource  = {
       'id': 2,
       'type': 'cubicle',
       'buildingId': 1,
@@ -136,8 +135,8 @@ timeCheck() {
       'numberOfOutlets': 3,
       'hasMicrophone': true
     };
-  
-    const resource3 : Resource= {
+
+    const resource3: Resource = {
       'id': 3,
       'type': 'room',
       'buildingId': 2,
@@ -153,7 +152,7 @@ timeCheck() {
       'numberOfOutlets': 4,
       'hasMicrophone': true
     };
-  
+
     const resource4: Resource = {
       'id': 4,
       'type': 'room',
@@ -170,17 +169,17 @@ timeCheck() {
       'numberOfOutlets': 6,
       'hasMicrophone': false
     };
-  
+
     const resources = [resource1, resource2, resource3, resource4];
     const reservation = new Reservation();
     reservation.newReservationObject(this.formInput);
     this.resServ.pushNewCurrentReservation(reservation);
     this.resourceServ.pushNewCurrentResourceList(resources);
-    if(!this.router.url.includes('search')) {
+    if (!this.router.url.includes('search')) {
       this.router.navigate(['search']);
     }
       });
       }
     }
-  
+
 }

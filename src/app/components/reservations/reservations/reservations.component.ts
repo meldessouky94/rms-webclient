@@ -31,7 +31,7 @@ export class ReservationsComponent implements OnInit {
       startTime: '2018 Dec 04 13:30:00',
       endTime: '2018 Dec 04 14:30:00'
     },
-  ]
+  ];
   // id: number;
   // purpose: string;
   // startTime: string;

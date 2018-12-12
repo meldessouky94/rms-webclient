@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   public isCollapsed = true;
-  constructor(private route: ActivatedRoute){
+  constructor(private route: ActivatedRoute) {
     const open = this.route.snapshot.paramMap.get('openForm');
-    if(open) {
+    if (open) {
       this.isCollapsed = false;
     }
    }
