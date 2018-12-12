@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-view-resources',
   templateUrl: './view-resources.component.html',
-  styleUrls: ['./view-resources.component.css']
+  styleUrls: ['./view-resources.component.sass']
 })
 export class ViewResourcesComponent implements OnInit, OnDestroy {
 
@@ -36,6 +36,8 @@ resourceSubscription: Subscription;
   ngOnInit() {
     this.resourceSubscription = this.resourceService.$currentResourceList.subscribe((resources) => {
       this.resources = resources;
+      console.log('view-resources');
+      console.log(this.resources);
     }
     );
     if (this.resourceService.currentResourceList) {

@@ -12,45 +12,36 @@
   <ng-container *ngIf="this.resourceService.currentResourceList.length == 0">
     No available resources at the selected time.
   </ng-container> 
-  
-    
-    <ng-container id="resource-tab" *ngFor="let resource of resources">
-      <ul class="available-resource" 
-      *ngIf="resource"
-      (click)="open(resource)">
-      <li>
-        {{resource.type | titlecase}} : 
-        <br> 
-        {{resource.name}} 
-      </li>
-      <div class="resource-icons">
-        <li *ngIf="resource.hasEthernet">
-          <button type="button" class="btn btn-outline-secondary" 
-          ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
-            <mat-icon>network_wifi</mat-icon>
-          </button>
-        </li>
-        <li *ngIf="resource.hasComputer">
-          <button type="button" class="btn btn-outline-secondary" 
-          ngbPopover="Computers available" triggers="mouseenter:mouseleave">
-            <mat-icon>computer</mat-icon>
-          </button>
-        </li>
-        <li>
-         <button type="button" class="btn btn-outline-secondary"
-         ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
-            <mat-icon>power</mat-icon>{{resource.numberOfOutlets}}
-          </button>
-        </li>
-        <li *ngIf="resource.hasMicrophone">
-          <button type="button" class="btn btn-outline-secondary"
-          ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
-            <mat-icon>headset_mic</mat-icon>
-          </button>
-        </li>
-      </div>
-  </ul>
 
-  </ng-container>
+  <div class="resource-tab form-inline" *ngFor="let resource of this.resourceService.currentResourceList">
+    <div class="btn-group btn-group-toggle resource-container" ngbRadioGroup name="radioBasic" [(ngModel)]="model" (click)="open(resource)">
+
+        <div>
+          {{resource.name}}
+        </div>
+          <div *ngIf="resource.hasEthernet" ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
+            <mat-icon>network_wifi</mat-icon>
+          </div>
+          <div *ngIf="!resource.hasEthernet" ngbPopover="No wifi" triggers="mouseenter:mouseleave">
+            <mat-icon>signal_wifi_off</mat-icon>
+          </div>
+          <div *ngIf="resource.hasComputer"ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+            <mat-icon>computer</mat-icon>
+          </div>    
+          <div *ngIf="!resource.hasComputer" ngbPopover="No computers/laptops" triggers="mouseenter:mouseleave">
+            <mat-icon>phonelink_off</mat-icon>
+          </div>  
+          <div *ngIf="resource.hasMicrophone"ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+            <mat-icon>headset_mic</mat-icon>
+          </div>
+          <div *ngIf="!resource.hasMicrophone" ngbPopover="No microphones" triggers="mouseenter:mouseleave">
+            <mat-icon>mic_off</mat-icon>
+          </div>
+          <div ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
+            <mat-icon>power</mat-icon>{{resource.numberOfOutlets}}
+          </div>
+
+        </div>
+  </div>
 
 </ng-container>
