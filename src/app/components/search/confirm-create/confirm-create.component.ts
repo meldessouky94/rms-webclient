@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-confirm-create',
   templateUrl: './confirm-create.component.html',
-  styleUrls: ['./confirm-create.component.sass']
+  styleUrls: ['./confirm-create.component.css']
 })
 export class ConfirmCreateComponent {
 
