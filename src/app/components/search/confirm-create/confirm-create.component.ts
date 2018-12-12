@@ -12,7 +12,7 @@ export class ConfirmCreateComponent {
 
   constructor(private reservationService: ReservationService,
                         private router: Router,
-              private activeModal: NgbActiveModal) { }
+              public activeModal: NgbActiveModal) { }
 
   @Input() reservation;
   
