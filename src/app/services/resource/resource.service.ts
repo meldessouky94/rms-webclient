@@ -16,7 +16,7 @@ export class ResourceService {
   currentResourceList: Resource[];
   $currentResourceList = new Subject<Resource[]>();
 
-  apiUrl = `${environment.apiUrl}resources`;
+  apiUrl = `${environment.apiUrl}`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,7 +35,7 @@ export class ResourceService {
   //////////////////////////////////////////////////
   getAvailableResources(search: SearchDto) {
     // Create the query to find available resources
-    const query = `available/${this.apiUrl}?startTime=${search.startTime}\
+    const query = `${this.apiUrl}reservations/available?startTime=${search.startTime}\
 &endTime=${search.endTime}\
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\
@@ -48,7 +48,7 @@ ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
   // Returns an array of campuse objects. Each campus object contains a list of building objects.
   getCampuses() {
     let url = this.apiUrl;
-    url += '/campuses';
+    url += 'resources/campuses';
     return this.httpClient.get(url, { withCredentials: true });
   }
 }

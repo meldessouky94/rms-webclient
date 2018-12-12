@@ -23,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
+import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CancelReservationPopupComponent } from './components/reservations/cance
     ReservationsComponent,
     SuccessComponent,
     ErrorComponent,
+    ConfirmCreateComponent,
     CancelReservationPopupComponent
   ],
   imports: [
@@ -54,6 +56,7 @@ import { CancelReservationPopupComponent } from './components/reservations/cance
     ResourceService
   ],
   entryComponents: [
+    ConfirmCreateComponent,
     CancelReservationPopupComponent
   ],
   bootstrap: [AppComponent]
