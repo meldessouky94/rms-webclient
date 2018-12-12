@@ -15,20 +15,21 @@
     <span class="res-value">
       {{ reservation?.purpose | titlecase }}
     </span>
-
+    <br>
     <span class="res-property">
       Reservation Date :
     </span>
     <span class="res-value">
       {{reservation?.startTime | date: 'MMM d, y'}}
     </span>
+    <br>
     <span class="res-property">
       Reservation Time :
     </span>
     <span class="res-value">
       {{reservation?.startTime | date: 'h:mm a'}} to {{reservation?.endTime | date: 'h:mm a'}}
     </span>
-
+    <br>
     <ng-container *ngIf="resolved && !error">
       Reservation has been removed.
     </ng-container>

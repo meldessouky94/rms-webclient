@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-cancel-reservation-popup',
   templateUrl: './cancel-reservation-popup.component.html',
-  styleUrls: ['./cancel-reservation-popup.component.sass']
+  styleUrls: ['./cancel-reservation-popup.component.css']
 })
 export class CancelReservationPopupComponent implements OnInit {
 
