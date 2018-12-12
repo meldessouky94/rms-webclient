@@ -19,7 +19,8 @@ export class ConfirmCreateComponent {
 // should save reservation information to database, and should route to the reservations homepage//
 
   confirmReservation() {
-    this.reservationService.createNewReservation(this.reservation.id).subscribe( () => {
+    this.reservation.resourceId = this.reservation.resource.id;
+    this.reservationService.createNewReservation(this.reservation).subscribe( () => {
       this.reservationService.getUserReservations().subscribe( (data) => {
         this.reservationService.pushNewUserReservations(data);
         this.router.navigateByUrl('/reservations');
