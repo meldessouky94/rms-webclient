@@ -41,7 +41,6 @@ resourceSubscription: Subscription;
     if (this.resourceService.currentResourceList) {
       this.resources = this.resourceService.currentResourceList;
     }
-//    this.resourceService.pushNewCurrentResourceList(this.resources);
   }
 
   ngOnDestroy() {
