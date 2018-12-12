@@ -3,7 +3,7 @@ div>span {
   flex-direction: column;
   align-items: center;
   color: #f26925;
-  text-decoration-color: #f26925;
+
   /* background-color: #f26925; */
   /* justify-content: space-around; */
 }
@@ -22,7 +22,7 @@ div>span {
 }
 
 /* unvisited link */
-a:link {
+a:link, .cancel-button {
   color: red;
 }
 

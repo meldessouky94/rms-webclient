@@ -26,6 +26,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { UserService } from './services/user/user.service';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
+import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { CancelReservationPopupComponent } from './components/reservations/cance
     ErrorComponent,
     LoginComponent,
     LoadingComponent,
+    ConfirmCreateComponent,
     CancelReservationPopupComponent
   ],
   imports: [
@@ -60,6 +62,7 @@ import { CancelReservationPopupComponent } from './components/reservations/cance
     UserService,
   ],
   entryComponents: [
+    ConfirmCreateComponent,
     CancelReservationPopupComponent
   ],
   bootstrap: [AppComponent]

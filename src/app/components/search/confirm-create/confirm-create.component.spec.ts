@@ -1,15 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReservationsComponent } from './reservations.component';
+import { ConfirmCreateComponent } from './confirm-create.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-describe('ReservationsComponent', () => {
-  let component: ReservationsComponent;
-  let fixture: ComponentFixture<ReservationsComponent>;
+describe('ConfirmCreateComponent', () => {
+  let component: ConfirmCreateComponent;
+  let fixture: ComponentFixture<ConfirmCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReservationsComponent ],
+      providers: [ NgbActiveModal ],
+      declarations: [ ConfirmCreateComponent ],
       imports: [
         HttpClientModule
       ]
@@ -18,7 +20,7 @@ describe('ReservationsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReservationsComponent);
+    fixture = TestBed.createComponent(ConfirmCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

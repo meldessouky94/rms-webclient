@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-cancel-reservation-popup',
   templateUrl: './cancel-reservation-popup.component.html',
-  styleUrls: ['./cancel-reservation-popup.component.sass']
+  styleUrls: ['./cancel-reservation-popup.component.css']
 })
 export class CancelReservationPopupComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class CancelReservationPopupComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal,
     private reservationService: ReservationService,
     private userService: UserService) {
-     this.user  = this.userService.currentUser;
+    this.user = this.userService.currentUser;
   }
 
 
@@ -33,10 +33,10 @@ export class CancelReservationPopupComponent implements OnInit {
 
   cancelReservation() {
     // Cancels reservation, and then updates the list on the page behind the popup.
-    this.reservationService.cancelReservations(this.reservation.id).subscribe( () => {
-      this.reservationService.getUserReservations().subscribe( (data) => {
+    this.reservationService.cancelReservations(this.reservation.id).subscribe(() => {
+      this.reservationService.getUserReservations().subscribe((data) => {
         this.reservationService.pushNewUserReservations(data);
-      })
+      });
       this.resolved = true;
     }, () => {
       this.resolved = true;
@@ -45,22 +45,22 @@ export class CancelReservationPopupComponent implements OnInit {
   }
 
 
-// Reservation list code:
-// 1. Needs modalService in the constructor:
-//    private modalService: NgbModal,
+  // Reservation list code:
+  // 1. Needs modalService in the constructor:
+  //    private modalService: NgbModal,
 
-// Add the following method to the .ts file:
-// open(selectedReservation: Reservation) {
-//   const modalRef = this.modalService.open(CancelReservationPopupComponent, { centered: true});
-//   modalRef.componentInstance.reservation = selectedReservation;
-//   modalRef.componentInstance.loaded = true;
-// }
+  // Add the following method to the .ts file:
+  // open(selectedReservation: Reservation) {
+  //   const modalRef = this.modalService.open(CancelReservationPopupComponent, { centered: true});
+  //   modalRef.componentInstance.reservation = selectedReservation;
+  //   modalRef.componentInstance.loaded = true;
+  // }
 
-// In the HTML where the cancel button will go:
-// <button type="button"
-// placement="bottom"
-// class="btn btn-outline-primary"
-// (click)="this.close(reservation)">
-//   Cancel Reservation
-// </button>
+  // In the HTML where the cancel button will go:
+  // <button type="button"
+  // placement="bottom"
+  // class="btn btn-outline-primary"
+  // (click)="this.close(reservation)">
+  //   Cancel Reservation
+  // </button>
 }
