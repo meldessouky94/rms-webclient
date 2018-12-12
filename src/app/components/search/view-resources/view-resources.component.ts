@@ -20,83 +20,7 @@ resources: Resource[];
 resourceSubscription: Subscription;
   constructor(private reservationService: ReservationService,
               private modalService: NgbModal,
-              private resourceService: ResourceService) {
-///////////////////////////////////// TESTING ONLY 
-//////////////
-                const resource1: Resource = {
-                  'id': 1,
-                  'type': 'cubicle',
-                  'buildingId': 1,
-                  'enabled': true,
-                  'retired': false,
-                  'availableStartDate': '',
-                  'reservableAfter': '',
-                  'reservableBefore': '',
-                  'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-                  'name': 'Block A',
-                  'hasEthernet': true,
-                  'hasComputer': true,
-                  'numberOfOutlets': 2,
-                  'hasMicrophone': true
-                };
-        
-                const resource2: Resource = {
-                  'id': 2,
-                  'type': 'cubicle',
-                  'buildingId': 1,
-                  'enabled': true,
-                  'retired': false,
-                  'availableStartDate': '',
-                  'reservableAfter': '',
-                  'reservableBefore': '',
-                  'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-                  'name': 'Block b',
-                  'hasEthernet': false,
-                  'hasComputer': true,
-                  'numberOfOutlets': 3,
-                  'hasMicrophone': true
-                };
-        
-                const resource3: Resource = {
-                  'id': 3,
-                  'type': 'room',
-                  'buildingId': 2,
-                  'enabled': true,
-                  'retired': false,
-                  'availableStartDate': '',
-                  'reservableAfter': '',
-                  'reservableBefore': '',
-                  'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-                  'name': 'Room 123',
-                  'hasEthernet': true,
-                  'hasComputer': false,
-                  'numberOfOutlets': 4,
-                  'hasMicrophone': true
-                };
-        
-                const resource4: Resource = {
-                  'id': 4,
-                  'type': 'room',
-                  'buildingId': 1,
-                  'enabled': true,
-                  'retired': false,
-                  'availableStartDate': '',
-                  'reservableAfter': '',
-                  'reservableBefore': '',
-                  'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-                  'name': 'Room 2',
-                  'hasEthernet': true,
-                  'hasComputer': true,
-                  'numberOfOutlets': 6,
-                  'hasMicrophone': false
-                };
-                this.resources = [resource1, resource2, resource3, resource4];
-
-
-
-
-                ///////////// END TESTING 
-               }
+              public resourceService: ResourceService) {}
 
               // Function that will open a modal with Reservation info and will appear updated
               // with the selectedResource being the Resource assigned to the Reservation.
@@ -117,6 +41,7 @@ resourceSubscription: Subscription;
     if (this.resourceService.currentResourceList) {
       this.resources = this.resourceService.currentResourceList;
     }
+//    this.resourceService.pushNewCurrentResourceList(this.resources);
   }
 
   ngOnDestroy() {
