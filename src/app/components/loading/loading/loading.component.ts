@@ -25,7 +25,7 @@ export class LoadingComponent implements OnInit {
     console.log(this.userService.status);
 
     if (this.userService.canActivate()) {
-      this.router.navigate(['home']);
+       this.router.navigate(['home']);
     }
   }
 

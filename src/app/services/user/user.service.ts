@@ -14,8 +14,8 @@ export class UserService implements CanActivate {
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   getToken(code) {
-    const apiUrl = `${environment.apiUrl}reservations/authenticate`;
-    this.httpClient.post(apiUrl, code, { observe: 'response'}).subscribe( (payload) => {
+    const apiUrl = `${environment.apiUrl}reservations/authenticate?code=${code}`;
+    this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
       this.currentUser = payload.body;
       this.status = payload.status;
       console.log(payload.body);
