@@ -26,6 +26,8 @@ export class LoadingComponent implements OnInit {
 
     if (this.userService.canActivate()) {
        this.router.navigate(['home']);
+    } else {
+      this.router.navigate(['error']);
     }
   }
 

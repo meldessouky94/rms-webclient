@@ -44,9 +44,9 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     SuccessComponent,
     ErrorComponent,
     LoginComponent,
-    LoadingComponent,
     ConfirmCreateComponent,
-    CancelReservationPopupComponent
+    CancelReservationPopupComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
