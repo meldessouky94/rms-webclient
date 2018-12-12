@@ -57,7 +57,7 @@ export class ReservationsComponent implements OnInit {
     private reservationService: ReservationService) {
     // customize default values of accordions used by this component tree
     config.closeOthers = true;
-    config.type = 'dark';
+    config.type = 'primary';
     this.loaded = true;
     this.error = false;
     this.userReservations = [
@@ -66,7 +66,22 @@ export class ReservationsComponent implements OnInit {
         purpose: 'INTERVIEW',
         startTime: '2018-03-04T12:25:23.00',
         endTime: '2018-03-04T13:25:23.00',
-        resource: { name: 'block A' },
+        resource: {
+          'id': 2,
+          'type': 'cubicle',
+          'buildingId': 1,
+          'enabled': true,
+          'retired': false,
+          'availableStartDate': '',
+          'reservableAfter': '',
+          'reservableBefore': '',
+          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+          'name': 'Cubicle 2',
+          'hasEthernet': false,
+          'hasComputer': true,
+          'numberOfOutlets': 3,
+          'hasMicrophone': true
+        },
         userId: 1245,
         cancelled: false,
         approved: true
@@ -75,7 +90,22 @@ export class ReservationsComponent implements OnInit {
         purpose: 'PANEL',
         startTime: '2018-03-07T12:25:23.00',
         endTime: '2018-03-07T13:25:23.00',
-        resource: { name: 'block 8' },
+        resource: {
+          'id': 1,
+          'type': 'cubicle',
+          'buildingId': 1,
+          'enabled': true,
+          'retired': false,
+          'availableStartDate': '',
+          'reservableAfter': '',
+          'reservableBefore': '',
+          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+          'name': 'Cubicle 1',
+          'hasEthernet': true,
+          'hasComputer': true,
+          'numberOfOutlets': 2,
+          'hasMicrophone': true
+        },
         userId: 1245,
         cancelled: false,
         approved: true

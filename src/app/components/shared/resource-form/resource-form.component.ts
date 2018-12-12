@@ -34,8 +34,8 @@ export class ResourceFormComponent implements OnInit {
   timeError = false;
   fieldError = false;
   date;
-  time1 ='';
-  time2 ='';
+  time1 = '';
+  time2 = '';
   selected;
   formInput = new SearchDto();
   resourceForm;
@@ -45,20 +45,20 @@ export class ResourceFormComponent implements OnInit {
 
   ngOnInit() {
     this.resourceServ.getCampuses().subscribe((data) => { this.campuses = data; }, () =>
-        // For testing, use this in place of an actual response from the server.
-        this.campuses = [
-          {
-            id: 1,
-            name: 'USF',
-            buildings:
-              [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
-          },
-          {
-            id: 2,
-            name: 'Reston',
-            buildings:
-              [{ id: 3, name: 'Office A' }]
-          }]);
+      // For testing, use this in place of an actual response from the server.
+      this.campuses = [
+        {
+          id: 1,
+          name: 'USF',
+          buildings:
+            [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
+        },
+        {
+          id: 2,
+          name: 'Reston',
+          buildings:
+            [{ id: 3, name: 'Office A' }]
+        }]);
   }
 
   onChange(event) {
@@ -66,11 +66,11 @@ export class ResourceFormComponent implements OnInit {
     this.campusIndex = Number(this.campusIndex);
   }
 
-// Converts the timestamp from String to Number
-// Checks to see if your first timestamp(time1) is greater than 9:00 AM
-// and less than the second timestamp(time2)
-// Also checks to see if time2 is greater than time1 and less than 5:00 PM
-timeCheck() {
+  // Converts the timestamp from String to Number
+  // Checks to see if your first timestamp(time1) is greater than 9:00 AM
+  // and less than the second timestamp(time2)
+  // Also checks to see if time2 is greater than time1 and less than 5:00 PM
+  timeCheck() {
     const t1 = this.time1.replace(':', '.');
     const t2 = this.time2.replace(':', '.');
     const Num1 = Number(t1);
@@ -97,14 +97,13 @@ timeCheck() {
     this.buildingId = null;
     this.formInput = new SearchDto();
   }
-
   submit() {
     this.formInput.purpose = this.purpose;
     this.formInput.campusId = this.campusIndex;
     this.formInput.buildingId = Number(this.buildingId);
     this.formInput.startTime = this.date + ' ' + this.time1 + ':00';
     this.formInput.endTime = this.date + ' ' + this.time2 + ':00';
-    
+
     const objectKey = Object.values(this.formInput);
     let success = true;
     for (const key of objectKey) {
@@ -112,7 +111,7 @@ timeCheck() {
         success = false;
       }
     }
-    
+
     if (!success) {
       // alert(`Please fill in all required input.`);
       this.fieldError = true;
@@ -121,15 +120,15 @@ timeCheck() {
       this.fieldError = false;
 
       console.log('else');
-      this.resourceServ.getAvailableResources(this.formInput).subscribe( (data) => {
+      this.resourceServ.getAvailableResources(this.formInput).subscribe((data) => {
         this.loading = false;
-      const reservation = new Reservation();
-      reservation.newReservationObject(this.formInput);
-      this.resServ.pushNewCurrentReservation(reservation);
-      this.resourceServ.pushNewCurrentResourceList(data);
-      if (!this.router.url.includes('search')) {
-        this.router.navigate(['search']);
-      }
+        const reservation = new Reservation();
+        reservation.newReservationObject(this.formInput);
+        this.resServ.pushNewCurrentReservation(reservation);
+        this.resourceServ.pushNewCurrentResourceList(data);
+        if (!this.router.url.includes('search')) {
+          this.router.navigate(['search']);
+        }
       }, () => {
         this.loading = false;
         // For testing, use this in place of an actual response from the server.
