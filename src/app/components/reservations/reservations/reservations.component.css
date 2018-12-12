@@ -22,7 +22,7 @@ div>span {
 }
 
 /* unvisited link */
-a:link {
+a:link, .cancel-button {
   color: red;
 }
 
