@@ -6,15 +6,15 @@
 </div>
 <div class="modal-body">
   <p> Confirm the following information if correct. </p>
-    <strong>  Purpose: </strong> {{reservation.purpose}} 
+    <strong>  Purpose: </strong> {{reservation?.purpose}} 
     <br>
-    <strong>Date:</strong> {{reservation.startTime | date: 'MMMM d'}}
+    <strong>Date:</strong> {{reservation?.startTime | date: 'MMMM d'}}
     <br>
-    <strong>Start Time:</strong> {{reservation.startTime | date: 'h:mm a'}}
+    <strong>Start Time:</strong> {{reservation?.startTime | date: 'h:mm a'}}
     <br>
-    <strong>End Time:</strong> {{reservation.endTime | date: 'h:mm a'}}
+    <strong>End Time:</strong> {{reservation?.endTime | date: 'h:mm a'}}
     <br>
-    <strong>  Resource Name:</strong> {{reservation.resource.name}}
+    <strong>  Resource Name:</strong> {{reservation?.resource.name}}
     <p>
       <em> You cannot edit reservations once they have been created!</em>
     </p>
