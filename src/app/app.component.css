@@ -9,11 +9,16 @@
 .nav {
     width: 100%;
     background: rgb(0,123,255);
+    text-align: center;
 } 
 .router-content {
     padding-top: 0.5rem;
-    max-width: 500px;
+    max-width: 600px;
     flex: 1 1 auto;
     background: rgb(255, 255, 255);
     overflow: auto;
+}
+
+p {
+    margin: 0.25em;
 }
