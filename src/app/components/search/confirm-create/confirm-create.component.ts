@@ -15,7 +15,7 @@ export class ConfirmCreateComponent {
               public activeModal: NgbActiveModal) { }
 
   @Input() reservation;
-  
+
 // should save reservation information to database, and should route to the reservations homepage//
 
   confirmReservation() {
@@ -26,10 +26,10 @@ export class ConfirmCreateComponent {
         this.router.navigateByUrl('/reservations');
         this.activeModal.dismiss();
         // console.log('Order has been confirmed!');
-    })
+    });
   }, () => {
     console.log('error in confirmation modal');
-    this.activeModal.dismiss()
+    this.activeModal.dismiss();
   });
   }
 

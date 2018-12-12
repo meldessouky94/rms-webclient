@@ -36,12 +36,4 @@ describe('AssociateHomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should contain QuickResView component', async() => {
-  //   const app = fixture.debugElement.componentInstance;
-  //   expect(app).toContain(QuickResViewComponent);
-  // });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
