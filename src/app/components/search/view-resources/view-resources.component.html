@@ -1,3 +1,56 @@
-<p>
-  view-resources works!
-</p>
+
+<!-- If there is no resource list object, don't show anything.-->
+<ng-container *ngIf="this.resourceService.currentResourceList && this.reservationService.currentReservation">
+  <h1>
+    Available Resources
+  </h1>
+  Showing results for 
+  {{this.reservationService.currentReservation.startTime | date: 'MMM dd'}} from
+   {{this.reservationService.currentReservation.startTime | date: 'h:mm a'}}
+  to {{this.reservationService.currentReservation.endTime | date: 'h:mm a'}}.
+  
+  <ng-container *ngIf="this.resourceService.currentResourceList.length == 0">
+    No available resources at the selected time.
+  </ng-container> 
+  
+    
+    <ng-container id="resource-tab" *ngFor="let resource of resources">
+      <ul class="available-resource" 
+      *ngIf="resource"
+      (click)="open(resource)">
+      <li>
+        {{resource.type | titlecase}} : 
+        <br> 
+        {{resource.name}} 
+      </li>
+      <div class="resource-icons">
+        <li *ngIf="resource.hasEthernet">
+          <button type="button" class="btn btn-outline-secondary" 
+          ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
+            <mat-icon>network_wifi</mat-icon>
+          </button>
+        </li>
+        <li *ngIf="resource.hasComputer">
+          <button type="button" class="btn btn-outline-secondary" 
+          ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+            <mat-icon>computer</mat-icon>
+          </button>
+        </li>
+        <li>
+         <button type="button" class="btn btn-outline-secondary"
+         ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
+            <mat-icon>power</mat-icon>{{resource.numberOfOutlets}}
+          </button>
+        </li>
+        <li *ngIf="resource.hasMicrophone">
+          <button type="button" class="btn btn-outline-secondary"
+          ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+            <mat-icon>headset_mic</mat-icon>
+          </button>
+        </li>
+      </div>
+  </ul>
+
+  </ng-container>
+
+</ng-container>

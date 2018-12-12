@@ -29,9 +29,13 @@ export class ResourceFormComponent implements OnInit {
   purpose;
 
 
+  loading = false;
+  startTimeError = false;
+  timeError = false;
+  fieldError = false;
   date;
-  time1;
-  time2;
+  time1 = '';
+  time2 = '';
   selected;
   formInput = new SearchDto();
   resourceForm;
@@ -72,11 +76,26 @@ export class ResourceFormComponent implements OnInit {
     const Num1 = Number(t1);
     const Num2 = Number(t2);
 
-    if (((9.00 <= Num1) && (Num1 < Num2)) && ((Num1 < Num2) && (Num2 < 17.00))) {
-      this.submit();
+    this.startTimeError = false;
+    this.timeError = false;
+
+    if ((9.00 >= Num1) || (Num2 > 17.00)) {
+      this.timeError = true;
+    } else if (Num2 < Num1) {
+      this.startTimeError = true;
     } else {
-      alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
+      this.submit();
     }
+    // alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
+  }
+
+  reset() {
+    this.date = '';
+    this.time1 = '';
+    this.time2 = '';
+    this.campusIndex = null;
+    this.buildingId = null;
+    this.formInput = new SearchDto();
   }
   submit() {
     this.formInput.purpose = this.purpose;
@@ -94,11 +113,15 @@ export class ResourceFormComponent implements OnInit {
     }
 
     if (!success) {
-      alert(`Please fill in all required input.`);
+      // alert(`Please fill in all required input.`);
+      this.fieldError = true;
     } else {
+      this.loading = true;
+      this.fieldError = false;
 
       console.log('else');
       this.resourceServ.getAvailableResources(this.formInput).subscribe((data) => {
+        this.loading = false;
         const reservation = new Reservation();
         reservation.newReservationObject(this.formInput);
         this.resServ.pushNewCurrentReservation(reservation);
@@ -107,6 +130,7 @@ export class ResourceFormComponent implements OnInit {
           this.router.navigate(['search']);
         }
       }, () => {
+        this.loading = false;
         // For testing, use this in place of an actual response from the server.
         const resource1: Resource = {
           'id': 1,
