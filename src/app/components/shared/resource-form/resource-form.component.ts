@@ -131,8 +131,10 @@ export class ResourceFormComponent implements OnInit {
           this.router.navigate(['search']);
         }
       }, () => {
-        this.loading = false;
-        // For testing, use this in place of an actual response from the server.
+        //// Actual implementation (line 125 and 136)
+        // this.loading = false;
+        // alert('A server error has occured! Please try again later.');
+        //// TEST IMPLEMENTATION
         const resource1: Resource = {
           'id': 1,
           'type': 'cubicle',
@@ -209,6 +211,7 @@ export class ResourceFormComponent implements OnInit {
         if (!this.router.url.includes('search')) {
           this.router.navigate(['search']);
         }
+        //////////////////////
       });
     }
   }

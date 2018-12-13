@@ -10,9 +10,9 @@ export class UserService implements CanActivate {
   status: number;
   isAuthenticated: boolean;
   // For testing:
-  currentUser = {id: 'a2'};
+  currentUser: any = {id: 'a2'};
   // For release
-  // currentUser;
+  // currentUser: any;
   
   constructor(private httpClient: HttpClient, public router: Router) { }
 
