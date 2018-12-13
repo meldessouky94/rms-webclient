@@ -120,7 +120,6 @@ export class ResourceFormComponent implements OnInit {
       this.loading = true;
       this.fieldError = false;
 
-      console.log('else');
       this.resourceServ.getAvailableResources(this.formInput).subscribe((data) => {
         this.loading = false;
         const reservation = new Reservation();
