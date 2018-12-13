@@ -99,10 +99,11 @@ export class ResourceFormComponent implements OnInit {
   }
   submit() {
     this.formInput.purpose = this.purpose;
+    this.formInput.purpose = this.formInput.purpose.toUpperCase();
     this.formInput.campusId = this.campusIndex;
     this.formInput.buildingId = Number(this.buildingId);
-    this.formInput.startTime = this.date + ' ' + this.time1 + ':00';
-    this.formInput.endTime = this.date + ' ' + this.time2 + ':00';
+    this.formInput.startTime = this.date + 'T' + this.time1 + ':00';
+    this.formInput.endTime = this.date + 'T' + this.time2 + ':00';
 
     const objectKey = Object.values(this.formInput);
     let success = true;

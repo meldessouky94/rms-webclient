@@ -7,10 +7,13 @@ import { Router, CanActivate } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService implements CanActivate {
-  currentUser;
   status: number;
   isAuthenticated: boolean;
-
+  // For testing:
+  currentUser = {id: 'a2'};
+  // For release
+  // currentUser;
+  
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   getToken(code) {

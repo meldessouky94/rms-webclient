@@ -54,16 +54,28 @@ export class ReservationService {
   //////////////////////////////////////////////////
 
   createNewReservation(reservation: Reservation) {
-    return this.httpClient.post<Reservation>(this.apiUrl, JSON.stringify(reservation));
+    const obj = {
+      purpose: reservation.purpose,
+      startTime: reservation.startTime,
+      endTime: reservation.endTime,
+      resourceId: reservation.resource.id,
+      userId: 'a2',
+      cancelled: false,
+      approved: true
+    };
+    console.log(obj);
+    return this.httpClient.post<Reservation>(this.apiUrl, obj);
   }
 
   getUserReservations() {
-    const url = `${this.apiUrl}users?id=${this.userService.currentUser.id}`;
+    const url = `${this.apiUrl}/users?id=${this.userService.currentUser.id}`;
     return this.httpClient.get<Reservation[]>(url, { withCredentials: true });
+    //   return this.httpClient
+    //   .get<Reservation[]>(`http://localhost:5000/users?id=${this.userService.currentUser.id}`, { withCredentials: true });
   }
 
   cancelReservations(id: number) {
-    const url = `${this.apiUrl}cancel/${id}`;
+    const url = `${this.apiUrl}/cancel/${id}`;
     return this.httpClient.put(url, null, { withCredentials: true });
   }
 
