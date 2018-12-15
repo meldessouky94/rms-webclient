@@ -54,17 +54,10 @@ export class ReservationService {
   //////////////////////////////////////////////////
 
   createNewReservation(reservation: Reservation) {
-    const obj = {
-      purpose: reservation.purpose,
-      startTime: reservation.startTime,
-      endTime: reservation.endTime,
-      resourceId: reservation.resource.id,
-      userId: 'a2',
-      cancelled: false,
-      approved: true
-    };
-    console.log(obj);
-    return this.httpClient.post<Reservation>(this.apiUrl, obj);
+    reservation.userId = this.userService.currentUser.id;
+    console.log(reservation);
+    // reservation.email = this.userService.currentUser.email;
+    return this.httpClient.post<Reservation>(this.apiUrl, reservation);
   }
 
   getUserReservations() {

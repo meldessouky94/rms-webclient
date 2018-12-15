@@ -49,6 +49,6 @@ console.log(query);
   getCampuses() {
     let url = this.apiUrl;
     url += 'resources/campuses';
-    return this.httpClient.get(url, { withCredentials: true });
+    return this.httpClient.get<any[]>(url, { withCredentials: true });
   }
 }
