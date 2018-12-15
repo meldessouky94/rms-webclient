@@ -69,9 +69,7 @@ export class ReservationService {
 
   getUserReservations() {
     const url = `${this.apiUrl}/users?id=${this.userService.currentUser.id}`;
-    return this.httpClient.get<Reservation[]>(url, { withCredentials: true });
-    //   return this.httpClient
-    //   .get<Reservation[]>(`http://localhost:5000/users?id=${this.userService.currentUser.id}`, { withCredentials: true });
+    return this.httpClient.get<Reservation[]>(url);
   }
 
   cancelReservations(id: number) {

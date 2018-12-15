@@ -12,53 +12,30 @@ import { Resource } from 'src/app/models/resource';
   styleUrls: ['./resource-form.component.css']
 })
 export class ResourceFormComponent implements OnInit {
-  campuses: any = [{
-    id: 1,
-    name: 'USF',
-    buildings:
-      [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
-  },
-  {
-    id: 2,
-    name: 'Reston',
-    buildings:
-      [{ id: 3, name: 'Office A' }]
-  }];
-  campusIndex: number;
+  campuses: any[];
+  campusIndex = 0;
   buildingId: number;
-  purpose;
+  purpose: any;
 
 
   loading = false;
   startTimeError = false;
   timeError = false;
   fieldError = false;
-  date;
+  date: any;
   time1 = '';
   time2 = '';
-  selected;
+  selected: any;
   formInput = new SearchDto();
-  resourceForm;
+  resourceForm: any;
 
   constructor(private resServ: ReservationService,
     private resourceServ: ResourceService, private router: Router) { }
 
   ngOnInit() {
-    this.resourceServ.getCampuses().subscribe((data) => { this.campuses = data; }, () =>
-      // For testing, use this in place of an actual response from the server.
-      this.campuses = [
-        {
-          id: 1,
-          name: 'USF',
-          buildings:
-            [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
-        },
-        {
-          id: 2,
-          name: 'Reston',
-          buildings:
-            [{ id: 3, name: 'Office A' }]
-        }]);
+    this.resourceServ.getCampuses().subscribe((data) => { this.campuses = data; }, () => {
+      alert('Error loading campuses! Please try again.');
+    });
   }
 
   onChange(event) {
@@ -79,9 +56,9 @@ export class ResourceFormComponent implements OnInit {
     this.startTimeError = false;
     this.timeError = false;
 
-    if ((9.00 >= Num1) || (Num2 > 17.00)) {
+    if ((9.00 > Num1) || (Num2 > 17.00)) {
       this.timeError = true;
-    } else if (Num2 < Num1) {
+    } else if (Num2 <= Num1) {
       this.startTimeError = true;
     } else {
       this.submit();
@@ -130,87 +107,8 @@ export class ResourceFormComponent implements OnInit {
           this.router.navigate(['search']);
         }
       }, () => {
-        //// Actual implementation (line 125 and 136)
-        // this.loading = false;
-        // alert('A server error has occured! Please try again later.');
-        //// TEST IMPLEMENTATION
-        const resource1: Resource = {
-          'id': 1,
-          'type': 'cubicle',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Cubicle 1',
-          'hasEthernet': true,
-          'hasComputer': true,
-          'numberOfOutlets': 2,
-          'hasMicrophone': true
-        };
-
-        const resource2: Resource = {
-          'id': 2,
-          'type': 'cubicle',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Cubicle 2',
-          'hasEthernet': false,
-          'hasComputer': true,
-          'numberOfOutlets': 3,
-          'hasMicrophone': true
-        };
-
-        const resource3: Resource = {
-          'id': 3,
-          'type': 'room',
-          'buildingId': 2,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Room 1',
-          'hasEthernet': true,
-          'hasComputer': false,
-          'numberOfOutlets': 4,
-          'hasMicrophone': true
-        };
-
-        const resource4: Resource = {
-          'id': 4,
-          'type': 'room',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Room 2',
-          'hasEthernet': true,
-          'hasComputer': true,
-          'numberOfOutlets': 6,
-          'hasMicrophone': false
-        };
-
-        const resources = [resource1, resource2, resource3, resource4];
-        const reservation = new Reservation();
-        reservation.newReservationObject(this.formInput);
-        this.resServ.pushNewCurrentReservation(reservation);
-        this.resourceServ.pushNewCurrentResourceList(resources);
-        if (!this.router.url.includes('search')) {
-          this.router.navigate(['search']);
-        }
-        //////////////////////
+        this.loading = false;
+        alert('A server error has occured! Please try again later.');
       });
     }
   }

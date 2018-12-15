@@ -40,7 +40,7 @@ export class ResourceService {
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\
 ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
-
+console.log(query);
     // Return the get method so the component can manage the results as needed
     return this.httpClient.get<Resource[]>(query, { withCredentials: true });
   }
