@@ -20,6 +20,7 @@ import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
 import { LoginComponent } from './components/login/login/login.component';
@@ -54,7 +55,7 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     HttpClientModule,
     NgbModule,
     FormsModule,
-    MatIconModule,
+    MatIconModule
   ],
   providers: [
     ReservationService,

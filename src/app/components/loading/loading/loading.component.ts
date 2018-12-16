@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
@@ -8,10 +8,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.sass']
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent implements OnInit, OnDestroy {
 
   code;
-  loginStatus: Subscription;
+  userSubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, public router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -19,12 +19,9 @@ export class LoadingComponent implements OnInit {
         // console.log(this.code); // Print the parameter to the console.
       }
     );
-    this.loginStatus = this.userService.$getTokenResult.subscribe( (status) => {
-      // status is the code of the result. 
+    this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
         if (this.userService.canActivate()) {
           this.router.navigate(['home']);
-        } else {
-          this.router.navigate(['error']);
         }
     });
 
@@ -34,5 +31,8 @@ export class LoadingComponent implements OnInit {
     this.userService.getToken(this.code);
   }
 
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
 
 }

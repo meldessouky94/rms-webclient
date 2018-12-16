@@ -1,3 +1,10 @@
-<p>
-  error works!
-</p>
+<app-login></app-login>
+
+<div class="error" *ngIf="loginFailed">
+  <h5>
+    Login failed! 
+  </h5>
+  <p>
+    If you are not a member of the main Revature Slack, please speak with your instructor. 
+  </p>
+</div>

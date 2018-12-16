@@ -1,15 +1,17 @@
 .all {
     height: 100%;
+    width: 100%;
 }
 .nav {
-   
     background: #FF904E;
     text-align: center;
+    width: 100%;
 } 
 .router-content {
     padding-top: 0.5rem;
     flex: 1 1 auto;
     opacity: 1;
+    max-width: 700px;
 }
 
 p {

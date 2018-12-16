@@ -13,7 +13,7 @@ import { Resource } from 'src/app/models/resource';
 })
 export class ResourceFormComponent implements OnInit {
   // Form information
-  campuses: any[];
+  campuses: any[] = [];
   campusIndex = 0;
   buildingId: number;
   purpose: any;
@@ -35,7 +35,9 @@ export class ResourceFormComponent implements OnInit {
     this.resourceService.getCampuses().subscribe( (data) => {
        this.campuses = data;
       }, () => {
-      alert('Error loading campuses! Please try again.');
+        // Error handling, set to empty array
+        this.campuses = [];
+     // alert('Error loading campuses! Please try again.');
     });
   }
 
