@@ -22,8 +22,6 @@ export class UserService implements CanActivate {
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   nextCurrentUser(user: User) {
-    console.log("user service nextcurrentuser");
-    console.log(user);
     // If the user passed in is null, they are not authenticated.
     if (!user) {
       this.isAuthenticated = false;
@@ -36,9 +34,9 @@ export class UserService implements CanActivate {
   // This gets the user information from SLACK, and actually have nothing to do with getting a token
   // because the backend gets the token from slack, not the front end.
   getToken(code) {
-//    const apiUrl = `${environment.apiUrl}reservations/users/authorization?code=${code}`;
+   const apiUrl = `${environment.apiUrl}reservations/users/authorization?code=${code}`;
 ///////////// TESTING:
-    const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
+    // const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
       this.status = payload.status;
 
@@ -65,10 +63,9 @@ export class UserService implements CanActivate {
   // if the user had logged in before and checks the session by sending it to
   // the databse.
   checkSession(token: string) {
-    console.log("userservice checksession");
-//    const apiUrl = `${environment.apiUrl}reservations/users/rememberme`;
+   const apiUrl = `${environment.apiUrl}reservations/users/rememberme`;
 ///////////// TESTING:
-    const apiUrl = `http://localhost:5000/users/rememberme`;
+    // const apiUrl = `http://localhost:5000/users/rememberme`;
 
     this.httpClient.get<User>(apiUrl, {
       params: new HttpParams().set('token', token)
@@ -91,9 +88,9 @@ export class UserService implements CanActivate {
   }
 
   logout() {
-    //    const apiUrl = `${environment.apiUrl}reservations/users/logout`;
-///////////// TESTING:
-    const apiUrl = `http://localhost:5000/users/logout`;
+     const apiUrl = `${environment.apiUrl}reservations/users/logout`;
+// ///////////// TESTING:
+//     const apiUrl = `http://localhost:5000/users/logout`;
 
     this.httpClient.get<User>(apiUrl, {
       params: new HttpParams().set('token', localStorage.getItem('user-token'))
