@@ -39,7 +39,7 @@ export class ReservationsComponent implements OnInit, OnDestroy {
         this.reservationService.pushNewUserReservations(data);
       });
     }
-    //////// Testing only:
+    ////// Testing only:
     // this.userReservations = [
     //   {
     //     id: 2,

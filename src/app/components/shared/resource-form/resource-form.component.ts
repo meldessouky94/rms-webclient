@@ -12,57 +12,38 @@ import { Resource } from 'src/app/models/resource';
   styleUrls: ['./resource-form.component.css']
 })
 export class ResourceFormComponent implements OnInit {
-  campuses: any = [{
-    id: 1,
-    name: 'USF',
-    buildings:
-      [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
-  },
-  {
-    id: 2,
-    name: 'Reston',
-    buildings:
-      [{ id: 3, name: 'Office A' }]
-  }];
-  campusIndex: number;
+  // Form information
+  campuses: any[] = [];
+  campusIndex = 0;
   buildingId: number;
-  purpose;
+  purpose: any;
+  date: any;
+  time1 = '';
+  time2 = '';
+  formInput = new SearchDto();
 
-
+  // Fields for error handling in the template.
   loading = false;
   startTimeError = false;
   timeError = false;
   fieldError = false;
-  date;
-  time1 = '';
-  time2 = '';
-  selected;
-  formInput = new SearchDto();
-  resourceForm;
 
-  constructor(private resServ: ReservationService,
-    private resourceServ: ResourceService, private router: Router) { }
+  constructor(private reservationService: ReservationService,
+    private resourceService: ResourceService, private router: Router) { }
 
   ngOnInit() {
-    this.resourceServ.getCampuses().subscribe((data) => { this.campuses = data; }, () =>
-      // For testing, use this in place of an actual response from the server.
-      this.campuses = [
-        {
-          id: 1,
-          name: 'USF',
-          buildings:
-            [{ id: 1, name: 'Main' }, { id: 2, name: 'MUMA college' }]
-        },
-        {
-          id: 2,
-          name: 'Reston',
-          buildings:
-            [{ id: 3, name: 'Office A' }]
-        }]);
+    this.resourceService.getCampuses().subscribe( (data) => {
+       this.campuses = data;
+      }, () => {
+        // Error handling, set to empty array
+        this.campuses = [];
+     // alert('Error loading campuses! Please try again.');
+    });
   }
 
-  onChange(event) {
-    this.selected = true;
+  //  Each campus object of the array of campuses has an array of buildings.
+  // This sets which campus is selected so that the proper buildings appear.
+  setBuildings() {
     this.campusIndex = Number(this.campusIndex);
   }
 
@@ -79,16 +60,16 @@ export class ResourceFormComponent implements OnInit {
     this.startTimeError = false;
     this.timeError = false;
 
-    if ((9.00 >= Num1) || (Num2 > 17.00)) {
+    if ((9.00 > Num1) || (Num2 > 17.00)) {
       this.timeError = true;
-    } else if (Num2 < Num1) {
+    } else if (Num2 <= Num1) {
       this.startTimeError = true;
     } else {
       this.submit();
     }
-    // alert(`Please choose a time frame within 9:00 AM and 5:00 PM`);
   }
 
+  // Resets the information on the form.
   reset() {
     this.date = '';
     this.time1 = '';
@@ -97,14 +78,18 @@ export class ResourceFormComponent implements OnInit {
     this.buildingId = null;
     this.formInput = new SearchDto();
   }
+
+  // Submits the data to search and saves information in Reservation service 
+  // to be used to complete the creation of the reservation.
   submit() {
     this.formInput.purpose = this.purpose;
     this.formInput.purpose = this.formInput.purpose.toUpperCase();
-    this.formInput.campusId = this.campusIndex;
+    this.formInput.campusId = this.campuses[this.campusIndex].id;
     this.formInput.buildingId = Number(this.buildingId);
     this.formInput.startTime = this.date + 'T' + this.time1 + ':00';
     this.formInput.endTime = this.date + 'T' + this.time2 + ':00';
 
+    // Checks that all the required fields have imput.
     const objectKey = Object.values(this.formInput);
     let success = true;
     for (const key of objectKey) {
@@ -114,101 +99,23 @@ export class ResourceFormComponent implements OnInit {
     }
 
     if (!success) {
-      // alert(`Please fill in all required input.`);
       this.fieldError = true;
     } else {
       this.loading = true;
       this.fieldError = false;
 
-      console.log('else');
-      this.resourceServ.getAvailableResources(this.formInput).subscribe((data) => {
+      this.resourceService.getAvailableResources(this.formInput).subscribe((data) => {
         this.loading = false;
         const reservation = new Reservation();
         reservation.newReservationObject(this.formInput);
-        this.resServ.pushNewCurrentReservation(reservation);
-        this.resourceServ.pushNewCurrentResourceList(data);
+        this.reservationService.pushNewCurrentReservation(reservation);
+        this.resourceService.pushNewCurrentResourceList(data);
         if (!this.router.url.includes('search')) {
           this.router.navigate(['search']);
         }
       }, () => {
         this.loading = false;
-        // For testing, use this in place of an actual response from the server.
-        const resource1: Resource = {
-          'id': 1,
-          'type': 'cubicle',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Cubicle 1',
-          'hasEthernet': true,
-          'hasComputer': true,
-          'numberOfOutlets': 2,
-          'hasMicrophone': true
-        };
-
-        const resource2: Resource = {
-          'id': 2,
-          'type': 'cubicle',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Cubicle 2',
-          'hasEthernet': false,
-          'hasComputer': true,
-          'numberOfOutlets': 3,
-          'hasMicrophone': true
-        };
-
-        const resource3: Resource = {
-          'id': 3,
-          'type': 'room',
-          'buildingId': 2,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Room 1',
-          'hasEthernet': true,
-          'hasComputer': false,
-          'numberOfOutlets': 4,
-          'hasMicrophone': true
-        };
-
-        const resource4: Resource = {
-          'id': 4,
-          'type': 'room',
-          'buildingId': 1,
-          'enabled': true,
-          'retired': false,
-          'availableStartDate': '',
-          'reservableAfter': '',
-          'reservableBefore': '',
-          'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-          'name': 'Room 2',
-          'hasEthernet': true,
-          'hasComputer': true,
-          'numberOfOutlets': 6,
-          'hasMicrophone': false
-        };
-
-        const resources = [resource1, resource2, resource3, resource4];
-        const reservation = new Reservation();
-        reservation.newReservationObject(this.formInput);
-        this.resServ.pushNewCurrentReservation(reservation);
-        this.resourceServ.pushNewCurrentResourceList(resources);
-        if (!this.router.url.includes('search')) {
-          this.router.navigate(['search']);
-        }
+        alert('A server error has occured! Please try again later.');
       });
     }
   }

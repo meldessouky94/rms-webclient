@@ -1,6 +1,9 @@
 <div class="container">
   <h2> Current Reservations </h2>
 
+  <div class="no-reservations-message" *ngIf="userReservations?.length == 0">
+    You currently have no upcoming resource reservations!
+  </div>
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of userReservations">
       <div class="resHeader">

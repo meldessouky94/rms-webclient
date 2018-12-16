@@ -28,7 +28,7 @@ export class ConfirmCreateComponent {
         // console.log('Order has been confirmed!');
     });
   }, () => {
-    console.log('error in confirmation modal');
+    alert('There was an error with the server! Please try again.');
     this.activeModal.dismiss();
   });
   }

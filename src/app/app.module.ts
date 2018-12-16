@@ -19,9 +19,13 @@ import { SuccessComponent } from './components/success/success/success.component
 import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
+import { LoginComponent } from './components/login/login/login.component';
+import { UserService } from './services/user/user.service';
+import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
 import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
 
@@ -40,8 +44,10 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     ReservationsComponent,
     SuccessComponent,
     ErrorComponent,
+    LoginComponent,
     ConfirmCreateComponent,
-    CancelReservationPopupComponent
+    CancelReservationPopupComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,8 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
   ],
   providers: [
     ReservationService,
-    ResourceService
+    ResourceService,
+    UserService,
   ],
   entryComponents: [
     ConfirmCreateComponent,

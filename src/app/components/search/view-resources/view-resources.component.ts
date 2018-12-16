@@ -19,15 +19,13 @@ resources: Resource[];
 
 resourceSubscription: Subscription;
   constructor(public reservationService: ReservationService,
-              private modalService: NgbModal,
-              public resourceService: ResourceService) {}
+          private modalService: NgbModal,
+          public resourceService: ResourceService) {}
 
-              // Function that will open a modal with Reservation info and will appear updated
-              // with the selectedResource being the Resource assigned to the Reservation.
+  // Function that will open a modal with Reservation info and will appear updated
+  // with the selectedResource being the Resource assigned to the Reservation.
   open(selectedResource: any) {
     const reservation = this.reservationService.currentReservation;
-    console.log('open function');
-    console.log(selectedResource);
     reservation.resource = selectedResource;
     const modalRef = this.modalService.open(ConfirmCreateComponent, {centered: true});
     modalRef.componentInstance.reservation = reservation;
@@ -36,8 +34,6 @@ resourceSubscription: Subscription;
   ngOnInit() {
     this.resourceSubscription = this.resourceService.$currentResourceList.subscribe((resources) => {
       this.resources = resources;
-      console.log('view-resources');
-      console.log(this.resources);
     }
     );
     if (this.resourceService.currentResourceList) {

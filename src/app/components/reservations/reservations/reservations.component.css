@@ -8,6 +8,10 @@ div>span {
   /* justify-content: space-around; */
 }
 
+.no-reservations-message {
+  text-align: center;
+}
+
 /* div {
   background-color: #f26925;
 } */

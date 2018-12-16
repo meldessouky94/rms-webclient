@@ -10,6 +10,7 @@ export class Reservation {
     userId: string;
     cancelled: boolean;
     approved: boolean;
+    buildingId: number;
 
     constructor() {
     }

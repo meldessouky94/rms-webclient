@@ -40,7 +40,7 @@ export class ResourceService {
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\
 ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
-
+console.log(query);
     // Return the get method so the component can manage the results as needed
     return this.httpClient.get<Resource[]>(query, { withCredentials: true });
   }
@@ -49,6 +49,6 @@ ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
   getCampuses() {
     let url = this.apiUrl;
     url += 'resources/campuses';
-    return this.httpClient.get(url, { withCredentials: true });
+    return this.httpClient.get<any[]>(url, { withCredentials: true });
   }
 }
