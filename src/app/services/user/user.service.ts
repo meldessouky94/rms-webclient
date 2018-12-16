@@ -89,7 +89,7 @@ export class UserService implements CanActivate {
 
   logout() {
      const apiUrl = `${environment.apiUrl}reservations/users/logout`;
-// ///////////// TESTING:
+/////////////// TESTING:
 //     const apiUrl = `http://localhost:5000/users/logout`;
 
     this.httpClient.get<User>(apiUrl, {

@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 
 import { CancelReservationPopupComponent } from './cancel-reservation-popup.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -33,7 +32,7 @@ describe('CancelReservationPopupComponent', () => {
     reservationTestBedService = TestBed.get(ReservationService);
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 

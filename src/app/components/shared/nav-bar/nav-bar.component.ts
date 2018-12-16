@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   isCollapsed = true;
-
+  
   authenticated = false;
   userSubscription: Subscription;
 

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorComponent } from './error.component';
+import { LoginComponent } from '../../login/login/login.component';
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -8,7 +9,7 @@ describe('ErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ ErrorComponent, LoginComponent ]
     })
     .compileComponents();
   }));
