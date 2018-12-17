@@ -17,12 +17,14 @@ div>span {
   background-color: #f26925;
 } */
 
-h2 {
-  text-align: center;
+h1{
+  font-size: 1.5rem;
+  margin-bottom: 3vh;
 }
 
 #resHeader {
   background-color: #f26925;
+  color: whitesmoke;
 }
 
 /* unvisited link */

@@ -1,9 +1,7 @@
 
 <!-- If there is no resource list object, don't show anything.-->
 <ng-container *ngIf="this.resourceService.currentResourceList && this.reservationService.currentReservation">
-  <h1>
-    Available Resources
-  </h1>
+  <h1>Available Resources</h1>
   Showing results for 
   {{this.reservationService.currentReservation.startTime | date: 'MMM dd'}} from
    {{this.reservationService.currentReservation.startTime | date: 'h:mm a'}}

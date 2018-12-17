@@ -53,13 +53,18 @@ span{
 
 #createBTN:hover{
     color:white;
-    background:#E8953B;
+    background:#FF904E;
 }
 
 #cancelBTN{
     border: #FF5141 solid 1px;
     color:#FF5141;
     background: white;
+}
+
+#cancelBTN:hover {
+    color: white;
+    background: #FF5141;
 }
 
 .error {
