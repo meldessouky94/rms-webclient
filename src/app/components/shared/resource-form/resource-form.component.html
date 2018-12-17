@@ -20,7 +20,7 @@
       <div class="formItem">
         <div>
           <label>Date: * &nbsp;</label>
-          <input (keydown.enter)="timeCheck()" required [(ngModel)]="date" type="date" name="date" class="formInput">
+          <input (keydown.enter)="timeCheck()" required [(ngModel)]="date" type="date" name="date" class="formInput" id="field-color">
         </div>
       </div>
       <div class="formItem timeItem">
@@ -29,13 +29,13 @@
           <br>
           <input [(ngModel)]="time1" 
           (keydown.enter)="timeCheck()" 
-          type="time" name="time1">
+          type="time" name="time1" id="field-color">
         </div>
         <div>
           <label for="time2">End Time:*</label> 
           <br>
           <input [(ngModel)]="time2" 
-          (keydown.enter)="timeCheck()" type="time" name="time2">
+          (keydown.enter)="timeCheck()" type="time" name="time2" id="field-color">
         </div>
       </div>
       <div class="formItem">
