@@ -34,10 +34,10 @@ export class CancelReservationPopupComponent implements OnInit {
   cancelReservation() {
     // Cancels reservation, and then updates the list on the page behind the popup.
     this.reservationService.cancelReservations(this.reservation.id).subscribe(() => {
+      this.resolved = true;
       this.reservationService.getUserReservations().subscribe((data) => {
         this.reservationService.pushNewUserReservations(data);
       });
-      this.resolved = true;
     }, () => {
       this.resolved = true;
       this.error = true;
