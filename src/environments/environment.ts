@@ -9,7 +9,8 @@ export const environment = {
   serviceContext: {
     resource: 'resources',
     reservation: 'reservations'
-  }
+  },
+  slackClientId: '432094667025.496759859637'
 };
 
 

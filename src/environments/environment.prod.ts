@@ -5,6 +5,6 @@ export const environment = {
   serviceContext: {
     resource: 'rms-resource',
     reservation: 'rms-reservation'
-  }
-
+  },
+  slackClientId: '432094667025.496759859637'
 };

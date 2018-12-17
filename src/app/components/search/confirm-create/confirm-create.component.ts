@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ConfirmCreateComponent {
 
   constructor(private reservationService: ReservationService,
-                        private router: Router,
+              private router: Router,
               public activeModal: NgbActiveModal) { }
 
   @Input() reservation;
