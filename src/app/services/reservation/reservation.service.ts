@@ -28,7 +28,7 @@ export class ReservationService {
   userReservations: Reservation[];
   $userReservations = new Subject<Reservation[]>();
 
-  apiUrl = `${environment.apiUrl}reservations`;
+  apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}`;
 
 
 

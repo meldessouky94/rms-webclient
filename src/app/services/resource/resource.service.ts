@@ -35,7 +35,7 @@ export class ResourceService {
   //////////////////////////////////////////////////
   getAvailableResources(search: SearchDto) {
     // Create the query to find available resources
-    const query = `${this.apiUrl}reservations/available?startTime=${search.startTime}\
+    const query = `${this.apiUrl}${environment.serviceContext.reservation}/available?startTime=${search.startTime}\
 &endTime=${search.endTime}\
 &purpose=${search.purpose}\
 ${search.campusId ? `&campusId=${search.campusId}` : ''}\
@@ -48,7 +48,7 @@ console.log(query);
   // Returns an array of campuse objects. Each campus object contains a list of building objects.
   getCampuses() {
     let url = this.apiUrl;
-    url += 'resources/campuses';
+    url += `${environment.serviceContext.resource}/campuses`;
     return this.httpClient.get<any[]>(url, { withCredentials: true });
   }
 }
