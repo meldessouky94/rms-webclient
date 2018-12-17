@@ -18,7 +18,7 @@ export class UserService implements CanActivate {
   // For release
   currentUser: User;
   $currentUser = new Subject<User>();
-  
+
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   nextCurrentUser(user: User) {
@@ -34,7 +34,7 @@ export class UserService implements CanActivate {
   // This gets the user information from SLACK, and actually have nothing to do with getting a token
   // because the backend gets the token from slack, not the front end.
   getToken(code) {
-   const apiUrl = `${environment.apiUrl}reservations/users/authorization?code=${code}`;
+   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
 ///////////// TESTING:
     // const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
@@ -47,7 +47,7 @@ export class UserService implements CanActivate {
         this.isAuthenticated = false;
       }
       this.currentUser = <User>payload.body;
-      localStorage.setItem("user-token", this.currentUser.token);
+      localStorage.setItem('user-token', this.currentUser.token);
       // This alerts the loading component that the request is
       // complete and to update
       this.nextCurrentUser(this.currentUser);
@@ -59,11 +59,11 @@ export class UserService implements CanActivate {
     });
   }
 
-  // Gets the token in local storage created in the "getToken" method above 
+  // Gets the token in local storage created in the "getToken" method above
   // if the user had logged in before and checks the session by sending it to
   // the databse.
   checkSession(token: string) {
-   const apiUrl = `${environment.apiUrl}reservations/users/rememberme`;
+   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
 ///////////// TESTING:
     // const apiUrl = `http://localhost:5000/users/rememberme`;
 
@@ -88,16 +88,16 @@ export class UserService implements CanActivate {
   }
 
   logout() {
-     const apiUrl = `${environment.apiUrl}reservations/users/logout`;
+     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/logout`;
 /////////////// TESTING:
 //     const apiUrl = `http://localhost:5000/users/logout`;
 
     this.httpClient.get<User>(apiUrl, {
       params: new HttpParams().set('token', localStorage.getItem('user-token'))
     }).subscribe();
-    
+
     localStorage.removeItem('user-token');
-    this.router.navigate(['/']) 
+    this.router.navigate(['/']);
     this.isAuthenticated = false;
     this.nextCurrentUser(undefined);
   }
