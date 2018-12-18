@@ -4,6 +4,9 @@ import { SearchComponent } from './search.component';
 import { ResourceFormComponent } from '../../shared/resource-form/resource-form.component';
 import { ViewResourcesComponent } from '../view-resources/view-resources.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -11,7 +14,14 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({ 
-      declarations: [ SearchComponent,ResourceFormComponent, ViewResourcesComponent ],
+      providers: [ NgbModal,
+        NgbActiveModal,
+        UserService,
+        ReservationService ],
+      declarations: [ SearchComponent,
+        ResourceFormComponent, 
+        ViewResourcesComponent 
+      ],
       imports: [
         HttpClientModule
       ]

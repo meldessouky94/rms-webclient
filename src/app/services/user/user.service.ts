@@ -34,7 +34,7 @@ export class UserService implements CanActivate {
   // This gets the user information from SLACK, and actually have nothing to do with getting a token
   // because the backend gets the token from slack, not the front end.
   getToken(code) {
-   const apiUrl = `${environment.apiUrl}reservations/users/authorization?code=${code}`;
+   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
 ///////////// TESTING:
     // const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
@@ -63,7 +63,7 @@ export class UserService implements CanActivate {
   // if the user had logged in before and checks the session by sending it to
   // the databse.
   checkSession(token: string) {
-   const apiUrl = `${environment.apiUrl}reservations/users/rememberme`;
+   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
 ///////////// TESTING:
     // const apiUrl = `http://localhost:5000/users/rememberme`;
 
@@ -88,7 +88,7 @@ export class UserService implements CanActivate {
   }
 
   logout() {
-     const apiUrl = `${environment.apiUrl}reservations/users/logout`;
+     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/logout`;
 /////////////// TESTING:
 //     const apiUrl = `http://localhost:5000/users/logout`;
 
