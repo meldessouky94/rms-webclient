@@ -10,9 +10,6 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [
-        RouterTestingModule
-      ],
     })
     .compileComponents();
   }));
@@ -23,7 +20,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,20 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  slackUrl = `https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team&client_id=${environment.slackClientId}`;
+
+  constructor(private router: Router, private userService: UserService) {
+    // If already logged in, send to associate home.
+    this.userService.$currentUser.subscribe( (user) => {
+      if (this.userService.currentUser) {
+        this.router.navigate(['home']);
+      }
+    });
+    if (this.userService.currentUser) {
+      this.router.navigate(['home']);
+    }
+
+  }
 
   ngOnInit() {
   }

@@ -15,11 +15,11 @@ import { ResourceFormComponent } from './components/shared/resource-form/resourc
 import { SearchComponent } from './components/search/search/search.component';
 import { ViewResourcesComponent } from './components/search/view-resources/view-resources.component';
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
-import { SuccessComponent } from './components/success/success/success.component';
 import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReservationService } from './services/reservation/reservation.service';
 import { ResourceService } from './services/resource/resource.service';
 import { LoginComponent } from './components/login/login/login.component';
@@ -41,7 +41,6 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     SearchComponent,
     ViewResourcesComponent,
     ReservationsComponent,
-    SuccessComponent,
     ErrorComponent,
     LoginComponent,
     ConfirmCreateComponent,
@@ -54,7 +53,7 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     HttpClientModule,
     NgbModule,
     FormsModule,
-    MatIconModule,
+    MatIconModule
   ],
   providers: [
     ReservationService,

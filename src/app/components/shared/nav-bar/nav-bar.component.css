@@ -1,11 +1,13 @@
 #navbarNav {
     border: 0;
-    /* background: #FF904E; */
 }
 
-#nav-color {
+.navbar-main {
+    width:100vw;
     background: #FF904E;
     color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar-light .navbar-brand {
@@ -18,4 +20,8 @@
 
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
+}
+
+.logout:hover {
+    cursor: pointer;
 }

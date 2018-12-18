@@ -54,24 +54,18 @@ export class ReservationService {
   //////////////////////////////////////////////////
 
   createNewReservation(reservation: Reservation) {
-    const obj = {
-      purpose: reservation.purpose,
-      startTime: reservation.startTime,
-      endTime: reservation.endTime,
-      resourceId: reservation.resource.id,
-      userId: 'a2',
-      cancelled: false,
-      approved: true
-    };
-    console.log(obj);
-    return this.httpClient.post<Reservation>(this.apiUrl, obj);
+    reservation.userId = this.userService.currentUser.id;
+    console.log(reservation);
+    // reservation.email = this.userService.currentUser.email;
+    return this.httpClient.post<Reservation>(this.apiUrl, reservation);
   }
 
   getUserReservations() {
-    const url = `${this.apiUrl}/users?id=${this.userService.currentUser.id}`;
-    return this.httpClient.get<Reservation[]>(url, { withCredentials: true });
-    //   return this.httpClient
-    //   .get<Reservation[]>(`http://localhost:5000/users?id=${this.userService.currentUser.id}`, { withCredentials: true });
+    let url: string;
+    if (this.userService.currentUser) {
+      url = `${this.apiUrl}/users?id=${this.userService.currentUser.id}`;
+    }
+    return this.httpClient.get<Reservation[]>(url);
   }
 
   cancelReservations(id: number) {

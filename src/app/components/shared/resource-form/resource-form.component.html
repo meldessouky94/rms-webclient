@@ -2,7 +2,7 @@
     <form>
       <div class="formItem">
         <label>Campus:*</label>
-        <select (keydown.enter)="timeCheck()" required [(ngModel)]="campusIndex" (change)= "onChange($event)" name="campus" id="campuses" class="form-control form-control-sm formItem">
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="campusIndex" (change)= "setBuildings()" name="campus" id="campuses" class="form-control form-control-sm formItem">
           <ng-container *ngFor="let key of campuses; let i = index" [attr.date-index]="i">
             <option value="{{i}}">{{key.name}}</option>
           </ng-container>
