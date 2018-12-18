@@ -1,5 +1,5 @@
 <div class="container">
-  <h2> Current Reservations </h2>
+  <h1> Current Reservations </h1>
 
   <div class="no-reservations-message" *ngIf="userReservations?.length == 0">
     You currently have no upcoming resource reservations!
@@ -7,7 +7,7 @@
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of userReservations">
       <div class="resHeader">
-        <ng-template id="resHeader" ngbPanelTitle type="primary">
+        <ng-template id="resHeader" ngbPanelTitle>
           <div class="row">
             <span class="col"> {{ reservation?.purpose | titlecase }} </span>
             <span class="col">{{reservation?.startTime | date: 'MMM d, y @ h:mm a'}}</span>

@@ -8,8 +8,13 @@ div>span {
   /* justify-content: space-around; */
 }
 
-.no-reservations-message {
-  text-align: center;
+div.container> #resHeader {
+    background-color: #f26925 !important;; 
+    color: whitesmoke !important;;
+}
+
+div.container> .card-header {
+  background-color: #f26925;
 }
 
 /* div {
@@ -21,12 +26,14 @@ div>span {
   background-color: #f26925;
 } */
 
-h2 {
-  text-align: center;
+h1{
+  font-size: 1.5rem;
+  margin-bottom: 3vh;
 }
 
 #resHeader {
   background-color: #f26925;
+  color: whitesmoke;
 }
 
 /* unvisited link */

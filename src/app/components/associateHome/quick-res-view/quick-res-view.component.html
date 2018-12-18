@@ -1,7 +1,7 @@
 <a routerLink="/reservations">
   <ng-container *ngIf="loaded && !error">
      
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-warning" role="alert">
       <ng-container *ngIf="userReservations.length == 1">
         You have 1 upcoming appointment! <br>
         {{userReservations[0].startTime | date: 'MM/dd'}} from {{userReservations[0].startTime | date: 'h:mm a'}}
@@ -19,9 +19,11 @@
     </div>
   </ng-container>
 
+  <div class="alert alert-warning" role="alert">
   <ng-container *ngIf="error && loaded">
     There was an error loading your current reservations. <br>
      Please try again later
   </ng-container>
+</div>
 </a>
 

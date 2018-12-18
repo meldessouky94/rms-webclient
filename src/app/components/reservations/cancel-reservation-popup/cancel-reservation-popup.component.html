@@ -38,15 +38,16 @@
       Error! Please try again later.
     </ng-container>
   </ng-container>
-</div>
 
-<div class="modal-footer">
   <ng-container *ngIf="resolved || error">
     <button type="button" class="btn btn-primary" (click)="activeModal.dismiss('close')">Close</button>
   </ng-container>
 
   <ng-container *ngIf="!resolved && !error">
+    <div class="cancel-buttons">
     <button *ngIf="reservation" type="button" class="btn btn-primary" (click)="activeModal.dismiss()">Close Window</button>
     <button *ngIf="reservation" type="button" class="btn btn-danger" (click)="cancelReservation()">Cancel Reservation</button>
+    </div>
   </ng-container>
 </div>
+
