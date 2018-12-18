@@ -21,10 +21,10 @@ div.container> .card-header {
   background-color: #f26925;
 } */
 
-/* ngbPanelTitle {
+ngbPanelTitle {
   box-shadow: 3px 2px #223;
   background-color: #f26925;
-} */
+}
 
 h1{
   font-size: 1.5rem;
@@ -55,4 +55,10 @@ a:hover {
 /* selected link */
 a:active {
   color: purple;
+}
+
+.resource-icons {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
 }

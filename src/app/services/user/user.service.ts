@@ -73,8 +73,10 @@ export class UserService implements CanActivate {
       if (user.id) {
         this.nextCurrentUser(user);
         this.isAuthenticated = true;
+        this.router.navigate(['/']);
       }
-    });
+    }, () =>  this.nextCurrentUser(undefined)
+    );
 
   }
 

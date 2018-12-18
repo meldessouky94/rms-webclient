@@ -55,7 +55,6 @@ export class ReservationService {
 
   createNewReservation(reservation: Reservation) {
     reservation.userId = this.userService.currentUser.id;
-    console.log(reservation);
     // reservation.email = this.userService.currentUser.email;
     return this.httpClient.post<Reservation>(this.apiUrl, reservation);
   }

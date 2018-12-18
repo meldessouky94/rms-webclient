@@ -34,11 +34,11 @@ export class CancelReservationPopupComponent implements OnInit {
   cancelReservation() {
     // Cancels reservation, and then updates the list on the page behind the popup.
     this.reservationService.cancelReservations(this.reservation.id).subscribe(() => {
-      this.resolved = true;
       this.reservationService.getUserReservations().subscribe((data) => {
         this.reservationService.pushNewUserReservations(data);
         this.activeModal.dismiss();
       });
+      this.resolved = true;
     }, () => {
       this.resolved = true;
       this.error = true;
@@ -46,23 +46,4 @@ export class CancelReservationPopupComponent implements OnInit {
     });
   }
 
-
-  // Reservation list code:
-  // 1. Needs modalService in the constructor:
-  //    private modalService: NgbModal,
-
-  // Add the following method to the .ts file:
-  // open(selectedReservation: Reservation) {
-  //   const modalRef = this.modalService.open(CancelReservationPopupComponent, { centered: true});
-  //   modalRef.componentInstance.reservation = selectedReservation;
-  //   modalRef.componentInstance.loaded = true;
-  // }
-
-  // In the HTML where the cancel button will go:
-  // <button type="button"
-  // placement="bottom"
-  // class="btn btn-outline-primary"
-  // (click)="this.close(reservation)">
-  //   Cancel Reservation
-  // </button>
 }
