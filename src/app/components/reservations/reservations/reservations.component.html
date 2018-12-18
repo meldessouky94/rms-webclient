@@ -4,7 +4,7 @@
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of userReservations">
       <div class="resHeader">
-        <ng-template id="resHeader" ngbPanelTitle type="primary">
+        <ng-template id="resHeader" ngbPanelTitle>
           <div class="row">
             <span class="col"> {{ reservation?.purpose | titlecase }} </span>
             <span class="col">{{reservation?.startTime | date: 'MMM d, y @ h:mm a'}}</span>

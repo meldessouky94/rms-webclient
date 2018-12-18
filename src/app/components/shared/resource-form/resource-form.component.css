@@ -2,14 +2,14 @@ fieldset{
     display:flex;
     flex-direction: column;
     background: #FCE1D3;
-    border: #E8953B solid 1px;
+    border: #66391f solid 1px;
     border-radius: 5px;
     padding: 2px;
 }
 
 .formItem {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:  #E8953B;
+    color:  #66391f;
     padding:0px;
     margin: 5px;
     display: flex;
@@ -25,13 +25,13 @@ fieldset{
 }
 input{
     border-radius: 15px;
-    border: #FF904E solid 1px;
+    border: #66391f solid 1px;
     padding-left: 10px;
     padding:3px;
 }
 select{
     border-radius: 10px;
-    border: #E8953B solid 1px;
+    border: #66391f solid 1px;
     padding-left: 10px;
     padding:3px;
 }
@@ -46,8 +46,8 @@ span{
 }
 
 #createBTN{
-    border: #E8953B solid 1px;
-    color:#E8953B;
+    border: #99562e solid 1px;
+    color:#99562e;
     background: white;
 }
 
@@ -81,5 +81,5 @@ span.note {
 }
 
 #field-color {
-    color:#E8953B;
+    color:#66391f;
 }

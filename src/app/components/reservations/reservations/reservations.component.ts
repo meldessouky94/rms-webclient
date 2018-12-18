@@ -25,7 +25,7 @@ export class ReservationsComponent implements OnInit, OnDestroy {
     private reservationService: ReservationService) {
     // customize default values of accordions used by this component tree
     config.closeOthers = true;
-    config.type = 'primary';
+    config.type = 'warning';
     this.loaded = true;
     this.error = false;
 

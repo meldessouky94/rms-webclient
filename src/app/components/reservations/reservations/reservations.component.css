@@ -8,6 +8,15 @@ div>span {
   /* justify-content: space-around; */
 }
 
+div.container> #resHeader {
+    background-color: #f26925 !important;; 
+    color: whitesmoke !important;;
+}
+
+div.container> .card-header {
+  background-color: #f26925;
+}
+
 /* div {
   background-color: #f26925;
 } */
