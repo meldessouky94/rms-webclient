@@ -37,10 +37,12 @@ export class CancelReservationPopupComponent implements OnInit {
       this.resolved = true;
       this.reservationService.getUserReservations().subscribe((data) => {
         this.reservationService.pushNewUserReservations(data);
+        this.activeModal.dismiss();
       });
     }, () => {
       this.resolved = true;
       this.error = true;
+      this.activeModal.dismiss();
     });
   }
 
