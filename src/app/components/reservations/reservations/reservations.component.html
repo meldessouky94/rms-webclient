@@ -1,13 +1,14 @@
 <div class="container">
-  <h2> Current Reservations </h2>
+  <h1> Current Reservations </h1>
 
   <div class="no-reservations-message" *ngIf="userReservations?.length == 0">
     You currently have no upcoming resource reservations!
   </div>
+
   <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let reservation of userReservations">
       <div class="resHeader">
-        <ng-template id="resHeader" ngbPanelTitle type="primary">
+        <ng-template id="resHeader" ngbPanelTitle type="warning">
           <div class="row">
             <span class="col"> {{ reservation?.purpose | titlecase }} </span>
             <span class="col">{{reservation?.startTime | date: 'MMM d, y @ h:mm a'}}</span>
@@ -25,31 +26,30 @@
 
         <p> <strong>Reserved from:</strong> {{reservation?.startTime | date: 'MMM d, y @ h:mm a'}}</p>
         <p><strong>Reserved until:</strong> {{reservation?.endTime | date: 'MMM d, y @ h:mm a'}}</p>
-        <ng-container *ngIf="reservation.resource">
-          <p><strong>Available Features:</strong></p>
-          <div class="resource-icons">
-            <ng-container *ngIf="reservation.resource.hasEthernet">
-              <button type="button" class="btn btn-outline-secondary" ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
-                <mat-icon>network_wifi</mat-icon>
-              </button>
-            </ng-container>
-            <ng-container *ngIf="reservation.resource.hasComputer">
-              <button type="button" class="btn btn-outline-secondary" ngbPopover="Computers available" triggers="mouseenter:mouseleave">
-                <mat-icon>computer</mat-icon>
-              </button>
-            </ng-container>
-            <ng-container *ngIf="reservation.resource.numberOfOutlets > 0">
-              <button type="button" class="btn btn-outline-secondary" ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
-                <mat-icon>power</mat-icon>{{reservation.resource?.numberOfOutlets}}
-              </button>
-            </ng-container>
-            <ng-container *ngIf="reservation.resource.hasMicrophone">
-              <button type="button" class="btn btn-outline-secondary" ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
-                <mat-icon>headset_mic</mat-icon>
-              </button>
-            </ng-container>
-          </div>
-        </ng-container>
+        <p><strong>Available Features:</strong></p>
+          <ng-container *ngIf="reservation.resource">
+            <span *ngIf="reservation?.resource.hasEthernet" ngbPopover="Ethernet available" triggers="mouseenter:mouseleave">
+              <mat-icon>network_wifi</mat-icon>
+            </span> 
+            <span *ngIf="!reservation?.resource.hasEthernet" ngbPopover="No Ethernet" triggers="mouseenter:mouseleave">
+              <mat-icon>signal_wifi_off</mat-icon>
+            </span>
+            <span *ngIf="reservation?.resource.hasComputer"ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+              <mat-icon>computer</mat-icon>
+            </span>    
+            <span *ngIf="!reservation?.resource.hasComputer" ngbPopover="No computers/laptops" triggers="mouseenter:mouseleave">
+              <mat-icon>phonelink_off</mat-icon>
+            </span>  
+            <span *ngIf="reservation?.resource.hasMicrophone"ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+              <mat-icon>headset_mic</mat-icon>
+            </span>
+            <span *ngIf="!reservation?.resource.hasMicrophone" ngbPopover="No microphones" triggers="mouseenter:mouseleave">
+              <mat-icon>mic_off</mat-icon>
+            </span>
+            <span ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
+              <mat-icon>power</mat-icon>{{reservation?.resource.numberOfOutlets}}
+            </span>
+          </ng-container>
 
         <hr>
         <button type="button" placement="bottom" class="cancel-button btn btn-outline-warning" (click)="this.open(reservation)">
