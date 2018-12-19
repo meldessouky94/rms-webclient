@@ -25,7 +25,7 @@ const routes: Routes = [{
 }, {
   component: SearchComponent,
   path: 'search/:openForm',
- canActivate: [UserService]
+  canActivate: [UserService]
 }, {
   component: ReservationsComponent,
   path: 'reservations',
