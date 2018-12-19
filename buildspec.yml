@@ -2,7 +2,7 @@ version: 0.2
 
 env:
     variables:
-        S3_BUCKET: "codepipeline-us-west-2-959804331494"
+        S3_BUCKET: "rms-webclient-front"
         BUILD_ENV : "cloud-dev"
 
 phases:
