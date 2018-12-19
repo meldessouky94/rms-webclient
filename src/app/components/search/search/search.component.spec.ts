@@ -7,20 +7,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResourceService } from 'src/app/services/resource/resource.service';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({ 
+    TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         UserService,
-        ReservationService ],
+        ReservationService,
+        ResourceService ],
       declarations: [ SearchComponent,
-        ResourceFormComponent, 
-        ViewResourcesComponent 
+        ResourceFormComponent,
+        ViewResourcesComponent
       ],
       imports: [
         HttpClientModule

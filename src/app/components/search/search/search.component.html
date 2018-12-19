@@ -1,7 +1,7 @@
-<h2> Find Resources </h2>
+<h1> Find Resources </h1>
 
-<button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed" aria-controls="resourceForm">
+<button type="button" class="btn" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="resourceForm" id="style-button">
   <ng-container *ngIf="isCollapsed">
     Show Reservation Form
   </ng-container>
