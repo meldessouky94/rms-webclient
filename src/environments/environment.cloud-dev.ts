@@ -6,5 +6,5 @@ export const environment = {
         resource: 'rms-resource',
         reservation: 'rms-reservation'
     },
-    slackClientId: '432094667025.496759859637'
+    slackClientId: '512693710501.512428850932'
 };
