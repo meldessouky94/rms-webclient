@@ -8,6 +8,8 @@ import { ErrorComponent } from './components/error/error/error.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { UserService } from './services/user/user.service';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 
 const routes: Routes = [{
   component: LoginComponent,
@@ -38,7 +40,13 @@ const routes: Routes = [{
 }, {
   component: ErrorComponent,
   path: 'error'
-},
+}, {
+  component: AdminLoginComponent,
+  path: 'adminLogin'
+}, {
+  component: AdminRegistrationComponent,
+  path: 'adminRegistration'
+}
 ];
 
 @NgModule({

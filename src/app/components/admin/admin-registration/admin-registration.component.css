@@ -1,0 +1,22 @@
+.form-group{
+  text-align: left;
+}
+
+.button{
+  margin-top: 20px;
+}
+
+#registrationForm{
+  padding-top: 40px;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+#registrationComponent{
+  text-align: center;
+  margin: auto;
+}
+
+
+

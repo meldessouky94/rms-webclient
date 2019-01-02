@@ -28,6 +28,8 @@ import { UserService } from './services/user/user.service';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
 import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     LoginComponent,
     ConfirmCreateComponent,
     CancelReservationPopupComponent,
-    LoadingComponent
+    LoadingComponent,
+    AdminLoginComponent,
+    AdminRegistrationComponent
   ],
   imports: [
     BrowserModule,
