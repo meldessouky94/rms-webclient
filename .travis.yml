@@ -29,4 +29,9 @@ jobs:
         sonarcloud:
           oranization: "1809-spark-usf"
       script:
-        - sonar-scanner
+        - sonar-scanner \
+  -Dsonar.projectKey=1809-Spark-usf_rms-webclient \
+  -Dsonar.organization=1809-spark-usf \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=${SONAR_TOKEN}
