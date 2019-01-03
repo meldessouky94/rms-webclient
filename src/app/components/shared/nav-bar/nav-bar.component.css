@@ -19,8 +19,13 @@
     color: whitesmoke;
 }
 
-.navbar-nav li {
+.nav-link {
   margin-left: 15px;
+  font-weight: bold;
+  border: 1px;
+  border-radius: 5px;
+  background-color: rgb(255, 144, 78);
+  color: white;
 }
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
@@ -30,14 +35,6 @@
     cursor: pointer;
 }
 
-.button {
-  font-weight: bold;
-  border: 1px;
-  border-radius: 5px;
-  background-color: rgb(255, 144, 78);
-  color: white;
-}
-
-.button:hover{
+.nav-link:hover{
   background-color: rgb(156, 101, 69);
 }

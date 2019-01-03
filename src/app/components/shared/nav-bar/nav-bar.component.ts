@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { DataService } from '../../../services/shared/data.service';
+import { StringDataService } from '../../../services/shared/string-data.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,10 +16,12 @@ export class NavBarComponent implements OnInit, OnDestroy {
   authenticated = false;
   userSubscription: Subscription;
   isUserAdmin = false;
+  title: string;
 
   constructor(private userService: UserService,
     private detector: ChangeDetectorRef, public router: Router,
     private data: DataService,
+    private stringData: StringDataService
    ) {
       console.log('nav-bar constructor');
       this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
@@ -31,12 +34,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.detector.detectChanges();
     });
   }
-  openAdminPortal() {
-    this.router.navigate(['adminLogin']);
-    console.log('Opening Admin Portal');
-  }
+
   logout() {
     this.userService.logout();
+    this.title = 'Resource Force';
   }
   ngOnInit() {
 
@@ -46,6 +47,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
     this.data.currentMessage.subscribe(message => this.authenticated = message);
     this.data.currentMessage.subscribe(message => this.isUserAdmin = message);
+    this.stringData.currentMessage.subscribe(message => this.title = message);
+    this.title = 'Resource Force';
+
   }
 
   ngOnDestroy() {

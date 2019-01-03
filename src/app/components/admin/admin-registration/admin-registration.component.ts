@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/models/admin';
 import { AdminRegistrationService } from '../../../services/admin/admin-registration.service';
 
+/**
+ * Component
+ */
 @Component({
   selector: 'app-admin-registration',
   templateUrl: './admin-registration.component.html',
@@ -19,9 +22,11 @@ export class AdminRegistrationComponent implements OnInit {
 
   constructor(private adminRegistrationServce: AdminRegistrationService) { }
 
+  /**
+   * Determines whether submit click on
+   */
   onSubmitClick() {
     if (this.validatePassword()) {
-
 
       this.admin.firstname = this.firstname;
       this.admin.lastname = this.lastname;
@@ -36,7 +41,11 @@ export class AdminRegistrationComponent implements OnInit {
     }
   }
 
-  validatePassword() {
+  /**
+   * Validates password
+   * @returns true if password
+   */
+  validatePassword(): boolean {
     let isValid: boolean;
     isValid = false;
 
@@ -47,6 +56,9 @@ export class AdminRegistrationComponent implements OnInit {
     return isValid;
   }
 
+  /**
+   * on init
+   */
   ngOnInit() {
     this.admin = new Admin();
   }

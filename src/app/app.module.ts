@@ -31,6 +31,7 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { DataService } from './services/shared/data.service';
+import { StringDataService } from './services/shared/string-data.service';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { DataService } from './services/shared/data.service';
     ReservationService,
     ResourceService,
     UserService,
-    DataService
+    DataService,
+    StringDataService
   ],
   entryComponents: [
     ConfirmCreateComponent,
