@@ -14,19 +14,37 @@ export class AdminRegistrationComponent implements OnInit {
   lastname: string;
   username: string;
   password: string;
+  password1: string;
+  password2: string;
 
   constructor(private adminRegistrationServce: AdminRegistrationService) { }
 
   onSubmitClick() {
-    this.admin.firstname = this.firstname;
-    this.admin.lastname = this.lastname;
-    this.admin.username = this.username;
-    this.admin.password = this.password;
+    if (this.validatePassword()) {
 
-    this.adminRegistrationServce.registerAdmin(this.admin).subscribe(
-      data => { this.admin = data; });
 
-      console.log('Submitted Registration!');
+      this.admin.firstname = this.firstname;
+      this.admin.lastname = this.lastname;
+      this.admin.username = this.username;
+      this.admin.password = this.password;
+
+      // this.adminRegistrationServce.registerAdmin(this.admin).subscribe(
+      // data => { this.admin = data; });
+
+    } else {
+      // TODO: sent "Passwords do not match response..."
+    }
+  }
+
+  validatePassword() {
+    let isValid: boolean;
+    isValid = false;
+
+    if (this.password1 === this.password2) {
+      isValid = true;
+    }
+
+    return isValid;
   }
 
   ngOnInit() {

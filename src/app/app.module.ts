@@ -30,6 +30,7 @@ import { CancelReservationPopupComponent } from './components/reservations/cance
 import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { DataService } from './services/shared/data.service';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
     ReservationService,
     ResourceService,
     UserService,
+    DataService
   ],
   entryComponents: [
     ConfirmCreateComponent,

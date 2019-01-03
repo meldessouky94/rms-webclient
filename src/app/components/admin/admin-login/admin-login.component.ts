@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from '../../../models/admin';
 import { AdminLoginService } from '../../../services/admin/admin-login.service';
+import { DataService } from '../../../services/shared/data.service';
 
 
 @Component({
@@ -13,19 +14,24 @@ export class AdminLoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private adminLoginService: AdminLoginService) { }
+  constructor(private adminLoginService: AdminLoginService,
+    private data: DataService) { }
 
   onSubmitClick() {
+
+    this.data.changeBoolean(true);
+
     this.admin.firstname = '';
     this.admin.lastname = '';
     this.admin.username = this.username;
     this.admin.password = this.password;
 
-    this.adminLoginService.validateUser(this.admin).subscribe(
-      data => { this.admin = data; });
+    // this.adminLoginService.validateUser(this.admin).subscribe(
+    //   data => { this.admin = data; });
 
     console.log('Submitted Login!');
   }
+
 
   ngOnInit() {
     this.admin = new Admin();
