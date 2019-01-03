@@ -3,6 +3,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { Router } from '@angular/router';
 
+/**
+ * confirm-create component verifies that the user wants to confirm a reservation
+ */
 @Component({
   selector: 'app-confirm-create',
   templateUrl: './confirm-create.component.html',
@@ -16,8 +19,9 @@ export class ConfirmCreateComponent {
 
   @Input() reservation;
 
-// should save reservation information to database, and should route to the reservations homepage//
-
+  /**
+   * should save reservation information to database, and should route to the reservations homepage
+   */
   confirmReservation() {
     this.reservation.resourceId = this.reservation.resource.id;
     this.reservationService.createNewReservation(this.reservation).subscribe( () => {

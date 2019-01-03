@@ -3,6 +3,9 @@ import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 
+/**
+ * login component uses the Slack API for authorization purposes
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

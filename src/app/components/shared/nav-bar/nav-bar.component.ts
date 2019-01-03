@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
 
+/**
+ * nav-bar component displays the navigation bar
+ */
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -9,12 +12,12 @@ import { Subscription } from 'rxjs';
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   isCollapsed = true;
-  
+
   authenticated = false;
   userSubscription: Subscription;
 
   constructor(private userService: UserService,
-    private detector: ChangeDetectorRef) { 
+    private detector: ChangeDetectorRef) {
     this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
       this.authenticated = this.userService.isAuthenticated;
       // Navbar was not updating consistently, so this is
@@ -23,16 +26,26 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.detector.detectChanges();
     });
   }
-  
+
+  /**
+   * Logout the user
+   */
   logout() {
     this.userService.logout();
   }
+
+  /**
+   * On initialization of the navigation bar, verify that the user is authenticated.
+   */
   ngOnInit() {
     this.authenticated = this.userService.isAuthenticated;
   }
 
+  /**
+   * On destroy, unsubscribe from the user service.
+   */
   ngOnDestroy() {
-    if(this.userSubscription){
+    if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
