@@ -34,4 +34,4 @@ jobs:
   -Dsonar.organization=1809-spark-usf \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=${SONAR_TOKEN}
+  -Dsonar.login=$SONAR_TOKEN
