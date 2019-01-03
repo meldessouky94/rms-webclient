@@ -24,7 +24,7 @@ export class AdminRegistrationComponent implements OnInit {
     this.admin.password = this.password;
 
     this.adminRegistrationServce.registerAdmin(this.admin).subscribe(
-      data => {this.admin = data; });
+      data => { this.admin = data; });
 
       console.log('Submitted Registration!');
   }
