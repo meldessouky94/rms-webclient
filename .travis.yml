@@ -23,3 +23,10 @@ jobs:
 
     - stage: build
       script: ng build --prod
+
+    - stage: quality
+      addons:
+        sonarcloud:
+          oranization: "1809-spark-usf"
+      script:
+        - sonar-scanner
