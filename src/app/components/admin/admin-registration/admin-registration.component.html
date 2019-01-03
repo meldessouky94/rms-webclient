@@ -1,23 +1,23 @@
 <div id="registrationComponent">
     <h3>Admin Registration</h3>
 
-    <form id="registrationForm">
+    <div id="registrationForm">
         <div class="form-group">
             <label>Firstname</label>
-            <input type="text" class="form-control" placeholder="Enter firstname">
+            <input [(ngModel)]="firstname" type="text" class="form-control" placeholder="Enter firstname">
           </div>
           <div class="form-group">
               <label>Lastname</label>
-              <input type="text" class="form-control" placeholder="Enter lastname">
+              <input [(ngModel)]="lastname" type="text" class="form-control" placeholder="Enter lastname">
             </div>
       <div class="form-group">
         <label>Username</label>
-        <input type="email" class="form-control" placeholder="Enter email">
+        <input [(ngModel)]="username" type="email" class="form-control" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control" placeholder="Password">
+        <input [(ngModel)]="password" type="password" class="form-control" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary button">Submit</button>
-    </form>
+      <button (click)="onSubmitClick()" type="submit" class="btn btn-primary button">Submit</button>
+    </div>
   </div>
