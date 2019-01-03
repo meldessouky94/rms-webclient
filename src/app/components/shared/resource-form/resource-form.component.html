@@ -47,7 +47,7 @@
       </div>
       <div class="formItem">
         <label>Reminder Email Time</label>
-        <select (keydown.enter)="timeCheck()" ng-init="reminderTime = options[0]" required [(ngModel)]="reminderTime" name="reminderTime" id="reminderTime" class="form-control form-control-sm formItem">
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="reminderTime" name="reminderTime" id="reminderTime" class="form-control form-control-sm formItem">
           <option value=1>One Hour Before</option>
           <option value=24>One Day Before</option>
         </select>
