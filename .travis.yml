@@ -28,7 +28,5 @@ jobs:
       addons:
         sonarcloud:
           oranization: "1809-spark-usf"
-          projectKey: "1809-Spark-usf_rms-webclient"
-          projectName: "rms-webclient"
       script:
         - sonar-scanner
