@@ -11,6 +11,7 @@ export class Reservation {
     cancelled: boolean;
     approved: boolean;
     buildingId: number;
+    reminderTime: number;
 
     constructor() {
     }
