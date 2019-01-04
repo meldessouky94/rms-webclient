@@ -13,34 +13,39 @@ import { StringDataService } from 'src/app/services/shared/string-data.service';
   templateUrl: './admin-login.component.html',
   styleUrls: ['./admin-login.component.css']
 })
-export class AdminLoginComponent implements OnInit {
+export class AdminLoginComponent {
   admin: Admin;
   username: string;
   password: string;
+  errorMessage: string;
 
   constructor(private adminLoginService: AdminLoginService,
     private data: DataService,
-    private stringData: StringDataService) { }
+    private stringData: StringDataService) {
+     }
 
   /**
    * When user clicks on submit, sends form data to controller
    */
   onSubmitClick() {
-    let isValidAdmin = false;
-
+    this.admin = new Admin();
     this.admin.firstname = '';
     this.admin.lastname = '';
     this.admin.username = this.username;
     this.admin.password = this.password;
 
-    // this.adminLoginService.validateUser(this.admin).subscribe(
-    //   data => { this.admin = data; });
+    this.adminLoginService.validateUser(this.admin).subscribe(
+      data => this.setAdmin(data));
 
-    if (isValidAdmin) {
-      console.log('IS VALID ADMIN');
+  }
+
+  setAdmin(data: Admin) {
+    this.admin = data;
+
+    if (this.admin) {
       this.runLoginEvents();
     } else {
-      console.log('IS NOT VALID ADMIN');
+      this.errorMessage = 'Invalid Login';
     }
   }
 
@@ -49,14 +54,8 @@ export class AdminLoginComponent implements OnInit {
    */
   runLoginEvents() {
     this.data.changeBoolean(true);
+    sessionStorage.setItem('admin', JSON.stringify(this.admin));
     this.stringData.changeMessage('Admin - Resource Force');
-  }
-
-  /**
-   * on init
-   */
-  ngOnInit() {
-    this.admin = new Admin();
   }
 
 }

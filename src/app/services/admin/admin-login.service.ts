@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Admin } from '../../models/admin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
 
@@ -8,11 +9,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminLoginService {
-  readonly url: string = '';
 
   constructor(private http: HttpClient) { }
 
   validateUser(admin: Admin) {
-    return this.http.post(this.url, admin);
+    const url = `${environment.apiUrl}${environment.serviceContext.adminLogin}/login`;
+    return this.http.post<Admin>(url, admin);
   }
 }

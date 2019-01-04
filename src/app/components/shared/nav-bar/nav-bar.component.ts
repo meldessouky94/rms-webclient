@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   title: string;
 
   constructor(private userService: UserService,
-    private detector: ChangeDetectorRef, 
+    private detector: ChangeDetectorRef,
     public router: Router,
     private data: DataService,
     private stringData: StringDataService
@@ -37,7 +37,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
   logout() {
     this.userService.logout();
     this.title = 'Resource Force';
+
+    sessionStorage.clear();
   }
+
   ngOnInit() {
 
     this.authenticated = this.userService.isAuthenticated;
