@@ -21,7 +21,7 @@ export class ResourceFormComponent implements OnInit {
   time1 = '';
   time2 = '';
   formInput = new SearchDto();
-  reminderTime: number;
+  reminderTime = 1;
 
   // Fields for error handling in the template.
   loading = false;
