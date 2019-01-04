@@ -21,7 +21,8 @@ export class AppComponent {
       let subscription = this.userService.$currentUser.subscribe( (user) => {
         this.loading = false;
         subscription.unsubscribe();
-      });
+      }, () => 
+        this.loading = false);
 
       // If there is a token, send a request to the server for the user's information.
       this.userService.checkSession(token);

@@ -25,7 +25,8 @@ export class ReservationsComponent implements OnInit, OnDestroy {
     private reservationService: ReservationService) {
     // customize default values of accordions used by this component tree
     config.closeOthers = true;
-    config.type = 'primary';
+    config.type = 'warning';
+    
     this.loaded = true;
     this.error = false;
 
@@ -39,57 +40,6 @@ export class ReservationsComponent implements OnInit, OnDestroy {
         this.reservationService.pushNewUserReservations(data);
       });
     }
-    ////// Testing only:
-    // this.userReservations = [
-    //   {
-    //     id: 2,
-    //     purpose: 'INTERVIEW',
-    //     startTime: '2018-03-04T12:25:23.00',
-    //     endTime: '2018-03-04T13:25:23.00',
-    //     resource: {
-    //       'id': 2,
-    //       'type': 'cubicle',
-    //       'buildingId': 1,
-    //       'enabled': true,
-    //       'retired': false,
-    //       'availableStartDate': '',
-    //       'reservableAfter': '',
-    //       'reservableBefore': '',
-    //       'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-    //       'name': 'Cubicle 2',
-    //       'hasEthernet': false,
-    //       'hasComputer': true,
-    //       'numberOfOutlets': 3,
-    //       'hasMicrophone': true
-    //     },
-    //     userId: 1245,
-    //     cancelled: false,
-    //     approved: true
-    //   }, {
-    //     id: 3,
-    //     purpose: 'PANEL',
-    //     startTime: '2018-03-07T12:25:23.00',
-    //     endTime: '2018-03-07T13:25:23.00',
-    //     resource: {
-    //       'id': 1,
-    //       'type': 'cubicle',
-    //       'buildingId': 1,
-    //       'enabled': true,
-    //       'retired': false,
-    //       'availableStartDate': '',
-    //       'reservableAfter': '',
-    //       'reservableBefore': '',
-    //       'availableDays': ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-    //       'name': 'Cubicle 1',
-    //       'hasEthernet': true,
-    //       'hasComputer': true,
-    //       'numberOfOutlets': 2,
-    //       'hasMicrophone': true
-    //     },
-    //     userId: 1245,
-    //     cancelled: false,
-    //     approved: true
-    //   }];
   }
 
   open(selectedReservation: Reservation) {

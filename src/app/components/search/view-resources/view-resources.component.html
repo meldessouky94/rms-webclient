@@ -1,9 +1,7 @@
 
 <!-- If there is no resource list object, don't show anything.-->
 <ng-container *ngIf="this.resourceService.currentResourceList && this.reservationService.currentReservation">
-  <h1>
-    Available Resources
-  </h1>
+  <h1>Available Resources</h1>
   Showing results for 
   {{this.reservationService.currentReservation.startTime | date: 'MMM dd'}} from
    {{this.reservationService.currentReservation.startTime | date: 'h:mm a'}}
@@ -19,10 +17,10 @@
         <div>
           {{resource.name}}
         </div>
-          <div *ngIf="resource.hasEthernet" ngbPopover="Wifi available" triggers="mouseenter:mouseleave">
+          <div *ngIf="resource.hasEthernet" ngbPopover="Ethernet port" triggers="mouseenter:mouseleave">
             <mat-icon>network_wifi</mat-icon>
           </div>
-          <div *ngIf="!resource.hasEthernet" ngbPopover="No wifi" triggers="mouseenter:mouseleave">
+          <div *ngIf="!resource.hasEthernet" ngbPopover="No Ethernet connection" triggers="mouseenter:mouseleave">
             <mat-icon>signal_wifi_off</mat-icon>
           </div>
           <div *ngIf="resource.hasComputer"ngbPopover="Computers available" triggers="mouseenter:mouseleave">

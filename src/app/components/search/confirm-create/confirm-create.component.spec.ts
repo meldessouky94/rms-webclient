@@ -38,7 +38,7 @@ describe('ConfirmCreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('User Service injected and testBed Service are same instance',
+  xit('User Service injected and testBed Service are same instance',
     inject([UserService], (injectedService: UserService) => {
       expect(injectedService).toBe(userTestBedService);
     })
