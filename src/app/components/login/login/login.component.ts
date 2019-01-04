@@ -13,7 +13,11 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  slackUrl = `https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team&client_id=${environment.slackClientId}`;
+  slackUrl =
+    `https://slack.com/oauth/authorize\
+?scope=identity.basic,identity.email,identity.team\
+&client_id=${environment.slackClientId}\
+&redirect_uri=${environment.appUrl}loading`;
 
   constructor(private router: Router, private userService: UserService) {
     // If already logged in, send to associate home.
