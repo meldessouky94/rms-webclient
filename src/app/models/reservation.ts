@@ -20,5 +20,6 @@ export class Reservation {
         this.purpose = dto.purpose;
         this.endTime = dto.endTime;
         this.startTime = dto.startTime;
+        this.reminderTime = dto.reminderTime;
     }
 }
