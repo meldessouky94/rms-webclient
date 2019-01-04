@@ -19,18 +19,17 @@ export class NavBarComponent implements OnInit, OnDestroy {
   title: string;
 
   constructor(private userService: UserService,
-    private detector: ChangeDetectorRef, public router: Router,
+    private detector: ChangeDetectorRef, 
+    public router: Router,
     private data: DataService,
     private stringData: StringDataService
    ) {
-      console.log('nav-bar constructor');
       this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
       this.authenticated = this.userService.isAuthenticated;
-      console.log('nav-bar subscription');
-      console.log(this.authenticated);
-      // Navbar was not updating consistently, so this is
-      // needed to be sure the links are shown when the user
-      // is authenticated.
+      /* Navbar was not updating consistently, so this is
+       * needed to be sure the links are shown when the user
+       * is authenticated.
+       */
       this.detector.detectChanges();
     });
   }
@@ -40,8 +39,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.title = 'Resource Force';
   }
   ngOnInit() {
-
-    console.log('nav-bar init');
 
     this.authenticated = this.userService.isAuthenticated;
 

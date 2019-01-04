@@ -15,7 +15,6 @@ import { ResourceFormComponent } from './components/shared/resource-form/resourc
 import { SearchComponent } from './components/search/search/search.component';
 import { ViewResourcesComponent } from './components/search/view-resources/view-resources.component';
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
-import { SuccessComponent } from './components/success/success/success.component';
 import { ErrorComponent } from './components/error/error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +45,6 @@ import { StringDataService } from './services/shared/string-data.service';
     SearchComponent,
     ViewResourcesComponent,
     ReservationsComponent,
-    SuccessComponent,
     ErrorComponent,
     LoginComponent,
     ConfirmCreateComponent,

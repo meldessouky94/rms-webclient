@@ -5,4 +5,26 @@
 }
 .modal-body {
     text-align: center;
+    background-image: url("https://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-042.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal-header {
+    background-color:#FF904E;
+    color: white;
+    border: none;
+}
+
+.modal-footer {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+button{
+    color: black;
+    border-color: black;
+    background: transparent;
+    margin: 1vh;
 }
