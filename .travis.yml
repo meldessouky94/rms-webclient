@@ -26,8 +26,7 @@ jobs:
 
     - stage: quality
       script:
-        - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then set CUR_BRANCH=$TRAVIS_BRANCH; else set CUR_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH; fi
         - tslint --force -t json -o tslint-report.json --project .
-        - if [ "TRAVIS_PULL_REQUEST" != "false" ]; then sonar-scanner -D sonar.login=$SONAR_TOKEN -D sonar.branch.name=$TRAVIS_BRANCH;
+        - if [ "TRAVIS_PULL_REQUEST" != "false" ]; then sonar-scanner -D sonar.login=$SONAR_TOKEN -D sonar.branch.name=$TRAVIS_BRANCH
         - else sonar-scanner -D sonar.login=$SONAR_TOKEN -D sonar.branch.name=$TRAVIS_PULL_REQUEST_BRANCH; fi 
 
