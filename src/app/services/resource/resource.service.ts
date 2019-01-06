@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { SearchDto } from 'src/app/models/search-dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResourceService {
 
