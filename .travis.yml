@@ -26,5 +26,5 @@ jobs:
 
     - stage: quality
       script:
-        - tslint -f -t json -o tslint-report.json --project .
+        - tslint --force -t json -o tslint-report.json --project .
         - sonar-scanner -D sonar.login=$SONAR_TOKEN
