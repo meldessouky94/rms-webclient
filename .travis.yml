@@ -23,3 +23,8 @@ jobs:
 
     - stage: build
       script: ng build --prod
+
+    - stage: quality
+      script:
+        - tslint -t json -o tslint-report.json --project .
+        - sonar-scanner -D sonar.login=$SONAR_TOKEN
