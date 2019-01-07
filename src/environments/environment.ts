@@ -8,7 +8,8 @@ export const environment = {
   appUrl: 'http://localhost:4200/',
   serviceContext: {
     resource: 'resources',
-    reservation: 'reservations'
+    reservation: 'reservations',
+    adminLogin: 'admin-login'
   },
   slackClientId: '512693710501.512428850932'
 };

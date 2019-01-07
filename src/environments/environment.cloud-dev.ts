@@ -4,7 +4,8 @@ export const environment = {
     appUrl: 'localhost:4200', // TODO update once static site is configured
     serviceContext: {
         resource: 'rms-resource',
-        reservation: 'rms-reservation'
+        reservation: 'rms-reservation',
+        adminLogin: 'admin-login'
     },
     slackClientId: '512693710501.512428850932'
 };

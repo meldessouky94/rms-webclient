@@ -6,6 +6,9 @@ import { ResourceService } from 'src/app/services/resource/resource.service';
 import { Router } from '@angular/router';
 import { Resource } from 'src/app/models/resource';
 
+/**
+ * resource-form component displays the form used for making reservations
+ */
 @Component({
   selector: 'app-resource-form',
   templateUrl: './resource-form.component.html',
@@ -42,16 +45,20 @@ export class ResourceFormComponent implements OnInit {
     });
   }
 
-  //  Each campus object of the array of campuses has an array of buildings.
-  // This sets which campus is selected so that the proper buildings appear.
+  /**
+   * Each campus object of the array of campuses has an array of buildings.
+   * This sets which campus is selected so that the proper buildings appear.
+   */
   setBuildings() {
     this.campusIndex = Number(this.campusIndex);
   }
 
-  // Converts the timestamp from String to Number
-  // Checks to see if your first timestamp(time1) is greater than 9:00 AM
-  // and less than the second timestamp(time2)
-  // Also checks to see if time2 is greater than time1 and less than 5:00 PM
+  /**
+   * Converts the timestamp from String to Number
+   * Checks to see if your first timestamp(time1) is greater than 9:00 AM
+   * and less than the second timestamp(time2)
+   * Also checks to see if time2 is greater than time1 and less than 5:00 PM
+   */
   timeCheck() {
     const t1 = this.time1.replace(':', '.');
     const t2 = this.time2.replace(':', '.');
@@ -70,7 +77,9 @@ export class ResourceFormComponent implements OnInit {
     }
   }
 
-  // Resets the information on the form.
+  /**
+   * Resets the information on the form.
+   */
   reset() {
     this.date = '';
     this.time1 = '';
@@ -80,8 +89,11 @@ export class ResourceFormComponent implements OnInit {
     this.formInput = new SearchDto();
   }
 
-  // Submits the data to search and saves information in Reservation service
-  // to be used to complete the creation of the reservation.
+
+  /**
+   * Submits the data to search and saves information in Reservation service
+   * to be used to complete the creation of the reservation.
+   */
   submit() {
     this.formInput.purpose = this.purpose;
     this.formInput.purpose = this.formInput.purpose.toUpperCase();
@@ -91,7 +103,7 @@ export class ResourceFormComponent implements OnInit {
     this.formInput.endTime = this.date + 'T' + this.time2 + ':00';
     this.formInput.reminderTime = this.reminderTime;
 
-    // Checks that all the required fields have imput.
+    // Checks that all the required fields have input.
     const objectKey = Object.values(this.formInput);
     let success = true;
     for (const key of objectKey) {

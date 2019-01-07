@@ -8,6 +8,9 @@
 # dependencies
 /node_modules
 
+# Sonar
+.scannerwork/*
+
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
@@ -37,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+tslint-report.json
 
 # System Files
 .DS_Store
