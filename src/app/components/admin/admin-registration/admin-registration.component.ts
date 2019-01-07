@@ -3,7 +3,7 @@ import { Admin } from 'src/app/models/admin';
 import { AdminRegistrationService } from '../../../services/admin/admin-registration.service';
 
 /**
- * Component
+ * Component for registering new admins
  */
 @Component({
   selector: 'app-admin-registration',
