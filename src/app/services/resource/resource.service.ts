@@ -16,9 +16,8 @@ export class ResourceService {
   currentResourceList: Resource[];
   $currentResourceList = new Subject<Resource[]>();
 
-  apiUrl = `${environment.apiUrl}`;;
+  apiUrl = `${environment.apiUrl}`;
 
-  
   constructor(private httpClient: HttpClient) { }
 
   ///////////////////////////////////////////////////
