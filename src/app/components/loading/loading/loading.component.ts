@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * A component that informs the user about the state of the application.
+ */
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',

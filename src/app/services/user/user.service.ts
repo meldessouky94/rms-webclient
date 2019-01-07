@@ -31,11 +31,15 @@ export class UserService implements CanActivate {
     this.currentUser = user;
     this.$currentUser.next(user);
   }
-  // This gets the user information from SLACK, and actually have nothing to do with getting a token
-  // because the backend gets the token from slack, not the front end.
+
+  /**
+   * This gets the user information from SLACK, and actually have nothing to do with getting a token
+   * because the backend gets the token from slack, not the front end.
+   * @param code gets the user information from SLACK
+   */
   getToken(code) {
    const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
-///////////// TESTING:
+
     // const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
       this.status = payload.status;
@@ -59,12 +63,14 @@ export class UserService implements CanActivate {
     });
   }
 
-  // Gets the token in local storage created in the "getToken" method above
-  // if the user had logged in before and checks the session by sending it to
-  // the databse.
+  /**
+   * Gets the token in local storage created in the "getToken" method above
+   * if the user had logged in before and checks the session by sending it to
+   * the database.
+   * @param token takes in a token value for the user
+   */
   checkSession(token: string) {
-   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
-///////////// TESTING:
+    const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
     // const apiUrl = `http://localhost:5000/users/rememberme`;
 
     this.httpClient.get<User>(apiUrl, {
@@ -80,7 +86,10 @@ export class UserService implements CanActivate {
 
   }
 
-  // route guard
+  /**
+   * route guard to make sure user is authenticated before accessing end points
+   * @returns boolean value, false if user is not authenticated, else true
+   */
   canActivate(): boolean {
     if (!this.isAuthenticated) {
       this.router.navigate(['error']);
@@ -89,10 +98,12 @@ export class UserService implements CanActivate {
     return true;
   }
 
+  /**
+   * logout the user by removing them from local storage and redirect to the root page
+   */
   logout() {
-     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/logout`;
-/////////////// TESTING:
-//     const apiUrl = `http://localhost:5000/users/logout`;
+    const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/logout`;
+    // const apiUrl = `http://localhost:5000/users/logout`;
 
     this.httpClient.get<User>(apiUrl, {
       params: new HttpParams().set('token', localStorage.getItem('user-token'))
