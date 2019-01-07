@@ -6,6 +6,7 @@ import { ReservationsComponent } from './components/reservations/reservations/re
 import { ErrorComponent } from './components/error/error/error.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { LoadingComponent } from './components/loading/loading/loading.component';
+import { CalendarComponent } from './components/shared/calendar/calendar.component';
 import { UserService } from './services/user/user.service';
 
 const routes: Routes = [{
@@ -33,7 +34,10 @@ const routes: Routes = [{
 }, {
   component: ErrorComponent,
   path: 'error'
-},
+}, {
+  component: CalendarComponent,
+  path: 'calendar'
+}
 ];
 
 @NgModule({

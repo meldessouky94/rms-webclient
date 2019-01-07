@@ -1,3 +1,6 @@
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
 body{
     display: flex;
     flex-flow: column;
@@ -6,7 +9,5 @@ body{
     background-image: url("https://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-042.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif 
-  
 }

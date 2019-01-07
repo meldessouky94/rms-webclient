@@ -27,7 +27,12 @@ import { UserService } from './services/user/user.service';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
 import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
-
+import { CalendarComponent } from './components/shared/calendar/calendar.component';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,15 +50,23 @@ import { ConfirmCreateComponent } from './components/search/confirm-create/confi
     LoginComponent,
     ConfirmCreateComponent,
     CancelReservationPopupComponent,
-    LoadingComponent
+    LoadingComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    MatIconModule,
+    CommonModule,
     FormsModule,
-    MatIconModule
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     ReservationService,
