@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewResourcesComponent } from './view-resources.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewResourcesComponent', () => {
   let component: ViewResourcesComponent;
@@ -11,8 +11,8 @@ describe('ViewResourcesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ViewResourcesComponent ],
       imports: [
-        HttpClientModule
-      ]
+        HttpClientTestingModule,
+      ],
     })
     .compileComponents();
   }));

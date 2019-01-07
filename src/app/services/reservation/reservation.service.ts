@@ -8,7 +8,7 @@ import { Resource } from 'src/app/models/resource';
 import { UserService } from '../user/user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservationService {
 
@@ -29,8 +29,6 @@ export class ReservationService {
   $userReservations = new Subject<Reservation[]>();
 
   apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}`;
-
-
 
   constructor(private httpClient: HttpClient, private userService: UserService) { }
 
@@ -55,7 +53,6 @@ export class ReservationService {
 
   createNewReservation(reservation: Reservation) {
     reservation.userId = this.userService.currentUser.id;
-    // reservation.email = this.userService.currentUser.email;
     return this.httpClient.post<Reservation>(this.apiUrl, reservation);
   }
 
