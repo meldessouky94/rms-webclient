@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ResourceService } from 'src/app/services/resource/resource.service';
-import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmCreateComponent } from '../confirm-create/confirm-create.component';
-import { Reservation } from 'src/app/models/reservation';
-import { Resource } from 'src/app/models/resource';
 import { Subscription } from 'rxjs';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { ResourceService } from 'src/app/services/resource/resource.service';
+import { Resource } from 'src/app/models/resource';
+import { Reservation } from 'src/app/models/reservation';
+import { ConfirmCreateComponent } from '../confirm-create/confirm-create.component';
 
 @Component({
   selector: 'app-view-resources',
   templateUrl: './view-resources.component.html',
-  styleUrls: ['./view-resources.component.css']
+  styleUrls: ['./view-resources.component.css'],
 })
 export class ViewResourcesComponent implements OnInit, OnDestroy {
 
@@ -19,8 +19,8 @@ resources: Resource[];
 
 resourceSubscription: Subscription;
   constructor(public reservationService: ReservationService,
-          private modalService: NgbModal,
-          public resourceService: ResourceService) {}
+              private modalService: NgbModal,
+              public resourceService: ResourceService) {}
 
   // Function that will open a modal with Reservation info and will appear updated
   // with the selectedResource being the Resource assigned to the Reservation.
@@ -33,8 +33,8 @@ resourceSubscription: Subscription;
 
   ngOnInit() {
     this.resourceSubscription = this.resourceService.$currentResourceList.subscribe((resources) => {
-      this.resources = resources;
-    }
+        this.resources = resources;
+      },
     );
     if (this.resourceService.currentResourceList) {
       this.resources = this.resourceService.currentResourceList;
