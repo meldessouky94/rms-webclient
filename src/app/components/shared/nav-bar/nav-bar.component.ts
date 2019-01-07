@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { DataService } from '../../../services/shared/data.service';
 import { StringDataService } from '../../../services/shared/string-data.service';
 
+/**
+ * nav-bar component displays the navigation bar
+ */
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -25,6 +28,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     private stringData: StringDataService
    ) {
       this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
+
       this.authenticated = this.userService.isAuthenticated;
       /* Navbar was not updating consistently, so this is
        * needed to be sure the links are shown when the user
@@ -34,6 +38,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Logout the user
+   */
   logout() {
     this.userService.logout();
     this.title = 'Resource Force';
@@ -41,6 +48,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     sessionStorage.clear();
   }
 
+  /**
+   * On initialization of the navigation bar, verify that the user is authenticated.
+   */
   ngOnInit() {
 
     this.authenticated = this.userService.isAuthenticated;
@@ -52,6 +62,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * On destroy, unsubscribe from the user service.
+   */
   ngOnDestroy() {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();

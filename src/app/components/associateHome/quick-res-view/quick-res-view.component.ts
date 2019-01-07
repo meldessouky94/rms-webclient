@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 
+/**
+ * quick-res-view component creates a list of reservations
+ */
 @Component({
   selector: 'app-quick-res-view',
   templateUrl: './quick-res-view.component.html',
@@ -13,9 +16,6 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
   error; boolean;
 
   constructor(private reservationService: ReservationService) {
-    ////////////////////////////////////////////////
-    // Below is implementation for when the server is running:
-    //////////////////////////////////////////////////////
     // Hides results while the HTTP request is waiting for a response
     this.loaded = false;
     this.reservationService.getUserReservations().subscribe( (list) => {

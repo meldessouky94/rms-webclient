@@ -4,6 +4,9 @@ import { Reservation } from 'src/app/models/reservation';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * cancel-reservation component cancels a reservation and then updates the list
+ */
 @Component({
   selector: 'app-cancel-reservation-popup',
   templateUrl: './cancel-reservation-popup.component.html',
@@ -29,8 +32,10 @@ export class CancelReservationPopupComponent implements OnInit {
     this.error = false;
   }
 
+  /**
+   * Cancels reservation, and then updates the list on the page behind the popup.
+   */
   cancelReservation() {
-    // Cancels reservation, and then updates the list on the page behind the popup.
     this.reservationService.cancelReservations(this.reservation.id).subscribe(() => {
       this.reservationService.getUserReservations().subscribe((data) => {
         this.reservationService.pushNewUserReservations(data);

@@ -5,6 +5,9 @@ import { Reservation } from 'src/app/models/reservation';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { CancelReservationPopupComponent } from '../cancel-reservation-popup/cancel-reservation-popup.component';
 
+/**
+ * revervations component displays a list of reservations for the user
+ */
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
@@ -42,6 +45,10 @@ export class ReservationsComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Open selected reservation.
+   * @param selectedReservation Takes in the selected reservation.
+   */
   open(selectedReservation: Reservation) {
     const modalRef = this.modalService.open(CancelReservationPopupComponent, { centered: true });
     modalRef.componentInstance.reservation = selectedReservation;
