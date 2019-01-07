@@ -40,7 +40,6 @@ export class UserService implements CanActivate {
   getToken(code) {
    const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
 
-    // const apiUrl = `http://localhost:5000/users/authorization?code=${code}`;
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
       this.status = payload.status;
 
@@ -71,7 +70,6 @@ export class UserService implements CanActivate {
    */
   checkSession(token: string) {
     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
-    // const apiUrl = `http://localhost:5000/users/rememberme`;
 
     this.httpClient.get<User>(apiUrl, {
       params: new HttpParams().set('token', token)
