@@ -7,6 +7,10 @@ import { Resource } from 'src/app/models/resource';
 import { Reservation } from 'src/app/models/reservation';
 import { ConfirmCreateComponent } from '../confirm-create/confirm-create.component';
 
+/**
+ * view-resources component displays the availability of resources such as microphones
+ * or ethernet
+ */
 @Component({
   selector: 'app-view-resources',
   templateUrl: './view-resources.component.html',
@@ -22,8 +26,11 @@ resourceSubscription: Subscription;
               private modalService: NgbModal,
               public resourceService: ResourceService) {}
 
-  // Function that will open a modal with Reservation info and will appear updated
-  // with the selectedResource being the Resource assigned to the Reservation.
+  /**
+   * Function that will open a modal with Reservation info and will appear updated
+   * with the selectedResource being the Resource assigned to the Reservation.
+   * @param selectedResource Takes in the selected resource.
+   */
   open(selectedResource: any) {
     const reservation = this.reservationService.currentReservation;
     reservation.resource = selectedResource;
@@ -41,9 +48,11 @@ resourceSubscription: Subscription;
     }
   }
 
+  /**
+   * When the user navigates away from the page, destroy the entire list of resources.
+   */
   ngOnDestroy() {
     this.resourceSubscription.unsubscribe();
-    // When the user navigates away from the page, destroy the entire list of resources.
     this.resourceService.pushNewCurrentResourceList(null);
     }
   }
