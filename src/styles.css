@@ -11,3 +11,9 @@ body{
     background-size: cover;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif 
 }
+
+@media screen and ( min-height: 400px ){
+    body{
+        height: 100vh;
+    }
+}
