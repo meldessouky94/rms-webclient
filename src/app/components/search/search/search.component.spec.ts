@@ -12,8 +12,8 @@ describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
-  beforeEach((async () => {
-    await (TestBed.configureTestingModule({
+  beforeEach((() => {
+    (TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         UserService,

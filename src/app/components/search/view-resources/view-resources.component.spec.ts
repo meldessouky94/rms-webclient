@@ -7,7 +7,7 @@ describe('ViewResourcesComponent', () => {
   let component: ViewResourcesComponent;
   let fixture: ComponentFixture<ViewResourcesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ ViewResourcesComponent ],
       imports: [

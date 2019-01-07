@@ -6,14 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { UserService } from 'src/app/services/user/user.service';
 
-describe('CancelReservationPopupComponent', async () => {
+describe('CancelReservationPopupComponent', () => {
   let component: CancelReservationPopupComponent;
   let fixture: ComponentFixture<CancelReservationPopupComponent>;
   let userTestBedService: UserService;
   let reservationTestBedService: ReservationService;
 
-  await beforeEach((async () => {
-    await (await TestBed.configureTestingModule({
+  beforeEach((() => {
+    (TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         ReservationService,
@@ -24,27 +24,27 @@ describe('CancelReservationPopupComponent', async () => {
     .compileComponents();
   }));
 
-  beforeEach( async () => {
-    fixture = await TestBed.createComponent(CancelReservationPopupComponent);
-    component = await fixture.componentInstance;
-    await fixture.detectChanges();
-    userTestBedService = await TestBed.get(UserService);
-    reservationTestBedService = await TestBed.get(ReservationService);
+  beforeEach( () => {
+    fixture = TestBed.createComponent(CancelReservationPopupComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    userTestBedService = TestBed.get(UserService);
+    reservationTestBedService = TestBed.get(ReservationService);
   });
 
-  fit('should create', async () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('User Service injected and testBed Service are same instance',
-    inject([UserService], async (injectedService: UserService) => {
-      await expect(injectedService).toBe(userTestBedService);
+  it('User Service injected and testBed Service are same instance',
+    inject([UserService], (injectedService: UserService) => {
+      expect(injectedService).toBe(userTestBedService);
     }),
   );
 
-  fit('Reservation Service injected and testBed Service are same instance',
-    inject([ReservationService], async (injectedService: ReservationService) => {
-      await expect(injectedService).toBe(reservationTestBedService);
+  it('Reservation Service injected and testBed Service are same instance',
+    inject([ReservationService], (injectedService: ReservationService) => {
+      expect(injectedService).toBe(reservationTestBedService);
     }),
   );
 });

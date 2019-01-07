@@ -11,8 +11,8 @@ describe('ConfirmCreateComponent', () => {
   let reservationTestBedService: ReservationService;
   let userTestBedService: UserService;
 
-  beforeEach(( async () => {
-    await (TestBed.configureTestingModule({
+  beforeEach(( () => {
+    (TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         UserService,

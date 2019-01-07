@@ -10,7 +10,7 @@ describe('ReservationService', () => {
   let userService: UserService;
   let user: User;
 
-  beforeEach(async () => TestBed.configureTestingModule({
+  beforeEach(() => TestBed.configureTestingModule({
     providers: [
       UserService,
     ],
