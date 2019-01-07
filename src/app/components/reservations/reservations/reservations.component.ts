@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbAccordionConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Reservation } from 'src/app/models/reservation';
-import { CancelReservationPopupComponent } from '../cancel-reservation-popup/cancel-reservation-popup.component';
-import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { Subscription } from 'rxjs';
+import { Reservation } from 'src/app/models/reservation';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { CancelReservationPopupComponent } from '../cancel-reservation-popup/cancel-reservation-popup.component';
 
 /**
  * revervations component displays a list of reservations for the user
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
-  styleUrls: ['./reservations.component.css']
+  styleUrls: ['./reservations.component.css'],
 })
 export class ReservationsComponent implements OnInit, OnDestroy {
   userReservations = [];
@@ -63,7 +63,6 @@ export class ReservationsComponent implements OnInit, OnDestroy {
       this.userResSub.unsubscribe();
     }
   }
-
 
   toggleMeridian() {
     this.meridian = !this.meridian;
