@@ -42,6 +42,9 @@ const routes: Routes = [{
 }, {
   component: AdminRegistrationComponent,
   path: 'adminRegistration'
+}, {
+  component: AdminLoginComponent,
+  path: 'adminLogin'
 }
 ];
 
