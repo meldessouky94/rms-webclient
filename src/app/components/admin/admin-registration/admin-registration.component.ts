@@ -16,44 +16,74 @@ export class AdminRegistrationComponent implements OnInit {
   firstname: string;
   lastname: string;
   username: string;
-  password: string;
   password1: string;
   password2: string;
+  validationMessage: string;
 
   constructor(private adminRegistrationServce: AdminRegistrationService) { }
 
   /**
-   * Determines whether submit click on
+   * When submit is clicked the input is checked for validation and a register admin
+   * request is sent if the input is valid.
+   * @author Jaron | Java-Nick-1811 | 1/8/2019
    */
   onSubmitClick() {
-    if (this.validatePassword()) {
+    if (this.validInput()) {
 
       this.admin.firstname = this.firstname;
       this.admin.lastname = this.lastname;
       this.admin.username = this.username;
-      this.admin.password = this.password;
+      this.admin.password = this.password1;
 
-      // this.adminRegistrationServce.registerAdmin(this.admin).subscribe(
-      // data => { this.admin = data; });
+      this.adminRegistrationServce.registerAdmin(this.admin).subscribe(data => { this.admin = data; });
 
-    } else {
-      // TODO: sent "Passwords do not match response..."
     }
   }
 
   /**
-   * Validates password
-   * @returns true if password
+   * Checks that all input is valid on the client side including having non null values
+   * having an @revature.com email and making sure that the passwords match
+   * @returns true if all registration input is valid
+   * @author Jaron | Java-Nick-1811 | 1/8/2019
    */
-  validatePassword(): boolean {
-    let isValid: boolean;
-    isValid = false;
+  validInput(): boolean {
 
-    if (this.password1 === this.password2) {
-      isValid = true;
+    if (!this.firstname) {
+      this.validationMessage = 'Please enter a first name';
+      return false;
+    }
+    if (!this.lastname) {
+      this.validationMessage = 'Please enter a last name';
+      return false;
+    }
+    if (!this.username || !this.username.endsWith('@revature.com')) {
+      this.validationMessage = 'Please enter a valid @revature.com email address for your username';
+      return false;
     }
 
-    return isValid;
+    return this.validatePassword();
+
+  }
+
+  /**
+   * Checks that the passwords are at leat 8 characters long and that they match.
+   * @returns true if the passwords are long enough and match
+   * @author Jaron | Java-Nick-1811 | 1/8/2019
+   */
+  validatePassword(): boolean {
+
+    if (!this.password1 || this.password1.length < 8) {
+      this.validationMessage = 'The password must be at least 8 characters';
+      return false;
+    }
+
+    if (this.password1 === this.password2) {
+      this.validationMessage = '';
+      return true;
+    }
+
+    this.validationMessage = 'The passwords do not match';
+    return false;
   }
 
   /**
