@@ -5,16 +5,6 @@
     "rulesDirectory": [
       "node_modules/codelyzer"
     ],
-    "cliOptions": {
-      "exclude": [
-        "node_modules",
-        ".scannerwork",
-        ".vscode",
-        "coverage",
-        "dist",
-        "documentation",
-      ]
-    },
     "rules": {
       "arrow-return-shorthand": true,
       "callable-types": true,
