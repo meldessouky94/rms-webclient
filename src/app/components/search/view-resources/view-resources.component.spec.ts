@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewResourcesComponent } from './view-resources.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewResourcesComponent', () => {
   let component: ViewResourcesComponent;
   let fixture: ComponentFixture<ViewResourcesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ ViewResourcesComponent ],
       imports: [
-        HttpClientModule
-      ]
+        HttpClientTestingModule,
+      ],
     })
     .compileComponents();
   }));

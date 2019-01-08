@@ -4,7 +4,8 @@ export const environment = {
   appUrl: 'S3 URL here',
   serviceContext: {
     resource: 'rms-resource',
-    reservation: 'rms-reservation'
+    reservation: 'rms-reservation',
+    adminLogin: 'admin-login'
   },
   slackClientId: '432094667025.496759859637'
 };
