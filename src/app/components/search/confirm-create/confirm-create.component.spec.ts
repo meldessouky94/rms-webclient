@@ -1,7 +1,6 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { ConfirmCreateComponent } from './confirm-create.component';
-import { HttpClientModule } from '@angular/common/http';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/services/user/user.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
@@ -12,16 +11,14 @@ describe('ConfirmCreateComponent', () => {
   let reservationTestBedService: ReservationService;
   let userTestBedService: UserService;
 
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(( () => {
+    (TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         UserService,
         ReservationService ],
         declarations: [ ConfirmCreateComponent ],
-        imports: [ HttpClientModule ]
-    })
+    }))
     .compileComponents();
   }));
 
@@ -33,16 +30,14 @@ describe('ConfirmCreateComponent', () => {
     userTestBedService = TestBed.get(UserService);
   });
 
-  
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('User Service injected and testBed Service are same instance',
+  it('User Service injected and testBed Service are same instance',
     inject([UserService], (injectedService: UserService) => {
       expect(injectedService).toBe(userTestBedService);
-    })
+    }),
   );
-
 
 });

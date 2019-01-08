@@ -11,7 +11,7 @@ describe('ResourceFormComponent', () => {
   let resourceTestBedService: ResourceService;
   let reservationTestBedService: ReservationService;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ResourceFormComponent],
       providers: [ ReservationService,

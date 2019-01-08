@@ -41,6 +41,7 @@ yarn-error.log
 testem.log
 /typings
 tslint-report.json
+coverage/
 
 # System Files
 .DS_Store
