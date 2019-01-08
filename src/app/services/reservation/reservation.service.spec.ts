@@ -28,7 +28,6 @@ describe('ReservationService', () => {
   });
 
   describe('createNewReservation', () => {
-    console.log(user);
     it('should set reservations ID', () => {
       userService.currentUser = user;
       const reservation = new Reservation();

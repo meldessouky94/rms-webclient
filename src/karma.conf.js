@@ -27,7 +27,6 @@ module.exports = function (config) {
           subdir: 'html'
         }
       },
-      verbose: true
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
     preprocessors: {
