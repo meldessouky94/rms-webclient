@@ -118,7 +118,7 @@ export class CalendarComponent {
     }
   ];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
   constructor(private modal: NgbModal) {}
 
