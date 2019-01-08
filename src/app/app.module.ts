@@ -55,12 +55,9 @@ import { StringDataService } from './services/shared/string-data.service';
     ConfirmCreateComponent,
     CancelReservationPopupComponent,
     LoadingComponent,
-<<<<<<< HEAD
-    CalendarComponent
-=======
+    CalendarComponent,
     AdminLoginComponent,
     AdminRegistrationComponent
->>>>>>> 38d64f65fafd95e55cb42348be50e4c63f29756c
   ],
   imports: [
     BrowserModule,
