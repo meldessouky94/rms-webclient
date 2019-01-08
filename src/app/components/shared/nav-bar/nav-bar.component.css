@@ -18,9 +18,8 @@
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: whitesmoke;
 }
-
 .nav-link {
-  margin-left: 15px;
+  padding: 10px;
   font-weight: bold;
   border: 1px;
   border-radius: 5px;
