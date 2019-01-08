@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "npx compodoc -p src/tsconfig.app.json -w -s"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,8 @@
     "core-js": "^2.6.0",
     "date-fns": "^1.30.1",
     "flatpickr": "^4.5.2",
+    "karma-coverage": "^1.1.2",
+    "karma-typescript": "^3.0.13",
     "rxjs": "~6.3.3",
     "sonar-scanner": "^3.1.0",
     "todc-bootstrap": "^3.3.7-3.3.13",
@@ -37,7 +40,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.11.2",
+    "@angular-devkit/build-angular": "^0.11.4",
     "@angular/cli": "^7.1.2",
     "@angular/compiler-cli": "^7.1.2",
     "@angular/language-service": "^7.1.2",
@@ -47,7 +50,7 @@
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~3.1.1",
+    "karma": "^3.1.4",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",

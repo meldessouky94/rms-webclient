@@ -33,6 +33,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { DataService } from './services/shared/data.service';
+import { StringDataService } from './services/shared/string-data.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,12 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     ConfirmCreateComponent,
     CancelReservationPopupComponent,
     LoadingComponent,
+<<<<<<< HEAD
     CalendarComponent
+=======
+    AdminLoginComponent,
+    AdminRegistrationComponent
+>>>>>>> 38d64f65fafd95e55cb42348be50e4c63f29756c
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     ReservationService,
     ResourceService,
     UserService,
+    DataService,
+    StringDataService
   ],
   entryComponents: [
     ConfirmCreateComponent,

@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReservationsComponent } from './reservations.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('ReservationsComponent', () => {
+describe('ReservationsComponent', async () => {
   let component: ReservationsComponent;
   let fixture: ComponentFixture<ReservationsComponent>;
 
@@ -11,8 +11,8 @@ describe('ReservationsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ReservationsComponent ],
       imports: [
-        HttpClientModule
-      ]
+        HttpClientTestingModule,
+      ],
     })
     .compileComponents();
   }));
@@ -23,7 +23,7 @@ describe('ReservationsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async () => {
     expect(component).toBeTruthy();
   });
 

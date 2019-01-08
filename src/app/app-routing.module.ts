@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login/login.component';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CalendarComponent } from './components/shared/calendar/calendar.component';
 import { UserService } from './services/user/user.service';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 
 const routes: Routes = [{
   component: LoginComponent,
@@ -37,6 +39,9 @@ const routes: Routes = [{
 }, {
   component: CalendarComponent,
   path: 'calendar'
+}, {
+  component: AdminRegistrationComponent,
+  path: 'adminRegistration'
 }
 ];
 
