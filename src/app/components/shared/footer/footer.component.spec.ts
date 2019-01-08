@@ -8,7 +8,7 @@ describe('FooterComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ FooterComponent ],
     })
     .compileComponents();
   }));

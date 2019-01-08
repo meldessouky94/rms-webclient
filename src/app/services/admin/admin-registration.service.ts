@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class AdminRegistrationService {
@@ -16,5 +16,3 @@ export class AdminRegistrationService {
     return this.http.post(this.url, admin);
   }
 }
-
-

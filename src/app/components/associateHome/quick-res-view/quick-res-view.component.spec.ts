@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { QuickResViewComponent } from './quick-res-view.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +13,7 @@ describe('QuickResViewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [QuickResViewComponent],
       providers: [ReservationService],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule],
     })
       .compileComponents();
   }));
@@ -32,6 +32,6 @@ describe('QuickResViewComponent', () => {
   it('Service injected and testBed Service are same instance',
     inject([ReservationService], (injectedService: ReservationService) => {
       expect(injectedService).toBe(testBedService);
-    })
+    }),
   );
 });

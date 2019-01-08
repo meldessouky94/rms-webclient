@@ -8,7 +8,7 @@ describe('HeaderComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
     })
     .compileComponents();
   }));

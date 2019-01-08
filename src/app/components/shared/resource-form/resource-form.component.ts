@@ -12,7 +12,7 @@ import { Resource } from 'src/app/models/resource';
 @Component({
   selector: 'app-resource-form',
   templateUrl: './resource-form.component.html',
-  styleUrls: ['./resource-form.component.css']
+  styleUrls: ['./resource-form.component.css'],
 })
 export class ResourceFormComponent implements OnInit {
   // Form information
@@ -32,7 +32,7 @@ export class ResourceFormComponent implements OnInit {
   fieldError = false;
 
   constructor(private reservationService: ReservationService,
-    private resourceService: ResourceService, private router: Router) { }
+              private resourceService: ResourceService, private router: Router) { }
 
   ngOnInit() {
     this.resourceService.getCampuses().subscribe( (data) => {
@@ -40,7 +40,6 @@ export class ResourceFormComponent implements OnInit {
       }, () => {
         // Error handling, set to empty array
         this.campuses = [];
-     // alert('Error loading campuses! Please try again.');
     });
   }
 

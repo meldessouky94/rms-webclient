@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Router, CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/models/user';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService implements CanActivate {
+  static readonly userToken = 'user-token';
+
   status: number;
   isAuthenticated: boolean;
   loginFailed = false;
-  // For testing:
-  // currentUser: any = {id: 'a2'};
-  // For release
   currentUser: User;
   $currentUser = new Subject<User>();
 
@@ -38,7 +36,7 @@ export class UserService implements CanActivate {
    * @param code gets the user information from SLACK
    */
   getToken(code) {
-   const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
+    const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/authorization?code=${code}`;
 
     this.httpClient.get(apiUrl, { observe: 'response'}).subscribe( (payload) => {
       this.status = payload.status;
@@ -49,8 +47,8 @@ export class UserService implements CanActivate {
       } else {
         this.isAuthenticated = false;
       }
-      this.currentUser = <User>payload.body;
-      localStorage.setItem('user-token', this.currentUser.token);
+      this.currentUser = new User(payload.body);
+      localStorage.setItem(UserService.userToken, this.currentUser.token);
       // This alerts the loading component that the request is
       // complete and to update
       this.nextCurrentUser(this.currentUser);
@@ -72,14 +70,14 @@ export class UserService implements CanActivate {
     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/rememberme`;
 
     this.httpClient.get<User>(apiUrl, {
-      params: new HttpParams().set('token', token)
+      params: new HttpParams().set('token', token),
     }).subscribe( (user) => {
       if (user.id) {
         this.nextCurrentUser(user);
         this.isAuthenticated = true;
         this.router.navigate(['/']);
       }
-    }, () =>  this.nextCurrentUser(undefined)
+    }, () =>  this.nextCurrentUser(undefined),
     );
 
   }
@@ -101,13 +99,12 @@ export class UserService implements CanActivate {
    */
   logout() {
     const apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}/users/logout`;
-    // const apiUrl = `http://localhost:5000/users/logout`;
 
     this.httpClient.get<User>(apiUrl, {
-      params: new HttpParams().set('token', localStorage.getItem('user-token'))
+      params: new HttpParams().set('token', localStorage.getItem(UserService.userToken)),
     }).subscribe();
 
-    localStorage.removeItem('user-token');
+    localStorage.removeItem(UserService.userToken);
     this.router.navigate(['/']);
     this.isAuthenticated = false;
     this.nextCurrentUser(undefined);
