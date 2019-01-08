@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { CancelReservationPopupComponent } from './cancel-reservation-popup.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,19 +12,19 @@ describe('CancelReservationPopupComponent', () => {
   let userTestBedService: UserService;
   let reservationTestBedService: ReservationService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach((() => {
+    (TestBed.configureTestingModule({
       providers: [ NgbModal,
         NgbActiveModal,
         ReservationService,
         UserService ],
       imports: [ HttpClientModule ],
-      declarations: [ CancelReservationPopupComponent ]
-    })
+      declarations: [ CancelReservationPopupComponent ],
+    }))
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach( () => {
     fixture = TestBed.createComponent(CancelReservationPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -39,12 +39,12 @@ describe('CancelReservationPopupComponent', () => {
   it('User Service injected and testBed Service are same instance',
     inject([UserService], (injectedService: UserService) => {
       expect(injectedService).toBe(userTestBedService);
-    })
+    }),
   );
 
   it('Reservation Service injected and testBed Service are same instance',
     inject([ReservationService], (injectedService: ReservationService) => {
       expect(injectedService).toBe(reservationTestBedService);
-    })
+    }),
   );
 });
