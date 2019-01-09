@@ -46,11 +46,12 @@ export class ResourceService {
    */
   getAvailableResources(search: SearchDto) {
     // Create the query to find available resources
+
+    const campusQuery = search.campusId ? `&campusId=${search.campusId}` : '';
+    const buildingQuery = search.buildingId ?  `&buildingId=${search.buildingId}` : '';
+
     const query = `${this.apiUrl}${environment.serviceContext.reservation}/available?startTime=${search.startTime}\
-    &endTime=${search.endTime}\
-    &purpose=${search.purpose}\
-    ${search.campusId ? `&campusId=${search.campusId}` : ''}\
-    ${search.buildingId ? `&buildingId=${search.buildingId}` : ''}`;
+&endTime=${search.endTime}&purpose=${search.purpose}${campusQuery}${buildingQuery}`;
     // Return the get method so the component can manage the results as needed
     return this.httpClient.get<Resource[]>(query, { withCredentials: true });
   }
