@@ -1,4 +1,4 @@
-fieldset{
+#form-container {
     display:flex;
     flex-direction: column;
     background: #FCE1D3;
@@ -26,13 +26,11 @@ fieldset{
 input{
     border-radius: 15px;
     border: #66391f solid 1px;
-    padding-left: 10px;
-    padding:3px;
+    padding: 10px 10px 10px 3px;
 }
 select{
     border-radius: 10px;
     border: #66391f solid 1px;
-    padding-left: 10px;
     padding:3px;
 }
 span{
