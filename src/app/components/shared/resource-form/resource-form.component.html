@@ -45,6 +45,13 @@
           <option>Interview</option>
         </select>
       </div>
+      <div class="formItem">
+        <label>Remind Me:*</label>
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="reminderTime" name="reminderTime" id="reminderTime" class="form-control form-control-sm formItem">
+          <option value="1">One Hour Before</option>
+          <option value="24">One Day Before</option>
+        </select>
+      </div>
     </form>
     <div class="error" *ngIf="startTimeError">
       Start time must be before end time. 

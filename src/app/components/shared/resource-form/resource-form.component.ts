@@ -24,6 +24,7 @@ export class ResourceFormComponent implements OnInit {
   time1 = '';
   time2 = '';
   formInput = new SearchDto();
+  reminderTime = 1;
 
   // Fields for error handling in the template.
   loading = false;
@@ -87,6 +88,7 @@ export class ResourceFormComponent implements OnInit {
     this.formInput = new SearchDto();
   }
 
+
   /**
    * Submits the data to search and saves information in Reservation service
    * to be used to complete the creation of the reservation.
@@ -98,6 +100,7 @@ export class ResourceFormComponent implements OnInit {
     this.formInput.buildingId = Number(this.buildingId);
     this.formInput.startTime = this.date + 'T' + this.time1 + ':00';
     this.formInput.endTime = this.date + 'T' + this.time2 + ':00';
+    this.formInput.reminderTime = this.reminderTime;
 
     // Checks that all the required fields have input.
     const objectKey = Object.values(this.formInput);
