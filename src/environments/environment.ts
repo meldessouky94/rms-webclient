@@ -10,6 +10,7 @@ export const environment = {
     resource: 'resources',
     reservation: 'reservations',
     adminLogin: 'admin-login',
+    adminRegistration: 'admin-registration'
   },
   slackClientId: '512693710501.512428850932',
 };
