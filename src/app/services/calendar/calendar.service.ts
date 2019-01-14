@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reservation } from '../../models/reservation';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CalendarService {
 
