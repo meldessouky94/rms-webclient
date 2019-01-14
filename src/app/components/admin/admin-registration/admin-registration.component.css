@@ -23,13 +23,13 @@
   width: 50%;
   text-align: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 #registrationComponent{
   text-align: center;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #validation-message {

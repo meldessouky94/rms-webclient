@@ -9,6 +9,7 @@ import { LoadingComponent } from './components/loading/loading/loading.component
 import { UserService } from './services/user/user.service';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { AdminVerifiedComponent } from './components/admin/admin-verified/admin-verified.component';
 
 const routes: Routes = [{
   component: LoginComponent,
@@ -41,6 +42,9 @@ const routes: Routes = [{
 }, {
   component: AdminRegistrationComponent,
   path: 'adminRegistration'
+}, {
+  component: AdminVerifiedComponent,
+  path: 'adminVerified'
 }
 ];
 

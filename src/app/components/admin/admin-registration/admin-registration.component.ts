@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/models/admin';
 import { AdminRegistrationService } from '../../../services/admin/admin-registration.service';
+import { Router} from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 /**
  * Component
@@ -10,7 +12,7 @@ import { AdminRegistrationService } from '../../../services/admin/admin-registra
   templateUrl: './admin-registration.component.html',
   styleUrls: ['./admin-registration.component.css']
 })
-export class AdminRegistrationComponent implements OnInit {
+export class AdminRegistrationComponent {
   admin: Admin;
 
   firstname: string;
@@ -20,23 +22,30 @@ export class AdminRegistrationComponent implements OnInit {
   password2: string;
   validationMessage: string;
 
-  constructor(private adminRegistrationServce: AdminRegistrationService) { }
+  constructor(private adminRegistrationServce: AdminRegistrationService, private router: Router) { }
 
   /**
    * When submit is clicked the input is checked for validation and a register admin
-   * request is sent if the input is valid.
+   * request is sent if the input is valid. The user is then navigated back to the admin login
+   * screen where a message will be displayed letting the user know to check their email for verification.
    * @author Jaron | Java-Nick-1811 | 1/8/2019
    */
   onSubmitClick() {
     if (this.validInput()) {
-
+      this.admin = new Admin();
       this.admin.firstname = this.firstname;
       this.admin.lastname = this.lastname;
       this.admin.username = this.username;
       this.admin.password = this.password1;
 
-      this.adminRegistrationServce.registerAdmin(this.admin).subscribe(data => { this.admin = data; });
-
+      this.adminRegistrationServce.registerAdmin(this.admin).subscribe(successful => {
+        if (successful) {
+          sessionStorage.setItem('justRegistered', 'yes');
+          this.router.navigate(['/adminLogin']);
+        } else {
+          this.validationMessage = 'An account has already been made for the email you entered';
+        }
+      });
     }
   }
 
@@ -84,13 +93,6 @@ export class AdminRegistrationComponent implements OnInit {
 
     this.validationMessage = 'The passwords do not match';
     return false;
-  }
-
-  /**
-   * on init
-   */
-  ngOnInit() {
-    this.admin = new Admin();
   }
 
 }

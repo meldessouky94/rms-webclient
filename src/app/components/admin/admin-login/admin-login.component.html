@@ -15,5 +15,6 @@
     <a class="nav-link" [routerLink]="['../adminRegistration']">
       New Admin Registration
     </a>
+    <p *ngIf="justRegistered" id="registration-message">Your registration has been processed please check your email to verify</p>
   </div>
 </div>
