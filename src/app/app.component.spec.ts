@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
@@ -10,10 +10,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavBarComponent,
-        FooterComponent
+        FooterComponent,
       ],
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
       ],
     }).compileComponents();
   }));

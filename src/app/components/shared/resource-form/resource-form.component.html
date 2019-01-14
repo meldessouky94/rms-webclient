@@ -1,4 +1,4 @@
-<fieldset>
+<div id="form-container">
     <form>
       <div class="formItem">
         <label>Campus:*</label>
@@ -45,6 +45,13 @@
           <option>Interview</option>
         </select>
       </div>
+      <div class="formItem">
+        <label>Remind Me:*</label>
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="reminderTime" name="reminderTime" id="reminderTime" class="form-control form-control-sm formItem">
+          <option value="1">One Hour Before</option>
+          <option value="24">One Day Before</option>
+        </select>
+      </div>
     </form>
     <div class="error" *ngIf="startTimeError">
       Start time must be before end time. 
@@ -59,5 +66,5 @@
       <button (click)="timeCheck()" id="createBTN" class="btn btn-primary">Search Resources</button>
       <button type="button" id="cancelBTN" (click)="reset()" class="btn btn-primary">Reset Form</button>
     </div>
-  </fieldset>
+  </div>
   <div class="loading" *ngIf="loading"> ... Loading ...  </div>

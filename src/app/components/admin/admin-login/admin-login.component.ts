@@ -4,14 +4,13 @@ import { AdminLoginService } from '../../../services/admin/admin-login.service';
 import { DataService } from '../../../services/shared/data.service';
 import { StringDataService } from 'src/app/services/shared/string-data.service';
 
-
 /**
  * Component
  */
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.css']
+  styleUrls: ['./admin-login.component.css'],
 })
 export class AdminLoginComponent implements OnInit {
   admin: Admin;
@@ -21,8 +20,8 @@ export class AdminLoginComponent implements OnInit {
   justRegistered: boolean;
 
   constructor(private adminLoginService: AdminLoginService,
-    private data: DataService,
-    private stringData: StringDataService) {
+              private data: DataService,
+              private stringData: StringDataService) {
      }
 
   /**
@@ -36,7 +35,7 @@ export class AdminLoginComponent implements OnInit {
     this.admin.password = this.password;
 
     this.adminLoginService.validateUser(this.admin).subscribe(
-      data => this.setAdmin(data));
+      (data) => this.setAdmin(data));
 
   }
 

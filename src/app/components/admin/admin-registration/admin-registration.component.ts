@@ -5,12 +5,12 @@ import { Router} from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 /**
- * Component
+ * Component for registering new admins
  */
 @Component({
   selector: 'app-admin-registration',
   templateUrl: './admin-registration.component.html',
-  styleUrls: ['./admin-registration.component.css']
+  styleUrls: ['./admin-registration.component.css'],
 })
 export class AdminRegistrationComponent {
   admin: Admin;

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { ResourceFormComponent } from './resource-form.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,12 +11,12 @@ describe('ResourceFormComponent', () => {
   let resourceTestBedService: ResourceService;
   let reservationTestBedService: ReservationService;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ResourceFormComponent],
       providers: [ ReservationService,
         ResourceService ],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule],
     })
       .compileComponents();
   }));
@@ -36,13 +36,13 @@ describe('ResourceFormComponent', () => {
   it('Resource Service injected and testBed Service are same instance',
     inject([ResourceService], (injectedService: ResourceService) => {
       expect(injectedService).toBe(resourceTestBedService);
-    })
+    }),
   );
 
   it('Reservation Service injected and testBed Service are same instance',
     inject([ReservationService], (injectedService: ReservationService) => {
       expect(injectedService).toBe(reservationTestBedService);
-    })
+    }),
   );
 
 });

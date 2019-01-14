@@ -7,6 +7,7 @@ export const environment = {
         reservation: 'rms-reservation',
         adminLogin: 'admin-login',
         adminRegistration: 'admin-registration'
+
     },
-    slackClientId: '512693710501.512428850932'
+    slackClientId: '512693710501.512428850932',
 };

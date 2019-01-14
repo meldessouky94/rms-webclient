@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class AdminRegistrationService {
@@ -17,5 +17,3 @@ export class AdminRegistrationService {
     return this.http.post<Admin>(this.url, admin);
   }
 }
-
-

@@ -33,7 +33,6 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
 import { DataService } from './services/shared/data.service';
 import { StringDataService } from './services/shared/string-data.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,20 +60,20 @@ import { StringDataService } from './services/shared/string-data.service';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     ReservationService,
     ResourceService,
     UserService,
     DataService,
-    StringDataService
+    StringDataService,
   ],
   entryComponents: [
     ConfirmCreateComponent,
-    CancelReservationPopupComponent
+    CancelReservationPopupComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 
 export class AppModule { }

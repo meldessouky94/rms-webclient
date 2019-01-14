@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { CanActivate, RouterModule, Routes } from '@angular/router';
 import { AssociateHomeComponent } from './components/associateHome/associate-home/associate-home.component';
 import { SearchComponent } from './components/search/search/search.component';
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
@@ -13,32 +13,32 @@ import { AdminVerifiedComponent } from './components/admin/admin-verified/admin-
 
 const routes: Routes = [{
   component: LoginComponent,
-  path: ''
+  path: '',
 }, {
   component: LoadingComponent,
-  path: 'loading'
+  path: 'loading',
 }, {
   component: AssociateHomeComponent,
   path: 'home',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: SearchComponent,
   path: 'search',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: SearchComponent,
   path: 'search/:openForm',
-  canActivate: [UserService]
+  canActivate: [UserService],
 }, {
   component: ReservationsComponent,
   path: 'reservations',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: ErrorComponent,
-  path: 'error'
+  path: 'error',
 }, {
   component: AdminLoginComponent,
-  path: 'adminLogin'
+  path: 'adminLogin',
 }, {
   component: AdminRegistrationComponent,
   path: 'adminRegistration'
@@ -50,6 +50,6 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

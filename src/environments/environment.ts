@@ -12,9 +12,8 @@ export const environment = {
     adminLogin: 'admin-login',
     adminRegistration: 'admin-registration'
   },
-  slackClientId: '512693710501.512428850932'
+  slackClientId: '512693710501.512428850932',
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file
