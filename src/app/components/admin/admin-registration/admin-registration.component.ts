@@ -8,7 +8,7 @@ import { AdminRegistrationService } from '../../../services/admin/admin-registra
 @Component({
   selector: 'app-admin-registration',
   templateUrl: './admin-registration.component.html',
-  styleUrls: ['./admin-registration.component.css']
+  styleUrls: ['./admin-registration.component.css'],
 })
 export class AdminRegistrationComponent implements OnInit {
   admin: Admin;
@@ -32,9 +32,6 @@ export class AdminRegistrationComponent implements OnInit {
       this.admin.lastname = this.lastname;
       this.admin.username = this.username;
       this.admin.password = this.password;
-
-      // this.adminRegistrationServce.registerAdmin(this.admin).subscribe(
-      // data => { this.admin = data; });
 
     } else {
       // TODO: sent "Passwords do not match response..."
