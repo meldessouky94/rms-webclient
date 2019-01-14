@@ -10,6 +10,7 @@ import { CalendarComponent } from './components/shared/calendar/calendar.compone
 import { UserService } from './services/user/user.service';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { AdminEditReservationComponent } from './components/admin/admin-edit-reservation/admin-edit-reservation/admin-edit-reservation.component';
 
 const routes: Routes = [{
   component: LoginComponent,
@@ -45,7 +46,10 @@ const routes: Routes = [{
 }, {
   component: AdminLoginComponent,
   path: 'adminLogin'
-}
+}, {
+  component: AdminEditReservationComponent,
+  path: 'editReservation'
+},
 ];
 
 @NgModule({

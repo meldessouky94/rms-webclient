@@ -5,9 +5,9 @@ import { BehaviorSubject } from 'rxjs';
  * Injectable
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DataService {
+export class IsAdminBehaviorSetService {
 
   private messageSource = new BehaviorSubject(false);
   currentMessage = this.messageSource.asObservable();

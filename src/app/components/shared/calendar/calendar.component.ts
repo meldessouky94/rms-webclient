@@ -5,8 +5,10 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { ReservationService } from '../../../services/reservation/reservation.service';
-import {Reservation} from '../../../models/reservation';
+import { Reservation} from '../../../models/reservation';
+import { Router } from '@angular/router';
 import { CalendarEventActionsComponent } from 'angular-calendar/modules/common/calendar-event-actions.component';
+import { ReservationIdBehaviorSetService } from 'src/app/services/shared/reservation-id-behavior-set.service';
 
 const colors: any = {
   red: {
@@ -67,7 +69,8 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen = false;
 
-  constructor(private modal: NgbModal, private reservationService: ReservationService) {}
+  constructor(private modal: NgbModal, private reservationService: ReservationService, private router: Router,
+              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -86,7 +89,7 @@ export class CalendarComponent implements OnInit {
   eventTimesChanged({
     event,
     newStart,
-    newEnd
+    newEnd,
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
@@ -95,8 +98,16 @@ export class CalendarComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    let id: number;
+    if (typeof event.id === 'string') {
+      id = Number(event.id);
+    } else {
+      id = event.id;
+    }
+    this.reservationIdBehaviorSetService.changeId(id);
+
+    this.router.navigate(['/editReservation']);
+
   }
 
   addEvent(): void {
@@ -117,8 +128,8 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
 
     this.reservationService.getAllReservations().subscribe(
-        (reservations) => {this.reservations = reservations;
-          this.convertReservationsToCalendarEvent(); },
+        (reservations) => { this.reservations = reservations;
+                            this.convertReservationsToCalendarEvent(); },
         );
   }
 
@@ -127,6 +138,7 @@ export class CalendarComponent implements OnInit {
     this.reservations.forEach((reservation) => {
       console.log('inside loop');
       this.events.push({
+        id: reservation.id,
         title: reservation.userId + ' ' + reservation.purpose,
         start: new Date(reservation.startTime),
         end: new Date(reservation.endTime),

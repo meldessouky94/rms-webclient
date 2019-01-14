@@ -2,6 +2,7 @@ export class Resource {
     id: number;
     name: string;
     buildingId: number;
+    resourceId: number;
     type: string;
     enabled: boolean;
     retired: boolean;
