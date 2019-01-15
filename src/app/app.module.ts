@@ -33,6 +33,7 @@ import { CommonModule } from '@angular/common';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
@@ -61,7 +62,7 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     AdminLoginComponent,
     AdminRegistrationComponent,
     AdminVerifiedComponent,
-    AdminEditReservationComponent,
+    AdminEditReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -71,26 +72,31 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     MatIconModule,
     CommonModule,
     FormsModule,
-    MatIconModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    BrowserAnimationsModule
+  ],
+  exports: [
+    CalendarComponent
   ],
   providers: [
     ReservationService,
     ResourceService,
     UserService,
     IsAdminBehaviorSetService,
-    TitleBehaviorSetService,
+    TitleBehaviorSetService
   ],
   entryComponents: [
     ConfirmCreateComponent,
-    CancelReservationPopupComponent,
+    CancelReservationPopupComponent
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
 })
 
 export class AppModule { }
