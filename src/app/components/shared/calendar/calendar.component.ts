@@ -9,6 +9,7 @@ import { Reservation} from '../../../models/reservation';
 import { Router } from '@angular/router';
 import { CalendarEventActionsComponent } from 'angular-calendar/modules/common/calendar-event-actions.component';
 import { ReservationIdBehaviorSetService } from 'src/app/services/shared/reservation-id-behavior-set.service';
+import { IsAdminBehaviorSetService } from 'src/app/services/shared/is-admin-behavior-set.service';
 
 const colors: any = {
   red: {
@@ -69,8 +70,11 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen = false;
 
+  isUserAdmin = false;
+
   constructor(private modal: NgbModal, private reservationService: ReservationService, private router: Router,
-  private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
+              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
+              private isAdmin: IsAdminBehaviorSetService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -125,12 +129,27 @@ export class CalendarComponent implements OnInit {
     this.refresh.next();
   }
 
+  /**
+   * First checks if the current user is an admin and redirects them to the admin login page if they 
+   * are not. If the user is an admin, all the reservations
+   */
   ngOnInit() {
+
+    this.checkIfAdmin();
 
     this.reservationService.getAllReservations().subscribe(
         (reservations) => { this.reservations = reservations;
-          this.convertReservationsToCalendarEvent(); },
+                            this.convertReservationsToCalendarEvent(); },
         );
+  }
+
+  /**
+   * Checks if the current user is an admin and redirects back to login if they are not.
+   */
+  checkIfAdmin() {
+    if (!sessionStorage.getItem('admin')) {
+      this.router.navigate(['adminLogin']);
+    }
   }
 
   convertReservationsToCalendarEvent() {
