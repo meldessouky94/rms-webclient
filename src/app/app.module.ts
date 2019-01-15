@@ -28,10 +28,17 @@ import { UserService } from './services/user/user.service';
 import { LoadingComponent } from './components/loading/loading/loading.component';
 import { CancelReservationPopupComponent } from './components/reservations/cancel-reservation-popup/cancel-reservation-popup.component';
 import { ConfirmCreateComponent } from './components/search/confirm-create/confirm-create.component';
+import { CalendarComponent } from './components/shared/calendar/calendar.component';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
-import { DataService } from './services/shared/data.service';
-import { StringDataService } from './services/shared/string-data.service';
+import { IsAdminBehaviorSetService } from './services/shared/is-admin-behavior-set.service';
+import { TitleBehaviorSetService } from './services/shared/title-behavior-set.service';
+import { AdminEditReservationComponent } from './components/admin/admin-edit-reservation/admin-edit-reservation/admin-edit-reservation.component';
 
 @NgModule({
   declarations: [
@@ -50,24 +57,34 @@ import { StringDataService } from './services/shared/string-data.service';
     ConfirmCreateComponent,
     CancelReservationPopupComponent,
     LoadingComponent,
+    CalendarComponent,
     AdminLoginComponent,
     AdminRegistrationComponent,
-    AdminVerifiedComponent
+    AdminVerifiedComponent,
+    AdminEditReservationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    MatIconModule,
+    CommonModule,
     FormsModule,
     MatIconModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     ReservationService,
     ResourceService,
     UserService,
-    DataService,
-    StringDataService,
+    IsAdminBehaviorSetService,
+    TitleBehaviorSetService,
   ],
   entryComponents: [
     ConfirmCreateComponent,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from '../../../models/admin';
 import { AdminLoginService } from '../../../services/admin/admin-login.service';
-import { DataService } from '../../../services/shared/data.service';
-import { StringDataService } from 'src/app/services/shared/string-data.service';
+import { IsAdminBehaviorSetService } from '../../../services/shared/is-admin-behavior-set.service';
+import { TitleBehaviorSetService } from 'src/app/services/shared/title-behavior-set.service';
 
 /**
  * Component
@@ -20,8 +20,8 @@ export class AdminLoginComponent implements OnInit {
   justRegistered: boolean;
 
   constructor(private adminLoginService: AdminLoginService,
-              private data: DataService,
-              private stringData: StringDataService) {
+              private isAdminBehaviorSet: IsAdminBehaviorSetService,
+              private titleBehaviorSetService: TitleBehaviorSetService) {
      }
 
   /**
@@ -53,9 +53,9 @@ export class AdminLoginComponent implements OnInit {
    * Runs login updates
    */
   runLoginEvents() {
-    this.data.changeBoolean(true);
+    this.isAdminBehaviorSet.changeBoolean(true);
     sessionStorage.setItem('admin', JSON.stringify(this.admin));
-    this.stringData.changeMessage('Admin - Resource Force');
+    this.titleBehaviorSetService.changeMessage('Admin - Resource Force');
   }
 
   /**

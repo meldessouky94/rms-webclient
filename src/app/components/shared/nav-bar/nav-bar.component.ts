@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { DataService } from '../../../services/shared/data.service';
-import { StringDataService } from '../../../services/shared/string-data.service';
+import { IsAdminBehaviorSetService } from '../../../services/shared/is-admin-behavior-set.service';
+import { TitleBehaviorSetService } from '../../../services/shared/title-behavior-set.service';
 
 /**
  * nav-bar component displays the navigation bar
@@ -24,8 +24,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService,
               private detector: ChangeDetectorRef,
               public router: Router,
-              private data: DataService,
-              private stringData: StringDataService,
+              private isAdmin: IsAdminBehaviorSetService,
+              private pageTitle: TitleBehaviorSetService,
    ) {
       this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
 
@@ -55,9 +55,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
     this.authenticated = this.userService.isAuthenticated;
 
-    this.data.currentMessage.subscribe((message) => this.authenticated = message);
-    this.data.currentMessage.subscribe((message) => this.isUserAdmin = message);
-    this.stringData.currentMessage.subscribe((message) => this.title = message);
+    this.isAdmin.currentMessage.subscribe((message) => this.authenticated = message);
+    this.isAdmin.currentMessage.subscribe((message) => this.isUserAdmin = message);
+    this.pageTitle.currentMessage.subscribe((message) => this.title = message);
     this.title = 'Resource Force';
 
   }
