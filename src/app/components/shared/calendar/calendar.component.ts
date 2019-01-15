@@ -134,6 +134,7 @@ export class CalendarComponent implements OnInit {
   }
 
   convertReservationsToCalendarEvent() {
+    console.log('converting reservations to events');
     this.reservations.forEach((reservation) => {
       this.events.push({
         id: reservation.id,
