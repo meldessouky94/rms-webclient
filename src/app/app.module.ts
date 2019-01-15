@@ -94,6 +94,7 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     CancelReservationPopupComponent,
   ],
   bootstrap: [AppComponent],
+  exports: [CalendarComponent],
 })
 
 export class AppModule { }
