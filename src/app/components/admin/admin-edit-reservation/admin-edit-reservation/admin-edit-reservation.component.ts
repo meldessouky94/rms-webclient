@@ -14,20 +14,10 @@ import { findReadVarNames } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./admin-edit-reservation.component.css'],
 })
 export class AdminEditReservationComponent implements OnInit {
-  private reservation = new Reservation();
-  private resource = new Resource();
-  private user = new User();
-
+  public reservation = new Reservation();
+  public resource = new Resource();
+  public user = new User();
   public edit: boolean;
-
-  /**
-   * Edit the reservation on the form.
-   * Activates the edit fields in the
-   * component so you can edit the form.
-   */
-  editReservation() {
-    this.edit = !this.edit;
-  }
 
   constructor(private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
               private reservationService: ReservationService,
@@ -50,9 +40,7 @@ export class AdminEditReservationComponent implements OnInit {
                       console.log('UserId: ' + reservation.userId);
                       this.findUserById(reservation.userId);
                       this.findResourceById(reservation.resourceId);
-
                      });
-
   }
   findResourceById(resourceId: number) {
     console.log('Insdie findResourceById ->  Name: ' + resourceId);
@@ -66,12 +54,12 @@ export class AdminEditReservationComponent implements OnInit {
   }
 
   /**
-   * Submit the edit reservation form.
+   * Edit the reservation on the form.
+   * Activates the edit fields in the
+   * component so you can edit the form.
    */
-  submit() {
-    // TODO: send changes to database for given reservation
-    console.log('ResourceName: ' + this.resource.name);
-    console.log('User Name: ' + this.user.name);
+  editReservation() {
+    this.edit = !this.edit;
   }
 
   /**

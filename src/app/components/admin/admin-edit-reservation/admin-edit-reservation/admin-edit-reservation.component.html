@@ -3,16 +3,20 @@
 
   <fieldset>
       <form>
+        <!--User detials-->
+          <div class="formItem">
+              <p><strong>User:</strong> {{ user.name }}</p>
+          </div>
       <!-- Display the purpose -->
         <div class="formItem">
             <!--Edit the purpose-->
               <div *ngIf="edit">
                   <label>Purpose:</label>
-                  <input [(ngModel)]="purpose" type="text" name="Purpose">
+                  <input [(ngModel)]="reservation.purpose" type="text" name="Purpose">
               </div>
               <!-- Display purpose-->
             <div *ngIf="!edit">
-            <p><strong>Purpose:</strong> {{ purpose }}</p>
+            <p><strong>Purpose:</strong> {{ reservation.purpose }}</p>
           </div>
         </div>
 
@@ -20,12 +24,12 @@
         <div class="formItem">
           <!-- Edit the reservation-->
             <div *ngIf="edit">
-                <label>Reservation:</label>
-                <input [(ngModel)]="purpose" type="text" name="Purpose">
+                <label>Resource:</label>
+                <input [(ngModel)]="resource.name" type="text" name="Resource">
             </div>
             <!-- Display reservation-->
               <div *ngIf="!edit">
-                  <p><strong>Reservation:</strong> {{ purpose }}</p>
+                  <p><strong>Resource:</strong> {{ resource.name }}</p>
               </div>
         </div>
 
@@ -33,7 +37,7 @@
         <div class="formItem">
             <!-- Display start time -->
             <div *ngIf="!edit">
-            <p><strong>Start Time:</strong> {{ sTime }}</p>
+            <p><strong>Start Time:</strong> {{ reservation.startTime }}</p>
             </div>
             <!-- Edit the start time-->
               <div *ngIf="edit">
@@ -46,7 +50,7 @@
         <div class="formItem">
           <!-- Display the end time-->
             <div *ngIf="!edit">
-              <p><strong>End Time:</strong> {{ eTime }}</p>
+              <p><strong>End Time:</strong> {{ reservation.endTime }}</p>
             </div>
             <!-- Edit the end time-->
               <div *ngIf="edit">
