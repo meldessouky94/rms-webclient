@@ -1,40 +1,65 @@
-#form-container {
-    display:flex;
-    flex-direction: column;
+fieldset{
     background: #FCE1D3;
     border: #66391f solid 1px;
     border-radius: 5px;
-    padding: 2px;
+}
+
+input{
+    border-radius: 15px;
+    border: #66391f solid 1px;
+    padding-left: 10px;
+    padding: 3px;
+}
+
+select{
+    border-radius: 10px;
+    border: #66391f solid 1px;
+    padding-left: 10px;
+    padding: 3px;
+}
+
+.left-label {
+    width: 20%;
 }
 
 .formItem {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:  #66391f;
-    padding:0px;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
     display: flex;
     justify-content: space-around;
 }
-.timeItem > div {
-    width:50%;
-    margin: 0 auto;
-    text-align:center;
+
+.form-control {
+    width: 80%;
 }
+
+.timeItem > div {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .timeItem label {
     text-align:center;
 }
-input{
-    border-radius: 15px;
-    border: #66391f solid 1px;
-    padding: 10px 10px 10px 3px;
-}
-select{
-    border-radius: 10px;
-    border: #66391f solid 1px;
-    padding:3px;
-}
-span{
+
+.note {
+    color: #99896C;
     font-size: .75em;
+    text-align: center;
+    width: 100%;
+}
+
+.loading {
+    text-align: center
+}
+
+.error {
+    color:#FF5141;
+    text-align: center;
 }
 
 #buttonCon{
@@ -63,19 +88,6 @@ span{
 #cancelBTN:hover {
     color: white;
     background: #FF5141;
-}
-
-.error {
-    color:#FF5141;
-    text-align: center;
-}
-
-.loading {
-    text-align: center
-}
-
-span.note {
-    color: #99896C;
 }
 
 #field-color {
