@@ -1,5 +1,58 @@
-fieldset{
+div > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+  }
+  
+  div.container > #resHeader {
+      background-color: #f26925 !important; 
+      color: whitesmoke !important;
+  }
+  
+  div.container > .card-header {
+    background-color: #f26925;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 3vh;
+  }
+  #resHeader {
+    background-color: #f26925;
+    color: whitesmoke;
+  }
+  
+  /* unvisited link */
+  a:link,
+  .cancel-button {
+    color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: purple;
+  }
+  
+  .resource-icons {
     display:flex;
+    flex-direction: row;
+    width: 100%;
+  }
+/*------------------*/
+
+fieldset{
+    display: flex;
     flex-direction: column;
     background: #FCE1D3;
     border: #66391f solid 1px;

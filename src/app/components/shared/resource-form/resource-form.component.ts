@@ -88,7 +88,6 @@ export class ResourceFormComponent implements OnInit {
     this.formInput = new SearchDto();
   }
 
-
   /**
    * Submits the data to search and saves information in Reservation service
    * to be used to complete the creation of the reservation.
