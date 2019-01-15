@@ -12,7 +12,10 @@
             <!--Edit the purpose-->
               <div *ngIf="edit">
                   <label>Purpose:</label>
-                  <input [(ngModel)]="reservation.purpose" type="text" name="Purpose">
+                  <select [(ngModel)]="reservation.purpose" type="text" name="Purpose">
+                  <option>Panel</option>
+                  <option>Interview</option>
+                  </select>
               </div>
               <!-- Display purpose-->
             <div *ngIf="!edit">
@@ -33,16 +36,28 @@
               </div>
         </div>
 
+    <!-- Display the DATE -->
+      <div class="formItem">
+          <!-- Display DATE-->
+          <div *ngIf="!edit">
+          <p><strong>Start Date:</strong> {{ reservation.startTime | date: 'MMM d, y'}}</p>
+          </div>
+          <!-- Edit the DATE-->
+            <div *ngIf="edit">
+                <label>Start time:</label>
+              <input type="date" name="Start">
+            </div>
+      </div>
       <!-- Display the start time -->
         <div class="formItem">
             <!-- Display start time -->
             <div *ngIf="!edit">
-            <p><strong>Start Time:</strong> {{ reservation.startTime }}</p>
+            <p><strong>Start Time:</strong> {{ reservation.startTime | date: 'h:mm a'}}</p>
             </div>
             <!-- Edit the start time-->
               <div *ngIf="edit">
                   <label>Start time:</label>
-                <input type="date" name="Start">
+                <input type="time" name="Start">
               </div>
         </div>
 
@@ -50,20 +65,22 @@
         <div class="formItem">
           <!-- Display the end time-->
             <div *ngIf="!edit">
-              <p><strong>End Time:</strong> {{ reservation.endTime }}</p>
+              <p><strong>End Time:</strong> {{ reservation.endTime | date: 'h:mm a'}}</p>
             </div>
             <!-- Edit the end time-->
               <div *ngIf="edit">
                   <label>End time:</label>
-                  <input type="date" name="End">
+                  <input type="time" name="End">
               </div>
         </div>
       </form>
       <div id="buttonCon">
         <!-- Button that edits the fieds displayed on the form -->
-        <button (click)="editReservation()" id="createBTN" class="btn btn-primary">Edit Reservation</button>
+        <button *ngIf="!edit" (click)="editReservation()" id="createBTN" class="btn btn-primary">Edit Reservation</button>
+        <button *ngIf="edit" (click)="cancelReservation()" id="createBTN" class="btn btn-primary">Cancel Edit</button>
         <!-- Button that suppose to delete the reservation-->
-        <button (click)="reset()" id="cancelBTN"  class="btn btn-primary">Cancel Reservation</button>
+        <button *ngIf="!edit" (click)="reset()" id="cancelBTN"  class="btn btn-primary">Cancel Reservation</button>
+        <button *ngIf="edit" (click)="updateReservatiion()" id="cancelBTN"  class="btn btn-primary">Submit</button>
       </div>
     </fieldset>
     <div class="loading" *ngIf !="loading"> ... Loading ...  </div>

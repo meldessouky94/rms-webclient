@@ -78,6 +78,8 @@ export class ReservationService {
     return this.httpClient.post<Reservation>(this.apiUrl, reservation);
   }
 
+
+
   /**
    * get a list of reservations for the user from the database
    * @returns an observable that contains JSON data for the list
@@ -99,7 +101,11 @@ export class ReservationService {
     const url = `${this.apiUrl}/cancel?id=${id}`;
     return this.httpClient.post(url, null);
   }
-
+  updateReservation(reservation: Reservation) {
+    const url = `${this.apiUrl}/update`;
+    reservation.userId = this.userService.currentUser.id;
+    return this.httpClient.post<Reservation>(url, reservation);
+  }
   getAllReservations() {
      const URL = `${this.apiUrl}`;
      return this.httpClient.get<Reservation[]>(URL);

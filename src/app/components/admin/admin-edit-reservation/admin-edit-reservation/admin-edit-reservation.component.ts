@@ -7,6 +7,7 @@ import { ReservationService } from '../../../../services/reservation/reservation
 import { ResourceService } from '../../../../services/resource/resource.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { findReadVarNames } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-edit-reservation',
@@ -18,11 +19,12 @@ export class AdminEditReservationComponent implements OnInit {
   public resource = new Resource();
   public user = new User();
   public edit: boolean;
-
+  public updated: boolean;
   constructor(private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
               private reservationService: ReservationService,
               private resourceService: ResourceService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.reservationIdBehaviorSetService.currentMessage.subscribe((message) => this.setReservationId(message));
@@ -53,6 +55,20 @@ export class AdminEditReservationComponent implements OnInit {
      (user) => this.user = user);
   }
 
+  updateReservatiion() {
+    console.log('Inside findUserById -> UserId: ' + this.reservation.resourceId);
+    this.reservationService.updateReservation(this.reservation).subscribe(
+     (reserv) => this.reservation = reserv);
+  }
+  /**
+   * If admins decides he/she does
+   * not want to edit the reservation
+   * it routes back to the calendar.
+   */
+  cancelReservation() {
+    /** navigate to the calendar page(not working yet) */
+    this.router.navigate(['/calendar']);
+  }
   /**
    * Edit the reservation on the form.
    * Activates the edit fields in the
