@@ -1,10 +1,13 @@
+
+import { Building } from './building';
 export class Resource {
     id: number;
-    name: string;
-    buildingId: number;
-    resourceId: number;
     type: string;
-    enabled: boolean;
+    building: Building;
+    buildingId: number;
+    name: string;
+    disabled: boolean;
+    inactive: boolean;
     retired: boolean;
     availableStartDate: string;
     reservableAfter: string;

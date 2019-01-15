@@ -16,7 +16,7 @@ export class UserService implements CanActivate {
   loginFailed = false;
   currentUser: User;
   $currentUser = new Subject<User>();
-
+  apiUrl = `${environment.apiUrl}${environment.serviceContext.reservation}`;
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   nextCurrentUser(user: User) {
@@ -109,4 +109,10 @@ export class UserService implements CanActivate {
     this.isAuthenticated = false;
     this.nextCurrentUser(undefined);
   }
+
+  getUserById(userId: string) {
+    const URL = `${this.apiUrl}/users/${userId}`;
+    console.log('User URL: ' + URL);
+    return this.httpClient.get<User>(URL);
+   }
 }
