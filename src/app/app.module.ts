@@ -11,6 +11,7 @@ import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ResourceFormComponent } from './components/shared/resource-form/resource-form.component';
+import { AdminVerifiedComponent } from './components/admin/admin-verified/admin-verified.component';
 
 import { SearchComponent } from './components/search/search/search.component';
 import { ViewResourcesComponent } from './components/search/view-resources/view-resources.component';
@@ -60,6 +61,7 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     AdminLoginComponent,
     AdminRegistrationComponent,
     AdminEditReservationComponent,
+    AdminVerifiedComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    MatIconModule,
   ],
   providers: [
     ReservationService,

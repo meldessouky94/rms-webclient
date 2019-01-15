@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { CanActivate, RouterModule, Routes } from '@angular/router';
 import { AssociateHomeComponent } from './components/associateHome/associate-home/associate-home.component';
 import { SearchComponent } from './components/search/search/search.component';
 import { ReservationsComponent } from './components/reservations/reservations/reservations.component';
@@ -11,49 +11,53 @@ import { UserService } from './services/user/user.service';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { AdminEditReservationComponent } from './components/admin/admin-edit-reservation/admin-edit-reservation/admin-edit-reservation.component';
+import { AdminVerifiedComponent } from './components/admin/admin-verified/admin-verified.component';
 
 const routes: Routes = [{
   component: LoginComponent,
-  path: ''
+  path: '',
 }, {
   component: LoadingComponent,
-  path: 'loading'
+  path: 'loading',
 }, {
   component: AssociateHomeComponent,
   path: 'home',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: SearchComponent,
   path: 'search',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: SearchComponent,
   path: 'search/:openForm',
-  canActivate: [UserService]
+  canActivate: [UserService],
 }, {
   component: ReservationsComponent,
   path: 'reservations',
- canActivate: [UserService]
+ canActivate: [UserService],
 }, {
   component: ErrorComponent,
-  path: 'error'
+  path: 'error',
 }, {
   component: CalendarComponent,
-  path: 'calendar'
-}, {
-  component: AdminRegistrationComponent,
-  path: 'adminRegistration'
+  path: 'calendar',
 }, {
   component: AdminLoginComponent,
-  path: 'adminLogin'
+  path: 'adminLogin',
+}, {
+  component: AdminRegistrationComponent,
+  path: 'adminRegistration',
 }, {
   component: AdminEditReservationComponent,
-  path: 'editReservation'
+  path: 'editReservation',
+}, {
+  component: AdminVerifiedComponent,
+  path: 'adminVerified',
 },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -9,7 +9,7 @@ export class Resource {
     availableStartDate: string;
     reservableAfter: string;
     reservableBefore: string;
-    availableDays: Array<string>;
+    availableDays: string[];
     hasEthernet: boolean;
     hasComputer: boolean;
     numberOfOutlets: number;

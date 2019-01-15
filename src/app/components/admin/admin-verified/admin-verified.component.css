@@ -1,0 +1,23 @@
+.button {
+    font-weight: bold;
+    border: 1px;
+    border-radius: 5px;
+    background-color: rgb(255, 144, 78);
+    color: white;
+    margin-top: 20px;
+  }
+  
+  .button:hover{
+    background-color: rgb(156, 101, 69);
+  }
+  
+  .button:active{
+    background-color: rgb(156, 101, 69);
+  }
+
+  #verification-div{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+  }

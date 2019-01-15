@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorComponent } from './error.component';
-import { LoginComponent } from '../../login/login/login.component';
+import { AdminVerifiedComponent } from './admin-verified.component';
 
-describe('ErrorComponent', () => {
-  let component: ErrorComponent;
-  let fixture: ComponentFixture<ErrorComponent>;
+describe('AdminVerifiedComponent', () => {
+  let component: AdminVerifiedComponent;
+  let fixture: ComponentFixture<AdminVerifiedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorComponent, LoginComponent ],
+      declarations: [ AdminVerifiedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorComponent);
+    fixture = TestBed.createComponent(AdminVerifiedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
