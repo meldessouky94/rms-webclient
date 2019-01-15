@@ -72,7 +72,6 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     MatIconModule,
     CommonModule,
     FormsModule,
-    MatIconModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({

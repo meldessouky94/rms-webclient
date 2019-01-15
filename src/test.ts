@@ -12,6 +12,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 declare const __karma__: any;
 declare const require: any;
@@ -28,6 +32,8 @@ getTestBed().initTestEnvironment(
     MatIconModule,
     MatProgressSpinnerModule,
     HttpClientTestingModule,
+    BrowserAnimationsModule,
+    FlatpickrModule.forRoot().ngModule,
   ],
   platformBrowserDynamicTesting(),
 );
