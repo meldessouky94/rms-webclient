@@ -7,6 +7,7 @@ import { SearchDto } from 'src/app/models/search-dto';
 import { Resource } from 'src/app/models/resource';
 import { UserService } from '../user/user.service';
 import { CalendarEvent } from 'angular-calendar';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -100,7 +101,14 @@ export class ReservationService {
   }
 
   getAllReservations() {
-     const URL = 'http://localhost:8080/reservations';
+     const URL = `${this.apiUrl}`;
      return this.httpClient.get<Reservation[]>(URL);
   }
+
+  getReservationById(reservationId: number) {
+    const URL = `${this.apiUrl}/${reservationId}`;
+    console.log('Reservation URL: ' + URL);
+    return this.httpClient.get<Reservation>(URL);
+ }
+
 }

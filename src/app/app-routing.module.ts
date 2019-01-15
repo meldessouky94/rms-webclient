@@ -48,9 +48,6 @@ const routes: Routes = [{
   component: AdminRegistrationComponent,
   path: 'adminRegistration',
 }, {
-  component: AdminVerifiedComponent,
-  path: 'adminVerified',
-}, {
   component: AdminEditReservationComponent,
   path: 'editReservation',
 }, {
