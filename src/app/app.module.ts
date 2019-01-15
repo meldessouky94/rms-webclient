@@ -62,7 +62,7 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     AdminLoginComponent,
     AdminRegistrationComponent,
     AdminVerifiedComponent,
-    AdminEditReservationComponent
+    AdminEditReservationComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,24 +78,25 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    BrowserAnimationsModule
+    MatIconModule,
+    BrowserAnimationsModule,
   ],
   exports: [
-    CalendarComponent
+    CalendarComponent,
   ],
   providers: [
     ReservationService,
     ResourceService,
     UserService,
     IsAdminBehaviorSetService,
-    TitleBehaviorSetService
+    TitleBehaviorSetService,
   ],
   entryComponents: [
     ConfirmCreateComponent,
-    CancelReservationPopupComponent
+    CancelReservationPopupComponent,
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
   ],
 })
 
