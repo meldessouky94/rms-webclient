@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { SearchDto } from 'src/app/models/search-dto';
 import { Resource } from 'src/app/models/resource';
 import { UserService } from '../user/user.service';
+import { CalendarEvent } from 'angular-calendar';
 
 @Injectable({
   providedIn: 'root',
@@ -98,4 +99,8 @@ export class ReservationService {
     return this.httpClient.post(url, null);
   }
 
+  getAllReservations() {
+     const URL = 'http://localhost:8080/reservations';
+     return this.httpClient.get<Reservation[]>(URL);
+  }
 }

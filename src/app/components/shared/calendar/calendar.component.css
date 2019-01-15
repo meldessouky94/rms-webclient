@@ -1,0 +1,37 @@
+h3 {
+  margin: 0 0 10px;
+}
+  
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+.btn {
+  font-weight: bold;
+  border: 1px;
+  border-radius: 5px;
+  background-color: rgb(255, 144, 78);
+  color: white;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: rgb(156, 101, 69);
+}
+
+.btn:active {
+  background-color: rgb(156, 101, 69);
+}
+
+#calendar { 
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+#todayDate {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+#todayDate:hover {
+  background-color: rgb(0, 0, 0, 0.4);
+}
