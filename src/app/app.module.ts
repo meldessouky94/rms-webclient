@@ -79,6 +79,9 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
       useFactory: adapterFactory,
     }),
   ],
+  exports: [
+    CalendarComponent
+  ],
   providers: [
     ReservationService,
     ResourceService,
