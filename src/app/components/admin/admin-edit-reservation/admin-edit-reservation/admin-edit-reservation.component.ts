@@ -14,5 +14,20 @@ export class AdminEditReservationComponent implements OnInit {
   ngOnInit() {
     this.reservationIdBehaviorSetService.currentMessage.subscribe((message) => this.reservationId = message);
   }
+  
+  /**
+   * Submit the edit reservation form.
+   */
+  submit() {
+    // TODO: send changes to database for given reservation
+  }
+
+  /**
+   * Resets the information on the form.
+   */
+  reset() {
+    // TODO: use two-way data binding to clear form
+    // on button click from user
+  }
 
 }

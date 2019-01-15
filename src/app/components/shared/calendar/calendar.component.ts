@@ -70,7 +70,7 @@ export class CalendarComponent implements OnInit {
   activeDayIsOpen = false;
 
   constructor(private modal: NgbModal, private reservationService: ReservationService, private router: Router,
-              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
+  private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -129,14 +129,12 @@ export class CalendarComponent implements OnInit {
 
     this.reservationService.getAllReservations().subscribe(
         (reservations) => { this.reservations = reservations;
-                            this.convertReservationsToCalendarEvent(); },
+          this.convertReservationsToCalendarEvent(); },
         );
   }
 
   convertReservationsToCalendarEvent() {
-    console.log('Before Loop');
     this.reservations.forEach((reservation) => {
-      console.log('inside loop');
       this.events.push({
         id: reservation.id,
         title: reservation.userId + ' ' + reservation.purpose,

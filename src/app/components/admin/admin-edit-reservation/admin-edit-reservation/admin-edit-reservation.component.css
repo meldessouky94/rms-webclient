@@ -1,0 +1,54 @@
+fieldset{
+    display:flex;
+    flex-direction: column;
+    background: #FCE1D3;
+    border: #66391f solid 1px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+input{
+    border-radius: 5px;
+    border: #66391f solid 1px;
+}
+
+.formItem {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:  #66391f;
+    padding:0px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.loading {
+    text-align: center
+}
+
+#buttonCon{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+#createBTN{
+    border: #99562e solid 1px;
+    color:#99562e;
+    background: white;
+}
+
+#createBTN:hover{
+    color:white;
+    background:#FF904E;
+}
+
+#cancelBTN{
+    border: #FF5141 solid 1px;
+    color:#FF5141;
+    background: white;
+}
+
+#cancelBTN:hover {
+    color: white;
+    background: #FF5141;
+}
