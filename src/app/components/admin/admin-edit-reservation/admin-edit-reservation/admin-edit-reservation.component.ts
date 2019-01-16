@@ -8,7 +8,6 @@ import { ReservationService } from '../../../../services/reservation/reservation
 import { ResourceService } from '../../../../services/resource/resource.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { findReadVarNames } from '@angular/compiler/src/output/output_ast';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-edit-reservation',
