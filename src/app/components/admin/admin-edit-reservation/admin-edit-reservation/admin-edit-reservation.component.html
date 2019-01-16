@@ -1,4 +1,3 @@
-
 <div class="container">
 
   <fieldset>
@@ -45,7 +44,7 @@
           <!-- Edit the DATE-->
             <div *ngIf="edit">
                 <label>Start time:</label>
-              <input type="date" name="Start">
+              <input [(ngModel)]="date" type="date" name="Start">
             </div>
       </div>
       <!-- Display the start time -->
@@ -57,7 +56,7 @@
             <!-- Edit the start time-->
               <div *ngIf="edit">
                   <label>Start time:</label>
-                <input type="time" name="Start">
+                <input [(ngModel)]="time1" type="time" name="Start">
               </div>
         </div>
 
@@ -70,16 +69,18 @@
             <!-- Edit the end time-->
               <div *ngIf="edit">
                   <label>End time:</label>
-                  <input type="time" name="End">
+                  <input required [(ngModel)]="time2" type="time" name="End">
               </div>
         </div>
       </form>
       <div id="buttonCon">
         <!-- Button that edits the fieds displayed on the form -->
         <button *ngIf="!edit" (click)="editReservation()" id="createBTN" class="btn btn-primary">Edit Reservation</button>
+        <!-- Button that redirects to the calendar page since admin decided not to edit the reservation -->
         <button *ngIf="edit" (click)="cancelReservation()" id="createBTN" class="btn btn-primary">Cancel Edit</button>
         <!-- Button that suppose to delete the reservation-->
         <button *ngIf="!edit" (click)="reset()" id="cancelBTN"  class="btn btn-primary">Cancel Reservation</button>
+        <!-- Button that sends updated reservation to the server -->
         <button *ngIf="edit" (click)="updateReservatiion()" id="cancelBTN"  class="btn btn-primary">Submit</button>
       </div>
     </fieldset>

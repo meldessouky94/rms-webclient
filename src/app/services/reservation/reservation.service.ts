@@ -103,7 +103,7 @@ export class ReservationService {
   }
   updateReservation(reservation: Reservation) {
     const url = `${this.apiUrl}/update`;
-    reservation.userId = this.userService.currentUser.id;
+    /*reservation.userId = this.userService.currentUser.id;*/
     return this.httpClient.post<Reservation>(url, reservation);
   }
   getAllReservations() {

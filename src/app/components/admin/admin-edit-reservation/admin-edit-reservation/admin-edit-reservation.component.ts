@@ -20,6 +20,9 @@ export class AdminEditReservationComponent implements OnInit {
   public user = new User();
   public edit: boolean;
   public updated: boolean;
+  time1 = '';
+  time2 = '';
+  date = '';
   constructor(private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
               private reservationService: ReservationService,
               private resourceService: ResourceService,
@@ -54,9 +57,15 @@ export class AdminEditReservationComponent implements OnInit {
     this.userService.getUserById(userId).subscribe(
      (user) => this.user = user);
   }
-
+/**
+ * update reservation that was edited.
+ */
   updateReservatiion() {
-    console.log('Inside findUserById -> UserId: ' + this.reservation.resourceId);
+    /** set the new reservation time to date plus hour */
+    this.reservation.startTime = this.date + 'T' + this.time1 + ':00';
+    this.reservation.endTime = this.date + 'T' + this.time2 + ':00';
+
+    /** send the reservation object to the server so it can update that entry from the database */
     this.reservationService.updateReservation(this.reservation).subscribe(
      (reserv) => this.reservation = reserv);
   }
@@ -66,7 +75,7 @@ export class AdminEditReservationComponent implements OnInit {
    * it routes back to the calendar.
    */
   cancelReservation() {
-    /** navigate to the calendar page(not working yet) */
+    /** navigate to the calendar page */
     this.router.navigate(['/calendar']);
   }
   /**
