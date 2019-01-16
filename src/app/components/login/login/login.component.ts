@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
     if (this.userService.currentUser) {
       this.router.navigate(['home']);
     }
+    if (sessionStorage.getItem('admin')) {
+      this.router.navigate(['calendar']);
+    }
 
   }
 

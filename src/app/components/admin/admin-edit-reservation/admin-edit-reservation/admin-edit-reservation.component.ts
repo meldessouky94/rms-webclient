@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationIdBehaviorSetService } from '../../../../services/shared/reservation-id-behavior-set.service';
+import { Router } from '@angular/router';
 import { Reservation } from '../../../../models/reservation';
 import { Resource } from '../../../../models/resource';
 import { User } from '../../../../models/user';
@@ -31,6 +32,9 @@ export class AdminEditReservationComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+
+    this.checkIfAdmin();
+
     this.reservationIdBehaviorSetService.currentMessage.subscribe((message) => this.setReservationId(message));
     this.getAllResources();
   }
@@ -38,6 +42,15 @@ export class AdminEditReservationComponent implements OnInit {
   getAllResources() {
     this.resourceService.getAllResources().subscribe(
       (resources) => this.resources = resources);
+  }
+
+  /**
+   * Checks if the current user is an admin and redirects back to login if they are not.
+   */
+  checkIfAdmin() {
+    if (!sessionStorage.getItem('admin')) {
+      this.router.navigate(['adminLogin']);
+    }
   }
 
   setReservationId(reservationId: number) {
@@ -48,19 +61,17 @@ export class AdminEditReservationComponent implements OnInit {
   findReservationById(reservationId: number) {
    this.reservationService.getReservationById(reservationId).subscribe(
     (reservation) => {this.reservation = reservation;
-                      console.log('ResourceId: ' + reservation.resourceId);
-                      console.log('UserId: ' + reservation.userId);
                       this.findUserById(reservation.userId);
                       this.findResourceById(reservation.resourceId);
                      });
   }
+
   findResourceById(resourceId: number) {
-    console.log('Insdie findResourceById ->  Name: ' + resourceId);
     this.resourceService.getResourceById(resourceId).subscribe(
      (resource) => this.resource = resource[0]);
   }
+
   findUserById(userId: string) {
-    console.log('Inside findUserById -> UserId: ' + userId);
     this.userService.getUserById(userId).subscribe(
      (user) => this.user = user);
   }

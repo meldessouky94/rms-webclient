@@ -61,8 +61,8 @@ import { AdminEditReservationComponent } from './components/admin/admin-edit-res
     CalendarComponent,
     AdminLoginComponent,
     AdminRegistrationComponent,
-    AdminVerifiedComponent,
     AdminEditReservationComponent,
+    AdminVerifiedComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { Reservation} from '../../../models/reservation';
 import { Router } from '@angular/router';
 import { CalendarEventActionsComponent } from 'angular-calendar/modules/common/calendar-event-actions.component';
 import { ReservationIdBehaviorSetService } from 'src/app/services/shared/reservation-id-behavior-set.service';
+import { IsAdminBehaviorSetService } from 'src/app/services/shared/is-admin-behavior-set.service';
 
 const colors: any = {
   red: {
@@ -69,8 +70,11 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen = false;
 
+  isUserAdmin = false;
+
   constructor(private modal: NgbModal, private reservationService: ReservationService, private router: Router,
-              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
+              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
+              private isAdmin: IsAdminBehaviorSetService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -125,7 +129,13 @@ export class CalendarComponent implements OnInit {
     this.refresh.next();
   }
 
+  /**
+   * First checks if the current user is an admin and redirects them to the admin login page if they
+   * are not. If the user is an admin, all the reservations are loaded to display on the calendar
+   */
   ngOnInit() {
+
+    this.checkIfAdmin();
 
     this.reservationService.getAllReservations().subscribe(
         (reservations) => { this.reservations = reservations;
@@ -133,17 +143,77 @@ export class CalendarComponent implements OnInit {
         );
   }
 
+  /**
+   * Checks if the current user is an admin and redirects back to login if they are not.
+   * 
+   * @author Jaron | 1811-Java-Nick | 1/15/2019
+   */
+  checkIfAdmin() {
+    if (!sessionStorage.getItem('admin')) {
+      this.router.navigate(['adminLogin']);
+    }
+  }
+
   convertReservationsToCalendarEvent() {
     console.log('converting reservations to events');
     this.reservations.forEach((reservation) => {
       this.events.push({
         id: reservation.id,
-        title: reservation.userId + ' ' + reservation.purpose,
+        title: this.getTitle(reservation),
         start: new Date(reservation.startTime),
         end: new Date(reservation.endTime),
         color: colors.red,
       });
     });
     this.refresh.next();
+  }
+
+  /**
+   * Gets a title to display for a reservation for the time, resource, and purpose
+   *
+   * @param reservation
+   * @author Jaron | 1811-Java-Nick | 1/15/2019
+   */
+  getTitle(reservation: Reservation): string {
+    let title: string;
+    const startTime = this.convertTime(new Date(reservation.startTime));
+    const endTime = this.convertTime(new Date(reservation.endTime));
+
+    title = reservation.resourceId + ' ' + reservation.userId + ' ' + reservation.purpose +
+            ' ' + startTime + ' to ' + endTime + ' ';
+
+    return title;
+
+  }
+
+  /**
+   * Converts from date to standard AM/PM time
+   *
+   * @param time
+   */
+  convertTime(time: Date): string {
+    let isAm = true;
+    if (time.getHours() >= 12) {
+      isAm = false;
+    }
+    let timeString: string;
+    let hours = time.getHours() % 12;
+    if (hours === 0) {
+      hours = 12;
+    }
+
+    const minutes = time.getMinutes();
+
+    timeString = hours + ':' + minutes;
+    if (minutes === 0) {
+      timeString += '0';
+    }
+    if (isAm) {
+      timeString += ' AM';
+    } else {
+      timeString += ' PM';
+    }
+
+    return timeString;
   }
 }

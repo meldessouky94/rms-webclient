@@ -3,6 +3,7 @@ import { Admin } from '../../../models/admin';
 import { AdminLoginService } from '../../../services/admin/admin-login.service';
 import { IsAdminBehaviorSetService } from '../../../services/shared/is-admin-behavior-set.service';
 import { TitleBehaviorSetService } from 'src/app/services/shared/title-behavior-set.service';
+import { Router } from '@angular/router';
 
 /**
  * Component
@@ -21,7 +22,8 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private adminLoginService: AdminLoginService,
               private isAdminBehaviorSet: IsAdminBehaviorSetService,
-              private titleBehaviorSetService: TitleBehaviorSetService) {
+              private titleBehaviorSetService: TitleBehaviorSetService,
+              private router: Router) {
      }
 
   /**
@@ -55,7 +57,7 @@ export class AdminLoginComponent implements OnInit {
   runLoginEvents() {
     this.isAdminBehaviorSet.changeBoolean(true);
     sessionStorage.setItem('admin', JSON.stringify(this.admin));
-    this.titleBehaviorSetService.changeMessage('Admin - Resource Force');
+    this.router.navigate(['calendar']);
   }
 
   /**
@@ -70,7 +72,7 @@ export class AdminLoginComponent implements OnInit {
       this.justRegistered = false;
     }
 
-    sessionStorage.setItem('justRegistered', 'no');
+    sessionStorage.clear();
   }
 
 }
