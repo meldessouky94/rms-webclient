@@ -83,11 +83,12 @@ export class AdminEditReservationComponent implements OnInit {
     this.reservation.startTime = this.date + 'T' + this.time1 + ':00';
     this.reservation.endTime = this.date + 'T' + this.time2 + ':00';
     this.reservation.resourceId = this.resource.id;
-    console.log('NEW ID --> ResourceID: ' + this.resource.id);
 
     /** send the reservation object to the server so it can update that entry from the database */
     this.reservationService.updateReservation(this.reservation).subscribe(
-     (reserv) => this.reservation = reserv);
+     (reserv) => {this.reservation = reserv;
+                  this.router.navigate(['calendar']); });
+
   }
   /**
    * If admins decides he/she does
