@@ -65,4 +65,10 @@ export class ResourceService {
     url += `${environment.serviceContext.resource}/campuses`;
     return this.httpClient.get<any[]>(url, { withCredentials: true });
   }
+
+  getResourceById(resourceId: number) {
+    const URL = `${this.apiUrl}resources/${resourceId}`;
+    console.log('Resource URL: ' + URL);
+    return this.httpClient.get<Resource>(URL);
+ }
 }

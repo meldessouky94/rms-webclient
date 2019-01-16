@@ -39,23 +39,20 @@ const routes: Routes = [{
   component: ErrorComponent,
   path: 'error',
 }, {
+  component: CalendarComponent,
+  path: 'calendar',
+}, {
   component: AdminLoginComponent,
   path: 'adminLogin',
 }, {
-  component: CalendarComponent,
-  path: 'calendar'
-}, {
   component: AdminRegistrationComponent,
-  path: 'adminRegistration'
-}, {
-  component: AdminVerifiedComponent,
-  path: 'adminVerified'
-}, {
-  component: AdminLoginComponent,
-  path: 'adminLogin'
+  path: 'adminRegistration',
 }, {
   component: AdminEditReservationComponent,
-  path: 'editReservation'
+  path: 'editReservation',
+}, {
+  component: AdminVerifiedComponent,
+  path: 'adminVerified',
 },
 ];
 

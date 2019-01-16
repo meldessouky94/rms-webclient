@@ -70,5 +70,4 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.userSubscription.unsubscribe();
     }
   }
-
 }
