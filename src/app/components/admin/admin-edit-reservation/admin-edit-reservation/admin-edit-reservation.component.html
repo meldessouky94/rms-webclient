@@ -12,8 +12,8 @@
               <div *ngIf="edit">
                   <label>Purpose:</label>
                   <select [(ngModel)]="reservation.purpose" type="text" name="Purpose">
-                  <option>Panel</option>
-                  <option>Interview</option>
+                  <option>PANEL</option>
+                  <option>INTERVIEW</option>
                   </select>
               </div>
               <!-- Display purpose-->
@@ -27,7 +27,11 @@
           <!-- Edit the reservation-->
             <div *ngIf="edit">
                 <label>Resource:</label>
-                <input [(ngModel)]="resource.name" type="text" name="Resource">
+                <select  [(ngModel)]="resource.id" type="text" name="Resource">
+                  <ng-container *ngFor="let resource of resources;">
+                    <option value={{resource.id}}>{{resource.name}}</option>
+                </ng-container>
+                </select>
             </div>
             <!-- Display reservation-->
               <div *ngIf="!edit">
@@ -73,6 +77,32 @@
               </div>
         </div>
       </form>
+
+      <div id="icon-div">
+        <ng-container *ngIf="resource">
+          <span *ngIf="resource?.hasEthernet" ngbPopover="Ethernet available" triggers="mouseenter:mouseleave">
+            <mat-icon>network_wifi</mat-icon>
+          </span>
+          <span *ngIf="!resource?.hasEthernet" ngbPopover="No Ethernet" triggers="mouseenter:mouseleave">
+            <mat-icon>signal_wifi_off</mat-icon>
+          </span>
+          <span *ngIf="resource?.hasComputer"ngbPopover="Computers available" triggers="mouseenter:mouseleave">
+            <mat-icon>computer</mat-icon>
+          </span>
+          <span *ngIf="!resource?.hasComputer" ngbPopover="No computers/laptops" triggers="mouseenter:mouseleave">
+            <mat-icon>phonelink_off</mat-icon>
+          </span>
+          <span *ngIf="resource?.hasMicrophone"ngbPopover="Microphones avaialable" triggers="mouseenter:mouseleave">
+            <mat-icon>headset_mic</mat-icon>
+          </span>
+          <span *ngIf="!resource?.hasMicrophone" ngbPopover="No microphones" triggers="mouseenter:mouseleave">
+            <mat-icon>mic_off</mat-icon>
+          </span>
+          <span ngbPopover="Outlets available" triggers="mouseenter:mouseleave">
+            <mat-icon>power</mat-icon>{{resource?.numberOfOutlets}}
+          </span>
+        </ng-container>
+      </div>
       <div id="buttonCon">
         <!-- Button that edits the fieds displayed on the form -->
         <button *ngIf="!edit" (click)="editReservation()" id="createBTN" class="btn btn-primary">Edit Reservation</button>

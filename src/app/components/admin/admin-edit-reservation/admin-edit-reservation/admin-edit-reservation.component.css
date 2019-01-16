@@ -1,19 +1,16 @@
 div > span {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
+
   }
-  
+
   div.container > #resHeader {
-      background-color: #f26925 !important; 
+      background-color: #f26925 !important;
       color: whitesmoke !important;
   }
-  
+
   div.container > .card-header {
     background-color: #f26925;
   }
-  
+
   h1 {
     font-size: 1.5rem;
     margin-bottom: 3vh;
@@ -22,28 +19,28 @@ div > span {
     background-color: #f26925;
     color: whitesmoke;
   }
-  
+
   /* unvisited link */
   a:link,
   .cancel-button {
     color: red;
   }
-  
+
   /* visited link */
   a:visited {
     color: green;
   }
-  
+
   /* mouse over link */
   a:hover {
     color: hotpink;
   }
-  
+
   /* selected link */
   a:active {
     color: purple;
   }
-  
+
   .resource-icons {
     display:flex;
     flex-direction: row;
@@ -104,4 +101,8 @@ input{
 #cancelBTN:hover {
     color: white;
     background: #FF5141;
+}
+
+#icon-div {
+  text-align: center;
 }

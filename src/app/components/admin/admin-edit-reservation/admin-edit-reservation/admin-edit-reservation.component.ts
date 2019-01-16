@@ -20,6 +20,7 @@ export class AdminEditReservationComponent implements OnInit {
   public user = new User();
   public edit: boolean;
   public updated: boolean;
+  resources: Resource[];
   time1 = '';
   time2 = '';
   date = '';
@@ -31,6 +32,12 @@ export class AdminEditReservationComponent implements OnInit {
 
   ngOnInit() {
     this.reservationIdBehaviorSetService.currentMessage.subscribe((message) => this.setReservationId(message));
+    this.getAllResources();
+  }
+
+  getAllResources() {
+    this.resourceService.getAllResources().subscribe(
+      (resources) => this.resources = resources);
   }
 
   setReservationId(reservationId: number) {
@@ -64,6 +71,8 @@ export class AdminEditReservationComponent implements OnInit {
     /** set the new reservation time to date plus hour */
     this.reservation.startTime = this.date + 'T' + this.time1 + ':00';
     this.reservation.endTime = this.date + 'T' + this.time2 + ':00';
+    this.reservation.resourceId = this.resource.id;
+    console.log('NEW ID --> ResourceID: ' + this.resource.id);
 
     /** send the reservation object to the server so it can update that entry from the database */
     this.reservationService.updateReservation(this.reservation).subscribe(

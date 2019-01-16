@@ -71,4 +71,10 @@ export class ResourceService {
     console.log('Resource URL: ' + URL);
     return this.httpClient.get<Resource>(URL);
  }
+
+ getAllResources() {
+  const URL = `${this.apiUrl}resources`;
+  console.log('Resource URL: ' + URL);
+  return this.httpClient.get<Resource[]>(URL);
+ }
 }
