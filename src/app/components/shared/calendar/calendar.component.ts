@@ -25,6 +25,20 @@ const colors: any = {
   },
 };
 
+/**
+ * Angular Calendar
+ * 
+ * Currently implemented calendar for admins only
+ * Admins open to calendar and can click events to edit them
+ * Events are pulled from backend database
+ * 
+ * Refer to the following url for details about angular-calendar
+ * https://www.npmjs.com/package/angular-calendar
+ * 
+ * @author: Tim Ascencio
+ * email: ascenciot123@gmail.com
+ * batch: 1811-java-nick
+ */
 @Component({
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,6 +61,12 @@ export class CalendarComponent implements OnInit {
     event: CalendarEvent;
   };
 
+  /*
+   * pencil and edit icon for events on calendar
+   * feature can be seen on angular-calendar npm demo
+   * not currently implemented into project
+   * could be useful for user friendly design when choosing to edit events 
+   */
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -97,6 +117,11 @@ export class CalendarComponent implements OnInit {
     this.refresh.next();
   }
 
+  /*
+   * Click on event and pass id to get reservation
+   * Pass reservation and route to editReservation
+   * Allows editReservation to know about the reservation we want to edit
+   */
   handleEvent(action: string, event: CalendarEvent): void {
     let id: number;
     if (typeof event.id === 'string') {
@@ -125,6 +150,10 @@ export class CalendarComponent implements OnInit {
     this.refresh.next();
   }
 
+  /*
+   * When calendar opens up, get all reservations
+   * run conversion for reservation to event
+   */
   ngOnInit() {
 
     this.reservationService.getAllReservations().subscribe(
@@ -133,6 +162,10 @@ export class CalendarComponent implements OnInit {
         );
   }
 
+  /*
+   * set event values to reservation values
+   * necessary to populate events on calendar
+   */
   convertReservationsToCalendarEvent() {
     console.log('converting reservations to events');
     this.reservations.forEach((reservation) => {
