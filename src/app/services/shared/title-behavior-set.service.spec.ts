@@ -3,10 +3,25 @@ import { TestBed } from '@angular/core/testing';
 import { TitleBehaviorSetService } from './title-behavior-set.service';
 
 describe('TitleBehaviorSetService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let titleBehaviorService: TitleBehaviorSetService;
+  beforeEach(() => {
+    titleBehaviorService = new TitleBehaviorSetService();
+  });
 
   it('should be created', () => {
-    const service: TitleBehaviorSetService = TestBed.get(TitleBehaviorSetService);
-    expect(service).toBeTruthy();
+    expect(titleBehaviorService).toBeTruthy();
+  });
+  it('should receive the default message', (done: DoneFn) =>{
+    titleBehaviorService.currentMessage.subscribe((message) => {
+      expect(message).toBe('default message');
+      done();
+    });
+  });
+  it('should receive new message', (done: DoneFn) => {
+    titleBehaviorService.changeMessage('new message');
+    titleBehaviorService.currentMessage.subscribe((message) => {
+      expect(message).toBe('new message');
+      done();
+    });
   });
 });
