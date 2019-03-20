@@ -4,35 +4,105 @@ import { ReservationService } from './reservation.service';
 import { UserService } from '../user/user.service';
 import { User } from 'src/app/models/user';
 import { Reservation } from 'src/app/models/reservation';
+import { Observable } from 'rxjs';
 
 describe('ReservationService', () => {
-  let service: ReservationService;
+  let httpClientSpy: {get: jasmine.Spy, post: jasmine.Spy};
+  let routerSpy: {navigate: jasmine.Spy};
+  let reservationService: ReservationService;
   let userService: UserService;
-  let user: User;
-
-  beforeEach(() => TestBed.configureTestingModule({
-    providers: [
-      UserService,
-    ],
-  }));
 
   beforeEach(() => {
-    service = TestBed.get(ReservationService);
-    userService = TestBed.get(UserService);
-    user = new User();
-    user.id = 'test-id';
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
+    // Not using the Router so its undefined.
+    userService = new UserService(<any> httpClientSpy, <any> routerSpy)
+    reservationService = new ReservationService(<any> httpClientSpy, <any> userService);
+
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(reservationService).toBeTruthy();
   });
 
-  describe('createNewReservation', () => {
-    it('should set reservations ID', () => {
-      userService.currentUser = user;
-      const reservation = new Reservation();
-      service.createNewReservation(reservation);
-      expect(reservation.userId).toEqual(userService.currentUser.id);
+  describe('pushNewCurrentReservation', () => {
+    it('should push a reservation on currentReservation', (done: DoneFn) => {
+      const dummyReservation: Reservation = new Reservation();
+      reservationService.$currentReservation.subscribe(reservation => {
+        expect(reservation).toBe(dummyReservation);
+        done();
+      });
+      reservationService.pushNewCurrentReservation(dummyReservation);
+      expect(reservationService.currentReservation).toBe(dummyReservation);
+    });
+    it('should push an undefined reservation to currentReservation', (done: DoneFn) => {
+      const testSub = reservationService.$currentReservation.subscribe((u) => {
+        expect(u).toBeFalsy();
+        testSub.unsubscribe();
+        done();
+      });
+      reservationService.pushNewCurrentReservation(undefined);
+      expect(reservationService.currentReservation).toBeFalsy();
+    });
+  });
+  describe('pushNewUserReservation', () => {
+    it('should reservation to userReservation', (done: DoneFn) =>{
+      const dummyReservation: Reservation[] = [new Reservation()];
+      reservationService.$userReservations.subscribe(reservationList => {
+        expect(reservationList).toBe(dummyReservation);
+        done();
+      });
+      reservationService.pushNewUserReservations(dummyReservation);
+      expect(reservationService.userReservations).toBe(dummyReservation);
+    });
+    it('should push an undefined reservation to userReservation', (done:DoneFn) =>{
+      const testSub = reservationService.$userReservations.subscribe((u) =>{
+        expect(u).toBeFalsy();
+        testSub.unsubscribe();
+        done();
+      });
+      reservationService.pushNewUserReservations(undefined);
+      expect(reservationService.userReservations).toBeFalsy();
+    });
+  });
+  describe('createNewReservation', () =>{
+    it('should send a post request with a reservation object', () => {
+      const dummyReservation: Reservation = new Reservation();
+      const dummyUser: User = new User();
+      userService.currentUser = dummyUser;
+
+      httpClientSpy.post.and.returnValue(new Observable<Reservation>());
+      reservationService.createNewReservation(dummyReservation).subscribe();
+      expect(httpClientSpy.post.calls.count()).toBe(1);
+    });
+  });
+  describe('getUserReservations', () => {
+    it('should send a get request and get a list of reservation', () =>{
+      httpClientSpy.get.and.returnValue(new Observable<Reservation[]>());
+      reservationService.getUserReservations().subscribe();
+      expect(httpClientSpy.get.calls.count()).toBe(1);
+    });
+  });
+  describe('getAllReservations', () =>{
+    it('should send a get request and get all reservations', () =>{
+      httpClientSpy.get.and.returnValue(new Observable<Reservation[]>());
+      reservationService.getAllReservations().subscribe();
+      expect(httpClientSpy.get.calls.count()).toBe(1);
+    });
+  });
+  describe('getReservationById', () => {
+    it('should send a get request and pass an Id', () => {
+      const targetId = 1;
+      httpClientSpy.get.and.returnValue(new Observable<Reservation>());
+      reservationService.getReservationById(targetId).subscribe();
+      expect(httpClientSpy.get.calls.count()).toBe(1);
+    });
+  });
+  describe('cancelReservation', () => {
+    it('should make a post call to cancel a reservation by id', () => {
+      const targetId = 1;
+      httpClientSpy.post.and.returnValue(new Observable());
+      reservationService.cancelReservations(targetId).subscribe();
+      expect(httpClientSpy.post.calls.count()).toBe(1);
     });
   });
 });
