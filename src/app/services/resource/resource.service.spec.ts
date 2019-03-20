@@ -34,25 +34,24 @@ describe('ResourceService', () => {
       });
       resourceService.pushNewCurrentResourceList(dummyResource);
       expect(resourceService.currentResourceList).toBe(dummyResource)
-    })
-    
+    });
     it('Should push a false array to the current resource list unsuccessfully', (done: DoneFn) => {
       const testSub = resourceService.$currentResourceList.subscribe((u) => {
         expect(u).toBeFalsy();
         testSub.unsubscribe();
         done();
-      })
+      });
       resourceService.pushNewCurrentResourceList(undefined);
       expect(resourceService.currentResourceList).toBeFalsy();
-    })
-  })
+    });
+  });
 
   describe('getCampuses', () => {
     it('Should send a get request and return an observable', () => {
       httpClientSpy.get.and.returnValue(new Observable<any>());
       resourceService.getCampuses().subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
-    })
+    });
   });
 
   describe('getResourceById', () => {
@@ -61,8 +60,8 @@ describe('ResourceService', () => {
       httpClientSpy.get.and.returnValue(new Observable<Resource>());
       resourceService.getResourceById(targetId).subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
-    })
-  })
+    });
+  });
 
   describe('getAvailableResources', () => {
     it('Should send a get request with the searchDTO', () => {
