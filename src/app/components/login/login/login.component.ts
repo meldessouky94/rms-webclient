@@ -19,7 +19,13 @@ export class LoginComponent implements OnInit {
 &client_id=${environment.slackClientId}\
 &redirect_uri=${environment.appUrl}loading`;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService) {}
+
+  ngOnInit() {
+    this.authConfirmation()
+  }
+
+  authConfirmation() {
     // If already logged in, send to associate home.
     this.userService.$currentUser.subscribe( (user) => {
       if (this.userService.currentUser) {
@@ -29,10 +35,6 @@ export class LoginComponent implements OnInit {
     if (this.userService.currentUser) {
       this.router.navigate(['home']);
     }
-
-  }
-
-  ngOnInit() {
   }
 
 }
