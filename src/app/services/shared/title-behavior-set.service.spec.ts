@@ -1,9 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
 import { TitleBehaviorSetService } from './title-behavior-set.service';
+import { Subscription } from 'rxjs';
 
 describe('TitleBehaviorSetService', () => {
   let titleBehaviorService: TitleBehaviorSetService;
+  let testSub: Subscription;
+
   beforeEach(() => {
     titleBehaviorService = new TitleBehaviorSetService();
   });
@@ -11,17 +14,23 @@ describe('TitleBehaviorSetService', () => {
   it('should be created', () => {
     expect(titleBehaviorService).toBeTruthy();
   });
+
   it('should receive the default message', (done: DoneFn) =>{
-    titleBehaviorService.currentMessage.subscribe((message) => {
+    testSub = titleBehaviorService.currentMessage.subscribe((message) => {
       expect(message).toBe('default message');
       done();
     });
   });
+
   it('should receive new message', (done: DoneFn) => {
     titleBehaviorService.changeMessage('new message');
-    titleBehaviorService.currentMessage.subscribe((message) => {
+    testSub = titleBehaviorService.currentMessage.subscribe((message) => {
       expect(message).toBe('new message');
       done();
     });
+  });
+
+  afterEach(() => {
+    if (testSub) testSub.unsubscribe();
   });
 });

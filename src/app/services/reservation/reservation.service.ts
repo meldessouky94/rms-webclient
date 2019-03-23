@@ -107,7 +107,6 @@ export class ReservationService {
 
   getReservationById(reservationId: number) {
     const URL = `${this.apiUrl}/${reservationId}`;
-    console.log('Reservation URL: ' + URL);
     return this.httpClient.get<Reservation>(URL);
  }
 

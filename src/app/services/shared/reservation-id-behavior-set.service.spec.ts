@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ReservationIdBehaviorSetService } from './reservation-id-behavior-set.service';
+import { Subscription } from 'rxjs';
 
 describe('ReservationIdBehaviorSetService', () => {
   let idbehaviorService: ReservationIdBehaviorSetService;
+  let testSub: Subscription;
 
   beforeEach(() => {
     idbehaviorService = new ReservationIdBehaviorSetService();
@@ -12,17 +14,23 @@ describe('ReservationIdBehaviorSetService', () => {
   it('should be created', () => {
     expect(idbehaviorService).toBeTruthy();
   });
+  
   it('should receive the initial value', (done: DoneFn) => {
-    idbehaviorService.currentMessage.subscribe((value) => {
+    testSub = idbehaviorService.currentMessage.subscribe((value) => {
       expect(value).toBe(-1);
       done();
     });
   });
+  
   it('should receive the next value', (done: DoneFn) => {
     idbehaviorService.changeId(2);
-    idbehaviorService.currentMessage.subscribe((value) => {
+    testSub = idbehaviorService.currentMessage.subscribe((value) => {
       expect(value).toBe(2);
       done();
     });
   });
+
+  afterEach(() => {
+    if (testSub) testSub.unsubscribe();
+  })
 });
