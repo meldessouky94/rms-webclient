@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { environment } from '../../../../environments/environment';
+import { Subscription } from 'rxjs';
 
 /**
  * login component uses the Slack API for authorization purposes
@@ -11,7 +12,7 @@ import { environment } from '../../../../environments/environment';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   slackUrl =
     `https://slack.com/oauth/authorize\
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
 &client_id=${environment.slackClientId}\
 &redirect_uri=${environment.appUrl}loading`;
 
+  currentUserSub: Subscription;
+  
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
@@ -27,14 +30,17 @@ export class LoginComponent implements OnInit {
 
   authConfirmation() {
     // If already logged in, send to associate home.
-    this.userService.$currentUser.subscribe( (user) => {
-      if (this.userService.currentUser) {
-        this.router.navigate(['home']);
-      }
-    });
     if (this.userService.currentUser) {
       this.router.navigate(['home']);
+    } else {
+      this.currentUserSub = this.userService.$currentUser.subscribe( (user) => {
+        if (user) this.router.navigate(['home']);
+      });
     }
+  }
+
+  ngOnDestroy() {
+    if (this.currentUserSub) this.currentUserSub.unsubscribe();
   }
 
 }
