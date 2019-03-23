@@ -1,11 +1,12 @@
 import { ResourceService } from './resource.service';
 import { SearchDto } from 'src/app/models/search-dto';
 import { Resource } from 'src/app/models/resource';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 describe('ResourceService', () => {
   let httpClientSpy: { get: jasmine.Spy }
   let resourceService: ResourceService
+  let testSub: Subscription
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
@@ -19,7 +20,7 @@ describe('ResourceService', () => {
   describe('pushNewCurrentResourceList', () => {
     it('Should push an array of resources to the current resource list', (done: DoneFn) => {
       const dummyResource: Resource[] = [new Resource()];
-      resourceService.$currentResourceList.subscribe(resourceList => {
+      testSub = resourceService.$currentResourceList.subscribe(resourceList => {
         expect(resourceList).toBe(dummyResource);
         done();
       });
@@ -28,9 +29,8 @@ describe('ResourceService', () => {
     });
 
     it('Should push a false array to the current resource list unsuccessfully', (done: DoneFn) => {
-      const testSub = resourceService.$currentResourceList.subscribe((u) => {
+      testSub = resourceService.$currentResourceList.subscribe((u) => {
         expect(u).toBeFalsy();
-        testSub.unsubscribe();
         done();
       });
       resourceService.pushNewCurrentResourceList(undefined);
@@ -41,7 +41,7 @@ describe('ResourceService', () => {
   describe('getCampuses', () => {
     it('Should send a get request and return an observable', () => {
       httpClientSpy.get.and.returnValue(new Observable<any>());
-      resourceService.getCampuses().subscribe();
+      testSub = resourceService.getCampuses().subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
     });
   });
@@ -50,7 +50,7 @@ describe('ResourceService', () => {
     it('#getResourceById should send a get request with the resource id', () => {
       const targetId = 1;
       httpClientSpy.get.and.returnValue(new Observable<Resource>());
-      resourceService.getResourceById(targetId).subscribe();
+      testSub = resourceService.getResourceById(targetId).subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
     });
   });
@@ -66,9 +66,13 @@ describe('ResourceService', () => {
         reminderTime: 30
       };
       httpClientSpy.get.and.returnValue(new Observable<Resource[]>());
-      resourceService.getAvailableResources(dummySearch).subscribe();
+      testSub = resourceService.getAvailableResources(dummySearch).subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
     })
+  })
+
+  afterAll(() => {
+    if (testSub) testSub.unsubscribe();
   })
 });
 
