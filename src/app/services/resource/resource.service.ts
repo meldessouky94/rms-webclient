@@ -68,7 +68,6 @@ export class ResourceService {
 
   getResourceById(resourceId: number) {
     const URL = `${this.apiUrl}resources/${resourceId}`;
-    console.log('Resource URL: ' + URL);
     return this.httpClient.get<Resource>(URL);
- }
+  }
 }

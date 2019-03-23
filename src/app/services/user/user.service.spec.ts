@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { User } from '../../models/user';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 
 /**
  * Testing various methods in the UserService
@@ -14,25 +14,22 @@ describe('UserService', () => {
   let service: UserService;
   let httpMock: {get: jasmine.Spy};
   let routerMock: {navigate: jasmine.Spy};
+  let testSub: Subscription;
+
   beforeEach(() => {
     httpMock = jasmine.createSpyObj('HttpClient', ['get']);
     routerMock =  jasmine.createSpyObj('Router', ['navigate']);
     service = new UserService(<any> httpMock, <any> routerMock);
   });
-
-  /**
-   * Generated Test
-   * Makes sure that the service is initialized by Angular
-   */
+  
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
   describe('nextCurrentUser', () => {
     it('should set the current user if the passed in user is truthy', (done: DoneFn) => {
-      const testSub = service.$currentUser.subscribe((u) => {
+      testSub = service.$currentUser.subscribe((u) => {
         expect(u).toBeTruthy();
-        testSub.unsubscribe();
         done();
       });
       const user: User = new User();
@@ -42,9 +39,8 @@ describe('UserService', () => {
     });
 
     it('should set isAuthenticated to be falsy if user passed in is falsy', (done: DoneFn) => {
-      const testSub = service.$currentUser.subscribe((u) => {
+      testSub = service.$currentUser.subscribe((u) => {
         expect(u).toBeFalsy();
-        testSub.unsubscribe();
         done();
       });
       service.nextCurrentUser(undefined);
@@ -200,8 +196,12 @@ describe('UserService', () => {
     it('should send a get request with the user id', () => {
       const targetId = '1';
       httpMock.get.and.returnValue(new Observable<User>());
-      service.getUserById(targetId).subscribe();
+      testSub = service.getUserById(targetId).subscribe();
       expect(httpMock.get.calls.count()).toBe(1);
     });
+  });
+
+  afterEach(() => {
+    if (testSub) testSub.unsubscribe();
   });
 });
