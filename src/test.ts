@@ -4,24 +4,20 @@ import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
+  platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FlatpickrModule } from 'angularx-flatpickr';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 declare const __karma__: any;
 declare const require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = () => {};
+__karma__.loaded = function () {};
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
@@ -31,10 +27,7 @@ getTestBed().initTestEnvironment(
     FormsModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    HttpClientTestingModule,
-    BrowserAnimationsModule,
-    FlatpickrModule.forRoot().ngModule,
-  ],
+    HttpClientModule],
   platformBrowserDynamicTesting(),
 );
 

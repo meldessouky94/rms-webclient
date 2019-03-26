@@ -1,26 +1,6 @@
 # RmsWebclient
 
-rms-webclient is the Angular front end microservice of the Resource Force application.
-
-The previous iteration implemented Admin functionality, Email services, and Security concepts.
-
-Admin: 
-Login
-Registration
-angular-calendar (calendar module npm)
-Edit Events
-Reservations pulled from rms-resource-service and rms-reservation-service
-Unfortunately tightly coupled due to previous iterations making refactorability difficult.
-
-Email:
-Changes to events automatically send email to reservation user
-Email sends reminders for specified time.
-Login as user and specify "Remind Me" on users new reservations.
-Back end functionality in rms-email-service
-
-Security:
-Foundational concepts for locking endpoints and assigning user roles.
-Implemented in authentication-service.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
 ## Development server
 

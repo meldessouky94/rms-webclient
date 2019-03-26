@@ -1,15 +1,10 @@
+<app-login></app-login>
 
-<div>
-  
-  <h1>Error: You were not Authenticated correctly.</h1>
-
-  <small>Please try to login again.</small>
-
-  <a href="{{slackUrl}}">
-      <img id="slack-login-button" alt="Sign in with Slack" height="40" width="172" 
-      src="https://platform.slack-edge.com/img/sign_in_with_slack.png" 
-      srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, 
-      https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
-      
-  
+<div class="error" *ngIf="loginFailed">
+  <h5>
+    Login failed! 
+  </h5>
+  <p>
+    If you are not a member of the main Revature Slack, please speak with your instructor. 
+  </p>
 </div>

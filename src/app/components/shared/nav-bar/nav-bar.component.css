@@ -17,22 +17,11 @@
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: whitesmoke;
 }
-.nav-link {
-  padding: 10px;
-  font-weight: bold;
-  border: 1px;
-  border-radius: 5px;
-  background-color: rgb(255, 144, 78);
-  color: white;
-}
+
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
 }
 
 .logout:hover {
     cursor: pointer;
-}
-
-.nav-link:hover{
-  background-color: rgb(156, 101, 69);
 }

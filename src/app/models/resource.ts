@@ -1,18 +1,14 @@
-
-import { Building } from './building';
 export class Resource {
     id: number;
-    type: string;
-    building: Building;
-    buildingId: number;
     name: string;
-    disabled: boolean;
-    inactive: boolean;
+    buildingId: number;
+    type: string;
+    enabled: boolean;
     retired: boolean;
     availableStartDate: string;
     reservableAfter: string;
     reservableBefore: string;
-    availableDays: string[];
+    availableDays: Array<string>;
     hasEthernet: boolean;
     hasComputer: boolean;
     numberOfOutlets: number;

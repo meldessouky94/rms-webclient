@@ -1,70 +1,63 @@
 <fieldset>
-  <form>
-    <div class="formItem">
-      <label class="left-label">Campus:*</label>
-      <select (keydown.enter)="timeCheck()" required [(ngModel)]="campusIndex" (change)= "setBuildings()" name="campus" id="campuses" class="form-control form-control-sm formItem">
-        <ng-container *ngFor="let key of campuses; let i = index" [attr.date-index]="i">
-          <option value="{{i}}">{{key.name}}</option>
-        </ng-container>
-      </select>
-    </div>
-    <div class="formItem">
-      <label class="left-label">Building </label>
-      <select (keydown.enter)="timeCheck()" [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
-        <ng-container *ngFor = "let key of campuses[campusIndex]?.buildings; let j = index" [attr.date-index]="j">  
-          <option value="{{j}}">{{key.name}}</option>
-        </ng-container>
-      </select> 
-    </div>
-    <span class="note formItem">*Office hours from 9:00 AM to 5:00 PM</span>
-    <div class="formItem">
-      <div>
-        <label>Date: * &nbsp;</label>
-        <input (keydown.enter)="timeCheck()" required [(ngModel)]="date" type="date" name="date" class="formInput" id="field-color">
+    <form>
+      <div class="formItem">
+        <label>Campus:*</label>
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="campusIndex" (change)= "setBuildings()" name="campus" id="campuses" class="form-control form-control-sm formItem">
+          <ng-container *ngFor="let key of campuses; let i = index" [attr.date-index]="i">
+            <option value="{{i}}">{{key.name}}</option>
+          </ng-container>
+        </select>
       </div>
-    </div>
-    <div class="formItem timeItem">
-      <div>
-        <label for="time1">Start Time:*</label>
-        <br>
-        <input [(ngModel)]="time1" 
-        (keydown.enter)="timeCheck()" 
-        type="time" name="time1" id="field-color">
+      <div class="formItem">
+        <label>Building </label>
+        <select (keydown.enter)="timeCheck()" [(ngModel)]="buildingId" name="building" id="building" class="form-control form-control-sm formItem">
+          <ng-container *ngFor = "let key of campuses[campusIndex]?.buildings; let j = index" [attr.date-index]="j">  
+            <option value="{{j}}">{{key.name}}</option>
+          </ng-container>
+        </select> 
       </div>
-      <div>
-        <label for="time2">End Time:*</label> 
-        <br>
-        <input [(ngModel)]="time2" 
-        (keydown.enter)="timeCheck()" type="time" name="time2" id="field-color">
+      <span class="note">*Office hours from 9:00 AM to 5:00 PM</span>
+      <div class="formItem">
+        <div>
+          <label>Date: * &nbsp;</label>
+          <input (keydown.enter)="timeCheck()" required [(ngModel)]="date" type="date" name="date" class="formInput">
+        </div>
       </div>
+      <div class="formItem timeItem">
+        <div>
+          <label for="time1">Start Time:*</label>
+          <br>
+          <input [(ngModel)]="time1" 
+          (keydown.enter)="timeCheck()" 
+          type="time" name="time1">
+        </div>
+        <div>
+          <label for="time2">End Time:*</label> 
+          <br>
+          <input [(ngModel)]="time2" 
+          (keydown.enter)="timeCheck()" type="time" name="time2">
+        </div>
+      </div>
+      <div class="formItem">
+        <label>Purpose:*</label>
+        <select (keydown.enter)="timeCheck()" required [(ngModel)]="purpose" name="purpose" id="purpose" class="form-control form-control-sm formItem">
+          <option>Panel</option>
+          <option>Interview</option>
+        </select>
+      </div>
+    </form>
+    <div class="error" *ngIf="startTimeError">
+      Start time must be before end time. 
     </div>
-    <div class="formItem">
-      <label class="left-label">Purpose:*</label>
-      <select (keydown.enter)="timeCheck()" required [(ngModel)]="purpose" name="purpose" id="purpose" class="form-control form-control-sm formItem">
-        <option>Panel</option>
-        <option>Interview</option>
-      </select>
+    <div class="error" *ngIf="timeError">
+      Resources can only be reserved during business hours.
     </div>
-    <div class="formItem">
-      <label class="left-label">Remind Me:*</label>
-      <select (keydown.enter)="timeCheck()" required [(ngModel)]="reminderTime" name="reminderTime" id="reminderTime" class="form-control form-control-sm formItem">
-        <option value="1">One Hour Before</option>
-        <option value="24">One Day Before</option>
-      </select>
+    <div class="error" *ngIf="fieldError">
+      Please fill in all required (*) fields.
     </div>
-  </form>
-  <div class="error" *ngIf="startTimeError">
-    Start time must be before end time. 
-  </div>
-  <div class="error" *ngIf="timeError">
-    Resources can only be reserved during business hours.
-  </div>
-  <div class="error" *ngIf="fieldError">
-    Please fill in all required (*) fields.
-  </div>
-  <div id="buttonCon">
-    <button (click)="timeCheck()" id="createBTN" class="btn btn-primary">Search Resources</button>
-    <button type="button" id="cancelBTN" (click)="reset()" class="btn btn-primary">Reset Form</button>
-  </div>
-</fieldset>
-<div class="loading" *ngIf="loading"> ... Loading ...  </div>
+    <div id="buttonCon">
+      <button (click)="timeCheck()" id="createBTN" class="btn btn-primary">Search Resources</button>
+      <button type="button" id="cancelBTN" (click)="reset()" class="btn btn-primary">Reset Form</button>
+    </div>
+  </fieldset>
+  <div class="loading" *ngIf="loading"> ... Loading ...  </div>
