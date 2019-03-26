@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
+import { Subscription } from 'rxjs';
 
 /**
  * quick-res-view component creates a list of reservations
@@ -11,36 +12,12 @@ import { ReservationService } from 'src/app/services/reservation/reservation.ser
 })
 export class QuickResViewComponent implements OnInit, OnDestroy {
   userReservations = [];
+  userResSub: Subscription;
 
   loaded: boolean;
   error; boolean;
 
-  constructor(private reservationService: ReservationService) {
-    /*
-    * Testing implementation
-    *
-    * this.loaded = true;
-    * this.error = false;
-    * this.userReservations = [
-    *   {    id: 2,
-    *     purpose: 'INTERVIEW',
-    *     startTime: '2018-03-04T12:25:23.00',
-    *     endTime:  '2018-03-04T13:25:23.00',
-    *     resource: {name: 'block A'},
-    *     userId: 1245,
-    *     cancelled: false,
-    *     approved: true
-    * } , {    id: 3,
-    *   purpose: 'PANEL',
-    *   startTime: '2018-03-07T12:25:23.00',
-    *   endTime:  '2018-03-07T13:25:23.00',
-    *   resource: {name: 'block 8'},
-    *   userId: 1245,
-    *   cancelled: false,
-    *   approved: true
-    * }];
-    */
-   }
+  constructor(private reservationService: ReservationService) { }
 
   ngOnInit() {
     this.getReservations();
@@ -49,7 +26,7 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
   getReservations() {
     // Hides results while the HTTP request is waiting for a response
     this.loaded = false;
-    this.reservationService.getUserReservations().subscribe( (list) => {
+    this.userResSub = this.reservationService.getUserReservations().subscribe( (list) => {
       // Updates list here and updates list, as /resverations will
       // share the same list.
       this.userReservations = list;
@@ -64,5 +41,6 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.userResSub) this.userResSub.unsubscribe();
   }
 }

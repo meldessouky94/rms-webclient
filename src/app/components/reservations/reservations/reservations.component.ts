@@ -23,12 +23,15 @@ export class ReservationsComponent implements OnInit, OnDestroy {
   meridian = true;
 
   constructor(
-    config: NgbAccordionConfig,
+    private config: NgbAccordionConfig,
     private modalService: NgbModal,
-    private reservationService: ReservationService) {
+    private reservationService: ReservationService
+  ) { }
+
+  loadValues() {
     // customize default values of accordions used by this component tree
-    config.closeOthers = true;
-    config.type = 'warning';
+    this.config.closeOthers = true;
+    this.config.type = 'warning';
 
     this.loaded = true;
     this.error = false;
@@ -56,6 +59,7 @@ export class ReservationsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.loadValues();
   }
 
   ngOnDestroy() {
