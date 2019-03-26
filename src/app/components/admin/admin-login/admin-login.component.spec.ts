@@ -1,9 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AdminLoginComponent } from './admin-login.component';
 import { Subject } from 'rxjs';
 import { Admin } from 'src/app/models/admin';
-import { AdminLoginService } from 'src/app/services/admin/admin-login.service';
 import { IsAdminBehaviorSetService } from 'src/app/services/shared/is-admin-behavior-set.service';
 import { TitleBehaviorSetService } from 'src/app/services/shared/title-behavior-set.service';
 
@@ -14,7 +11,6 @@ import { TitleBehaviorSetService } from 'src/app/services/shared/title-behavior-
  */
 describe('AdminLoginComponent', () => {
     let component: AdminLoginComponent;
-    let fixture: ComponentFixture<AdminLoginComponent>;
 
     // Mock dependencies for the component
     let adminLoginServiceStub: {

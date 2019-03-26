@@ -8,7 +8,7 @@ import {Reservation} from "../../../models/reservation";
 
 /**
  * Quick Reservation View component tests
- * @author: Mohamed Eldessouky, Thiago Mendonca
+ * @author Mohamed Eldessouky and Thiago Mendonca
  */
 describe('QuickResViewComponent', () =>{
 

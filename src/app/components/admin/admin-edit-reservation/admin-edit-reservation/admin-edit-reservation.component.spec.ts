@@ -53,19 +53,11 @@ describe('AdminEditReservationComponent', () => {
         $currentUser: new Subject()
     };
 
-
-    //   beforeEach(async(() => {
-    //     TestBed.configureTestingModule({
-    //       declarations: [ AdminEditReservationComponent ]
-    //     })
-    //     .compileComponents();
-    //   }));
-
-    //   beforeEach(() => {
-    //     fixture = TestBed.createComponent(AdminEditReservationComponent);
-    //     component = fixture.componentInstance;
-    //     fixture.detectChanges();
-    //   });
+    beforeEach(() => {
+      fixture = TestBed.createComponent(AdminEditReservationComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
     it('should create', () => {
         component = new AdminEditReservationComponent(

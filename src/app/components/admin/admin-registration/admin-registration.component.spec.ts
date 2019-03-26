@@ -1,25 +1,18 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AdminRegistrationComponent } from "./admin-registration.component";
 
-// import { AdminRegistrationComponent } from './admin-registration.component';
+describe('AdminRegistrationComponent', () => {
+  let component: AdminRegistrationComponent;
 
-// describe('AdminRegistrationComponent', () => {
-//   let component: AdminRegistrationComponent;
-//   let fixture: ComponentFixture<AdminRegistrationComponent>;
+  let adminRegServiceStub: {};
+  let routerStub: {};
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ AdminRegistrationComponent ],
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    adminRegServiceStub = {};
+    routerStub = {};
+  })
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(AdminRegistrationComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    component = new AdminRegistrationComponent(<any>adminRegServiceStub, <any>routerStub);
+    expect(component).toBeTruthy();
+  });
+});

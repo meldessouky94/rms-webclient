@@ -1,25 +1,19 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AdminVerifiedComponent } from "./admin-verified.component";
+import { Router } from '@angular/router';
 
-// import { AdminVerifiedComponent } from './admin-verified.component';
+describe('AdminVerifiedComponent', () => {
+  let component: AdminVerifiedComponent
 
-// describe('AdminVerifiedComponent', () => {
-//   let component: AdminVerifiedComponent;
-//   let fixture: ComponentFixture<AdminVerifiedComponent>;
+  let routerStub: {navigate: jasmine.Spy};
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ AdminVerifiedComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    routerStub = {
+      navigate: spyOn(Router.prototype, 'navigate')
+    };
+    component = new AdminVerifiedComponent(<any>routerStub);
+  })
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(AdminVerifiedComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

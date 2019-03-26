@@ -19,10 +19,11 @@ export class AdminLoginComponent implements OnInit {
   errorMessage: string;
   justRegistered: boolean;
 
-  constructor(private adminLoginService: AdminLoginService,
-              private isAdminBehaviorSet: IsAdminBehaviorSetService,
-              private titleBehaviorSetService: TitleBehaviorSetService) {
-     }
+  constructor(
+    private adminLoginService: AdminLoginService,
+    private isAdminBehaviorSet: IsAdminBehaviorSetService,
+    private titleBehaviorSetService: TitleBehaviorSetService
+  ) { }
 
   /**
    * When user clicks on submit, sends form data to controller
@@ -48,6 +49,7 @@ export class AdminLoginComponent implements OnInit {
    * Runs login updates
    */
   runLoginEvents() {
+    this.admin.password = undefined;
     this.isAdminBehaviorSet.changeBoolean(true);
     sessionStorage.setItem('admin', JSON.stringify(this.admin));
     this.titleBehaviorSetService.changeMessage('Admin - Resource Force');
