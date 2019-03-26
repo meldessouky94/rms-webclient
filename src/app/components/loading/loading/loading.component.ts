@@ -28,6 +28,8 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   loadValues() {
+    let route = new ActivatedRoute();
+    console.log(route);
     this.paramsSub = this.activatedRoute.queryParams.subscribe( (params) => {
       this.code = params['code'];
     });
