@@ -14,7 +14,7 @@ jobs:
   include:
 
     - stage: test
-      script: 
+      script:
         - export CHROME_BIN=chromium-browser
         - export DISPLAY=:99.0
         - sh -e /etc/init.d/xvfb start
@@ -25,8 +25,15 @@ jobs:
       script: ng build --prod
 
     - stage: quality
-      addons:
-        sonarcloud:
-          oranization: "1809-spark-usf"
+
       script:
-        - sonar-scanner
+        - export CHROME_BIN=chromium-browser
+        - export DISPLAY=:99.0
+        - sh -e /etc/init.d/xvfb start
+        - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+        - ng test --watch=false --code-coverage
+        - tslint --force -t json -o tslint-report.json --project .
+        - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then sonar-scanner -D sonar.login=$SONAR_TOKEN -D sonar.branch.name=$TRAVIS_PULL_REQUEST_BRANCH -D sonar.branch.target=$TRAVIS_BRANCH; fi
+        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner -D sonar.login=$SONAR_TOKEN -D sonar.branch.name=$TRAVIS_BRANCH; fi
+
+

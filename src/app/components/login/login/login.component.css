@@ -2,15 +2,33 @@ div {
     display: flex;
     justify-content: center; 
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 20vh;
 }
 
 h1{
     display: flex;
     justify-content: center; 
+    font-weight: bold;
+    font-size: 3em;
+    margin: 2vh;
+}
+
+small {
+    display: flex;
+    justify-content: center; 
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    margin: 2vh;
 }
 
 a{
     display: flex;
-    justify-content: center;  
+    justify-content: center; 
+    margin: 2vh; 
+}
+
+img{
+    height: 50px;
+    width: 225;
 }

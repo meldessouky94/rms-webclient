@@ -1,42 +1,65 @@
 fieldset{
-    display:flex;
-    flex-direction: column;
-    background: rgb(236, 236, 236);
-    border: rgb(56, 140, 250) solid 2px;
+    background: #FCE1D3;
+    border: #66391f solid 1px;
     border-radius: 5px;
-    padding: 2px;
+}
+
+input{
+    border-radius: 15px;
+    border: #66391f solid 1px;
+    padding-left: 10px;
+    padding: 3px;
+}
+
+select{
+    border-radius: 10px;
+    border: #66391f solid 1px;
+    padding-left: 10px;
+    padding: 3px;
+}
+
+.left-label {
+    width: 20%;
 }
 
 .formItem {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:  rgb(12, 102, 219);
-    padding:0px;
-    margin: 5px;
+    color:  #66391f;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
     display: flex;
     justify-content: space-around;
 }
-.timeItem > div {
-    width:50%;
-    margin: 0 auto;
-    text-align:center;
+
+.form-control {
+    width: 80%;
 }
+
+.timeItem > div {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .timeItem label {
     text-align:center;
 }
-input{
-    border-radius: 15px;
-    border: rgb(56, 140, 250) solid 1px;
-    padding-left: 10px;
-    padding:3px;
-}
-select{
-    border-radius: 10px;
-    border: rgb(119, 173, 245) solid 1px;
-    padding-left: 10px;
-    padding:3px;
-}
-span{
+
+.note {
+    color: #99896C;
     font-size: .75em;
+    text-align: center;
+    width: 100%;
+}
+
+.loading {
+    text-align: center
+}
+
+.error {
+    color:#FF5141;
+    text-align: center;
 }
 
 #buttonCon{
@@ -46,27 +69,27 @@ span{
 }
 
 #createBTN{
-    border: rgb(56, 140, 250) solid 1px;
-    color:rgb(56, 140, 250);
+    border: #99562e solid 1px;
+    color:#99562e;
     background: white;
 }
 
 #createBTN:hover{
     color:white;
-    background:rgb(56, 140, 250);
+    background:#FF904E;
 }
 
 #cancelBTN{
-    border: rgb(248, 43, 43) solid 1px;
-    color:rgb(248, 43, 43);
+    border: #FF5141 solid 1px;
+    color:#FF5141;
     background: white;
 }
 
-.error {
-    color:red;
-    text-align: center;
+#cancelBTN:hover {
+    color: white;
+    background: #FF5141;
 }
 
-.loading {
-    text-align: center
+#field-color {
+    color:#66391f;
 }

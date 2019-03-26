@@ -4,6 +4,7 @@ export class SearchDto {
     endTime: string;
     purpose: string;
     campusId: number;
+    reminderTime: number;
 
     constructor() {}
 }
