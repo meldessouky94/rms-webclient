@@ -89,8 +89,12 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen = false;
 
-  constructor(private modal: NgbModal, private reservationService: ReservationService, private router: Router,
-              private reservationIdBehaviorSetService: ReservationIdBehaviorSetService) {}
+  constructor(
+    private modal: NgbModal, 
+    private reservationService: ReservationService, 
+    private router: Router,
+    private reservationIdBehaviorSetService: ReservationIdBehaviorSetService
+  ) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

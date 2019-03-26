@@ -1,8 +1,4 @@
-import { TestBed } from '@angular/core/testing';
-
 import { UserService } from './user.service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpTestingController } from '@angular/common/http/testing';
 import { User } from '../../models/user';
 import {Observable, Subject, Subscription} from 'rxjs';
 
@@ -12,16 +8,21 @@ import {Observable, Subject, Subscription} from 'rxjs';
  */
 describe('UserService', () => {
   let service: UserService;
+
+  // Declare mocks for the service
   let httpMock: {get: jasmine.Spy};
   let routerMock: {navigate: jasmine.Spy};
   let testSub: Subscription;
 
+  // Initialize mocks with default values
   beforeEach(() => {
     httpMock = jasmine.createSpyObj('HttpClient', ['get']);
     routerMock =  jasmine.createSpyObj('Router', ['navigate']);
     service = new UserService(<any> httpMock, <any> routerMock);
   });
   
+
+  // BEGIN TESTS
   it('should be created', () => {
     expect(service).toBeTruthy();
   });

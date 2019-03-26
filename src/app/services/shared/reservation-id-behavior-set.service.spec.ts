@@ -1,8 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-
 import { ReservationIdBehaviorSetService } from './reservation-id-behavior-set.service';
 import { Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono
+ */
 describe('ReservationIdBehaviorSetService', () => {
   let idbehaviorService: ReservationIdBehaviorSetService;
   let testSub: Subscription;

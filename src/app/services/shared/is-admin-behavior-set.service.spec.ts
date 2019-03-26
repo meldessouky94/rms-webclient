@@ -1,8 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-
 import { IsAdminBehaviorSetService } from './is-admin-behavior-set.service';
 import { Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono
+ */
 describe('IsAdminBehaviorSetService', () => {
   let abehaviorService: IsAdminBehaviorSetService;
   let testSub: Subscription
@@ -16,11 +17,6 @@ describe('IsAdminBehaviorSetService', () => {
   });
 
   it('should receive the next value false', (done: DoneFn) => {
-    // let dummyCurrentMessage: {next: jasmine.Spy} = jasmine.createSpyObj('Subject', [ 'next' ]);
-    // abehaviorService.currentMessage = <any>dummyCurrentMessage;
-    // abehaviorService.changeBoolean(true);
-    // expect(dummyCurrentMessage.next.calls.count()).toBe(1);
-
     testSub = abehaviorService.currentMessage.subscribe((value) => {
       expect(value).toBeFalsy();
       done();

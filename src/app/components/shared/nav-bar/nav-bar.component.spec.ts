@@ -1,25 +1,35 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NavBarComponent } from "./nav-bar.component";
 
-// import { NavBarComponent } from './nav-bar.component';
+/**
+ * NavBarComponent unit tests
+ * -- STATUS: BASE TESTS (IN PROGRESS)
+ * @author Olabode Opapeju
+ */
+describe('NavBarComponent', () => {
+  let component: NavBarComponent;
 
-// describe('NavBarComponent', () => {
-//   let component: NavBarComponent;
-//   let fixture: ComponentFixture<NavBarComponent>;
+  // Declare mocks for the component
+  let userServiceStub: {};
+  let detectorStub: { getCampuses: jasmine.Spy };
+  let routerStub: {};
+  let isAdminStub: {};
+  let pageTitleStub: {};
 
-//   beforeEach((() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ NavBarComponent ],
-//     })
-//     .compileComponents();
-//   }));
+  // Initialize mocks to default values
+  beforeEach(() => {
+    userServiceStub = {};
+    detectorStub = {
+      getCampuses: undefined
+    };
+    routerStub = {}
+    isAdminStub = {}
+    pageTitleStub = {}
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(NavBarComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  // BEGIN TESTS
+  it('should create', () => {
+    component = new NavBarComponent(<any>userServiceStub, <any>detectorStub, <any>routerStub, <any>isAdminStub, <any>pageTitleStub);
+    expect(component).toBeTruthy();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+});

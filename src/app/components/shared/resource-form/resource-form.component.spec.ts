@@ -1,48 +1,31 @@
-// import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ResourceFormComponent } from "./resource-form.component";
 
-// import { ResourceFormComponent } from './resource-form.component';
-// import { HttpClientModule } from '@angular/common/http';
-// import { ResourceService } from 'src/app/services/resource/resource.service';
-// import { ReservationService } from 'src/app/services/reservation/reservation.service';
+/**
+ * ResourceFormComponent unit tests
+ * -- STATUS: BASE TESTS (IN PROGRESS)
+ * @author Olabode Opapeju
+ */
+describe('ResourceFormComponent', () => {
+  let component: ResourceFormComponent;
 
-// describe('ResourceFormComponent', () => {
-//   let component: ResourceFormComponent;
-//   let fixture: ComponentFixture<ResourceFormComponent>;
-//   let resourceTestBedService: ResourceService;
-//   let reservationTestBedService: ReservationService;
+  // Declare mocks for the component
+  let reservationServiceStub: {};
+  let resourceServiceStub: { getCampuses: jasmine.Spy };
+  let routerStub: {};
 
-//   beforeEach((() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ResourceFormComponent],
-//       providers: [ ReservationService,
-//         ResourceService ],
-//       imports: [HttpClientModule],
-//     })
-//       .compileComponents();
-//   }));
+  // Initialize mocks to default values
+  beforeEach(() => {
+    reservationServiceStub = {};
+    resourceServiceStub = {
+      getCampuses: undefined
+    };
+    routerStub = {}
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ResourceFormComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//     resourceTestBedService = TestBed.get(ResourceService);
-//     reservationTestBedService = TestBed.get(ReservationService);
-//   });
+  // BEGIN TESTS
+  it('should create', () => {
+    component = new ResourceFormComponent(<any>reservationServiceStub, <any>resourceServiceStub, <any>routerStub);
+    expect(component).toBeTruthy();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-
-//   it('Resource Service injected and testBed Service are same instance',
-//     inject([ResourceService], (injectedService: ResourceService) => {
-//       expect(injectedService).toBe(resourceTestBedService);
-//     }),
-//   );
-
-//   it('Reservation Service injected and testBed Service are same instance',
-//     inject([ReservationService], (injectedService: ReservationService) => {
-//       expect(injectedService).toBe(reservationTestBedService);
-//     }),
-//   );
-
-// });
+});
