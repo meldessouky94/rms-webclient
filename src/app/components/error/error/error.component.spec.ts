@@ -1,9 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ErrorComponent } from './error.component';
-import { LoginComponent } from '../../login/login/login.component';
-import { User } from 'src/app/models/user';
-import { Subject } from 'rxjs';
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;

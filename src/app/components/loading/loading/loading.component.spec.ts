@@ -1,25 +1,23 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { LoadingComponent } from "./loading.component";
 
-// import { LoadingComponent } from './loading.component';
+describe('LoadingComponent', () => {
+    let component: LoadingComponent;
 
-// describe('LoadingComponent', () => {
-//   let component: LoadingComponent;
-//   let fixture: ComponentFixture<LoadingComponent>;
+    // Declare mock dependencies 
+    let activatedRouterStub: {};
+    let userServiceStub: {};
+    let routerStub: {};
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ LoadingComponent ],
-//     })
-//     .compileComponents();
-//   }));
+    // Initialize mocks
+    beforeEach(() => {
+        activatedRouterStub = {};
+        userServiceStub = {};
+        routerStub = {};
+    });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LoadingComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    // Begin tests
+    it('should create', () =>  {
+        component = new LoadingComponent(<any>activatedRouterStub, <any>userServiceStub, <any>routerStub)
+        expect(component).toBeTruthy();
+    });
+})

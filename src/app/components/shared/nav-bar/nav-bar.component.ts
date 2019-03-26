@@ -21,22 +21,13 @@ export class NavBarComponent implements OnInit, OnDestroy {
   isUserAdmin = false;
   title: string;
 
-  constructor(private userService: UserService,
-              private detector: ChangeDetectorRef,
-              public router: Router,
-              private isAdmin: IsAdminBehaviorSetService,
-              private pageTitle: TitleBehaviorSetService,
-   ) {
-      this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
-
-      this.authenticated = this.userService.isAuthenticated;
-      /* Navbar was not updating consistently, so this is
-       * needed to be sure the links are shown when the user
-       * is authenticated.
-       */
-      this.detector.detectChanges();
-    });
-  }
+  constructor(
+    private userService: UserService,
+    private detector: ChangeDetectorRef,
+    public router: Router,
+    private isAdmin: IsAdminBehaviorSetService,
+    private pageTitle: TitleBehaviorSetService,
+   ) { }
 
   /**
    * Logout the user
@@ -59,7 +50,20 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.isAdmin.currentMessage.subscribe((message) => this.isUserAdmin = message);
     this.pageTitle.currentMessage.subscribe((message) => this.title = message);
     this.title = 'Resource Force';
+    this.listenForUserChanges();
 
+  }
+
+  listenForUserChanges() {
+    this.userSubscription = this.userService.$currentUser.subscribe( (user) => {
+
+      this.authenticated = this.userService.isAuthenticated;
+      /* Navbar was not updating consistently, so this is
+       * needed to be sure the links are shown when the user
+       * is authenticated.
+       */
+      this.detector.detectChanges();
+    });
   }
 
   /**

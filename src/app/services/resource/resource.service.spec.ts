@@ -3,6 +3,9 @@ import { SearchDto } from 'src/app/models/search-dto';
 import { Resource } from 'src/app/models/resource';
 import { Observable, Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono
+ */
 describe('ResourceService', () => {
   let httpClientSpy: { get: jasmine.Spy }
   let resourceService: ResourceService

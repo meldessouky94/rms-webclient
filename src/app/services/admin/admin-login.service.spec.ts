@@ -2,6 +2,9 @@ import { AdminLoginService } from './admin-login.service';
 import { Admin } from 'src/app/models/admin';
 import { Observable, Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono and Tyler Williams
+ */
 describe('AdminLoginService', () => {
   let adminLoginService: AdminLoginService;
   let httpClientSpy: {post: jasmine.Spy};

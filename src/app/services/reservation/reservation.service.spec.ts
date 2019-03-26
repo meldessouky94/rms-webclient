@@ -4,6 +4,9 @@ import { User } from 'src/app/models/user';
 import { Reservation } from 'src/app/models/reservation';
 import { Observable, Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono
+ */
 describe('ReservationService', () => {
   let httpClientSpy: {get: jasmine.Spy, post: jasmine.Spy};
   let routerSpy: {navigate: jasmine.Spy};

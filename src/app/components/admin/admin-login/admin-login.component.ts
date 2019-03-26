@@ -19,10 +19,11 @@ export class AdminLoginComponent implements OnInit {
   errorMessage: string;
   justRegistered: boolean;
 
-  constructor(private adminLoginService: AdminLoginService,
-              private isAdminBehaviorSet: IsAdminBehaviorSetService,
-              private titleBehaviorSetService: TitleBehaviorSetService) {
-     }
+  constructor(
+    private adminLoginService: AdminLoginService,
+    private isAdminBehaviorSet: IsAdminBehaviorSetService,
+    private titleBehaviorSetService: TitleBehaviorSetService
+  ) { }
 
   /**
    * When user clicks on submit, sends form data to controller
@@ -35,24 +36,20 @@ export class AdminLoginComponent implements OnInit {
     this.admin.password = this.password;
 
     this.adminLoginService.validateUser(this.admin).subscribe(
-      (data) => this.setAdmin(data));
+      (data) => {
+        this.admin = data;
+        this.runLoginEvents();
+      }, (err) => {
+        this.errorMessage = 'Invalid Login';
+      });
 
-  }
-
-  setAdmin(data: Admin) {
-    this.admin = data;
-
-    if (this.admin) {
-      this.runLoginEvents();
-    } else {
-      this.errorMessage = 'Invalid Login';
-    }
   }
 
   /**
    * Runs login updates
    */
   runLoginEvents() {
+    this.admin.password = undefined;
     this.isAdminBehaviorSet.changeBoolean(true);
     sessionStorage.setItem('admin', JSON.stringify(this.admin));
     this.titleBehaviorSetService.changeMessage('Admin - Resource Force');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/models/admin';
 import { AdminRegistrationService } from '../../../services/admin/admin-registration.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 /**
@@ -38,14 +38,13 @@ export class AdminRegistrationComponent {
       this.admin.username = this.username;
       this.admin.password = this.password1;
 
-      this.adminRegistrationServce.registerAdmin(this.admin).subscribe(successful => {
-        if (successful) {
-          sessionStorage.setItem('justRegistered', 'yes');
-          this.router.navigate(['/adminLogin']);
-        } else {
-          this.validationMessage = 'An account has already been made for the email you entered';
-        }
-      });
+      this.adminRegistrationServce.registerAdmin(this.admin).subscribe((successful) => {
+        sessionStorage.setItem('justRegistered', 'yes');
+        this.router.navigate(['/adminLogin']);
+      }, (err) => {
+        this.validationMessage = 'An account has already been made for the email you entered';
+      }
+      );
     }
   }
 

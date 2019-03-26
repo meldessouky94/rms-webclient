@@ -1,33 +1,27 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { CalendarComponent } from './calendar.component';
-// import { CalendarAngularDateFormatter, CalendarDateFormatter, CalendarModule, DateAdapter } from 'angular-calendar';
-// import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from "./calendar.component";
 
-// describe('CalendarComponent', () => {
-//   let component: CalendarComponent;
-//   let fixture: ComponentFixture<CalendarComponent>;
+/**
+ * @author Olabode Opapeju
+ */
+describe('CalendarComponent', () => {
+  let component: CalendarComponent;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ CalendarComponent ],
-//       imports: [
-//         CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
-//       ],
-//       providers: [ {
-//         provide: CalendarDateFormatter,
-//         useClass: CalendarAngularDateFormatter,
-//       }],
-//     })
-//     .compileComponents();
-//   }));
+  // Declare mocks
+  let modalStub: {};
+  let reservationServiceStub: {};
+  let routerStub: {};
+  let resIdBehaviourStub: {};
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(CalendarComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  // Initialize mocks
+  beforeEach(() => {
+    modalStub = {};
+    reservationServiceStub = {};
+    routerStub = {};
+    resIdBehaviourStub = {};
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    component = new CalendarComponent(<any>modalStub, <any>reservationServiceStub, <any>routerStub, <any>resIdBehaviourStub);
+    expect(component).toBeTruthy();
+  });
+});

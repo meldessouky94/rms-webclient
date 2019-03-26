@@ -1,30 +1,22 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReservationsComponent } from "./reservations.component";
 
-// import { ReservationsComponent } from './reservations.component';
-// import { HttpClientTestingModule } from '@angular/common/http/testing';
+describe('ReservationsComponent', () => {
+    let component: ReservationsComponent;
 
-// describe('ReservationsComponent', async () => {
-//   let component: ReservationsComponent;
-//   let fixture: ComponentFixture<ReservationsComponent>;
+    // Declare mocks
+    let ngbAccordionConfigStub: {};
+    let modalServiceStub: {};
+    let reservationServiceStub: {};
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ReservationsComponent ],
-//       imports: [
-//         HttpClientTestingModule,
-//       ],
-//     })
-//     .compileComponents();
-//   }));
+    // Initialize mocks
+    beforeEach(() => {
+        ngbAccordionConfigStub = {};
+        modalServiceStub = {};
+        reservationServiceStub = {};
+    });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ReservationsComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', async () => {
-//     expect(component).toBeTruthy();
-//   });
-
-// });
+    it('should create', () => {
+        component = new ReservationsComponent(<any>ngbAccordionConfigStub, <any>modalServiceStub, <any>reservationServiceStub);
+        expect(component).toBeTruthy();
+    });
+});

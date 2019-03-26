@@ -10,12 +10,19 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
 
   // Mock dependencies for the component
-  let userServiceStub: {currentUser: User, $currentUser: Subject<User>} = {
-    currentUser: undefined,
-    $currentUser: new Subject()
-  };
-  let routerStub: {navigate: jasmine.Spy} = jasmine.createSpyObj('Router', ['navigate']);
+  let userServiceStub: {currentUser: User, $currentUser: Subject<User>};
+  let routerStub: {navigate: jasmine.Spy};
 
+  // Initialize stubs to default values
+  beforeEach(() => {
+    userServiceStub = {
+      currentUser: undefined,
+      $currentUser: new Subject()
+    };
+    routerStub = jasmine.createSpyObj('Router', ['navigate']);
+  });
+
+  // BEGIN TESTS
   it('should create', () => {
     component = new LoginComponent(<any>routerStub, <any>userServiceStub);
     expect(component).toBeTruthy()
@@ -55,13 +62,5 @@ describe('LoginComponent', () => {
       expect(routerStub.navigate).toHaveBeenCalled();
     });
   });
-
-  afterEach(() => {
-    userServiceStub = {
-      currentUser: undefined,
-      $currentUser: new Subject()
-    };
-    routerStub = jasmine.createSpyObj('Router', ['navigate']);
-  })
 
 });

@@ -1,8 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-
 import { TitleBehaviorSetService } from './title-behavior-set.service';
 import { Subscription } from 'rxjs';
 
+/**
+ * @author Jose Meono
+ */
 describe('TitleBehaviorSetService', () => {
   let titleBehaviorService: TitleBehaviorSetService;
   let testSub: Subscription;

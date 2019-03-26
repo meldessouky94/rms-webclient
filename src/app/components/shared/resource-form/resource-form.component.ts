@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { SearchDto } from 'src/app/models/search-dto';
 import { Reservation } from 'src/app/models/reservation';
 import { ResourceService } from 'src/app/services/resource/resource.service';
 import { Router } from '@angular/router';
 import { Resource } from 'src/app/models/resource';
+import { Subscription } from 'rxjs';
 
 /**
  * resource-form component displays the form used for making reservations
@@ -14,7 +15,7 @@ import { Resource } from 'src/app/models/resource';
   templateUrl: './resource-form.component.html',
   styleUrls: ['./resource-form.component.css'],
 })
-export class ResourceFormComponent implements OnInit {
+export class ResourceFormComponent implements OnInit, OnDestroy {
   // Form information
   campuses: any[] = [];
   campusIndex = 0;
@@ -25,6 +26,7 @@ export class ResourceFormComponent implements OnInit {
   time2 = '';
   formInput = new SearchDto();
   reminderTime = 1;
+  getCampusesSub: Subscription
 
   // Fields for error handling in the template.
   loading = false;
@@ -32,8 +34,11 @@ export class ResourceFormComponent implements OnInit {
   timeError = false;
   fieldError = false;
 
-  constructor(private reservationService: ReservationService,
-              private resourceService: ResourceService, private router: Router) { }
+  constructor(
+    private reservationService: ReservationService,
+    private resourceService: ResourceService, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.resourceService.getCampuses().subscribe( (data) => {
@@ -131,6 +136,10 @@ export class ResourceFormComponent implements OnInit {
         alert('A server error has occured! Please try again later.');
       });
     }
+  }
+
+  ngOnDestroy() {
+    if (this.getCampusesSub) this.getCampusesSub.unsubscribe()
   }
 
 }
