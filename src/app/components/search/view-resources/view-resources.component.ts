@@ -18,13 +18,15 @@ import { ConfirmCreateComponent } from '../confirm-create/confirm-create.compone
 })
 export class ViewResourcesComponent implements OnInit, OnDestroy {
 
-reservationInfo: Reservation;
-resources: Resource[];
+  reservationInfo: Reservation;
+  resources: Resource[];
+  resourceSubscription: Subscription;
 
-resourceSubscription: Subscription;
-  constructor(public reservationService: ReservationService,
-              private modalService: NgbModal,
-              public resourceService: ResourceService) {}
+  constructor(
+    public reservationService: ReservationService,
+    private modalService: NgbModal,
+    public resourceService: ResourceService
+  ) { }
 
   /**
    * Function that will open a modal with Reservation info and will appear updated
@@ -34,17 +36,17 @@ resourceSubscription: Subscription;
   open(selectedResource: any) {
     const reservation = this.reservationService.currentReservation;
     reservation.resource = selectedResource;
-    const modalRef = this.modalService.open(ConfirmCreateComponent, {centered: true});
+    const modalRef = this.modalService.open(ConfirmCreateComponent, { centered: true });
     modalRef.componentInstance.reservation = reservation;
   }
 
   ngOnInit() {
-    this.resourceSubscription = this.resourceService.$currentResourceList.subscribe((resources) => {
-        this.resources = resources;
-      },
-    );
     if (this.resourceService.currentResourceList) {
       this.resources = this.resourceService.currentResourceList;
+    } else {
+      this.resourceSubscription = this.resourceService.$currentResourceList.subscribe((resources) => {
+        this.resources = resources;
+      });
     }
   }
 
@@ -52,7 +54,7 @@ resourceSubscription: Subscription;
    * When the user navigates away from the page, destroy the entire list of resources.
    */
   ngOnDestroy() {
-    this.resourceSubscription.unsubscribe();
+    if (this.resourceService) this.resourceSubscription.unsubscribe();
     this.resourceService.pushNewCurrentResourceList(null);
-    }
   }
+}
