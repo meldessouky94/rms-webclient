@@ -127,7 +127,8 @@ describe('AdminLoginComponent', () => {
                 <any>isAdminBehaviorSetServiceStub,
                 <any>titleBehaviorSetServiceStub
             );
-
+            
+            component.admin = new Admin();
             component.runLoginEvents();
             expect(isAdminBehaviorSetServiceStub.changeBoolean).toHaveBeenCalled();
         });
@@ -143,7 +144,6 @@ describe('AdminLoginComponent', () => {
                 
                 component.admin = new Admin();
                 component.runLoginEvents();
-
                 expect(setItem).toHaveBeenCalledWith('admin', JSON.stringify(component.admin));
             })
 
@@ -154,6 +154,7 @@ describe('AdminLoginComponent', () => {
                 <any>titleBehaviorSetServiceStub
             );
 
+            component.admin = new Admin();
             component.runLoginEvents();
             expect(titleBehaviorSetServiceStub.changeMessage).toHaveBeenCalled();
         });
