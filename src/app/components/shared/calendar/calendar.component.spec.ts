@@ -12,7 +12,7 @@ describe('CalendarComponent', () => {
   let routerStub: {};
   let resIdBehaviourStub: {};
 
-  //Initialize mocks
+  // Initialize mocks
   beforeEach(() => {
     modalStub = {};
     reservationServiceStub = {};
