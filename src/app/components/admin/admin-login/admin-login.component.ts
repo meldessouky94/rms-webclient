@@ -35,18 +35,13 @@ export class AdminLoginComponent implements OnInit {
     this.admin.password = this.password;
 
     this.adminLoginService.validateUser(this.admin).subscribe(
-      (data) => this.setAdmin(data));
+      (data) => {
+        this.admin = data;
+        this.runLoginEvents();
+      }, (err) => {
+        this.errorMessage = 'Invalid Login';
+      });
 
-  }
-
-  setAdmin(data: Admin) {
-    this.admin = data;
-
-    if (this.admin) {
-      this.runLoginEvents();
-    } else {
-      this.errorMessage = 'Invalid Login';
-    }
   }
 
   /**

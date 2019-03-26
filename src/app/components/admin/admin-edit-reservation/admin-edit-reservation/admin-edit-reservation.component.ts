@@ -44,7 +44,7 @@ export class AdminEditReservationComponent implements OnInit {
 
   }
   findResourceById(resourceId: number) {
-    console.log('Insdie findResourceById ->  Name: ' + resourceId);
+    console.log('Inside findResourceById ->  Name: ' + resourceId);
     this.resourceService.getResourceById(resourceId).subscribe(
      (resource) => this.resource = resource[0]);
   }
