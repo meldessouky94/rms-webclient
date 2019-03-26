@@ -13,9 +13,9 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./admin-edit-reservation.component.css'],
 })
 export class AdminEditReservationComponent implements OnInit {
-  private reservation = new Reservation();
-  private resource = new Resource();
-  private user = new User();
+  reservation = new Reservation();
+  resource = new Resource();
+  user = new User();
 
   constructor(
     private reservationIdBehaviorSetService: ReservationIdBehaviorSetService,
@@ -36,7 +36,7 @@ export class AdminEditReservationComponent implements OnInit {
     });
   }
   findResourceById(resourceId: number) {
-    this.resourceService.getResourceById(resourceId).subscribe((resource) => this.resource = resource[0]);
+    this.resourceService.getResourceById(resourceId).subscribe((resource) => this.resource = resource);
   }
   findUserById(userId: string) {
     this.userService.getUserById(userId).subscribe((user) => this.user = user);
