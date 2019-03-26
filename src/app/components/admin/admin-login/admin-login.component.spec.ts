@@ -95,10 +95,11 @@ describe('AdminLoginComponent', () => {
 
                 let runLogin = spyOn(AdminLoginComponent.prototype, 'runLoginEvents');
                 let fakeSubject = new Subject<Admin>(); // makes container to put admin "reponse" in
+                let fakeAdmin = new Admin();
 
                 adminLoginServiceStub.validateUser.and.returnValue(fakeSubject);
                 component.onSubmitClick();
-                fakeSubject.next(component.admin); // fills fakeSubject container with component.admin
+                fakeSubject.next(fakeAdmin); // fills fakeSubject container with component.admin
                 expect(runLogin).toHaveBeenCalled();
             });
 
