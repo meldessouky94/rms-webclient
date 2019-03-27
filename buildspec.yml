@@ -41,7 +41,6 @@ phases:
         - aws s3 cp dist s3://${S3_BUCKET}/${APP_NAME} --recursive
         - echo Build completed on `date`
 
-
 artifacts:
     files:
         - '**/*'

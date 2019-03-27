@@ -5,15 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/',
-  appUrl: 'http://localhost:4200/',
-  serviceContext: {
-    resource: 'resources',
-    reservation: 'reservations',
-    adminLogin: 'admin-login',
-    adminRegistration: 'admin-registration',
-  },
-  slackClientId: '512693710501.585358262502',
+  appUrl: 'http://localhost:4200/'
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
