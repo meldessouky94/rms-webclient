@@ -53,7 +53,13 @@ describe('LoadingComponent', () => {
 
     it('should unsubscribe from userSub and' +
     ' paramsSub when destroyed', () => {
-        
+        let dummyUserSub = new Subject();
+        let dummyParamSub = new Subject();
+        component.paramsSub = dummyParamSub.subscribe();
+        component.userSubscription = dummyUserSub.subscribe();
+        component.ngOnDestroy();
+        expect(component.paramsSub.closed).toBeTruthy();
+        expect(component.userSubscription.closed).toBeTruthy();
     });
 
     describe('loadValues', () => {
