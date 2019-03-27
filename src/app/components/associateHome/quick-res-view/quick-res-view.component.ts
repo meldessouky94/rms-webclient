@@ -15,7 +15,7 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
   userResSub: Subscription;
 
   loaded: boolean;
-  error; boolean;
+  error: boolean;
 
   constructor(private reservationService: ReservationService) { }
 
@@ -41,6 +41,8 @@ export class QuickResViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.userResSub) this.userResSub.unsubscribe();
+    if (this.userResSub) {
+      this.userResSub.unsubscribe();
+    }
   }
 }

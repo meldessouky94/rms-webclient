@@ -54,7 +54,9 @@ export class ViewResourcesComponent implements OnInit, OnDestroy {
    * When the user navigates away from the page, destroy the entire list of resources.
    */
   ngOnDestroy() {
-    if (this.resourceService) this.resourceSubscription.unsubscribe();
+    if (this.resourceService) {
+      this.resourceSubscription.unsubscribe();
+    }
     this.resourceService.pushNewCurrentResourceList(null);
   }
 }

@@ -16,9 +16,10 @@ export class ErrorComponent implements OnInit {
   slackUrl = `https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team&client_id=${environment.slackClientId}`;
 
   loginFailed: boolean;
+  
   constructor(private userService: UserService) {
     this.loginFailed = userService.loginFailed;
-   }
+  }
 
   ngOnInit() {
   }

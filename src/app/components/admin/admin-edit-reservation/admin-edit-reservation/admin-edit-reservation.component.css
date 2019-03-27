@@ -1,4 +1,4 @@
-fieldset{
+.fake-fieldset{
     display:flex;
     flex-direction: column;
     background: #FCE1D3;

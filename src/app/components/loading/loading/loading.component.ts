@@ -39,8 +39,12 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.userSubscription) this.userSubscription.unsubscribe();
-    if (this.paramsSub) this.paramsSub.unsubscribe();
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
+    if (this.paramsSub) {
+      this.paramsSub.unsubscribe();
+    }
   }
 
 }

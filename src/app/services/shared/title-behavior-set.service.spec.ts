@@ -32,6 +32,8 @@ describe('TitleBehaviorSetService', () => {
   });
 
   afterEach(() => {
-    if (testSub) testSub.unsubscribe();
+    if (testSub) {
+      testSub.unsubscribe();
+    }
   });
 });

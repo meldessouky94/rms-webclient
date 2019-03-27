@@ -1,4 +1,4 @@
-fieldset{
+.fake-fieldset{
     background: #FCE1D3;
     border: #66391f solid 1px;
     border-radius: 5px;
@@ -7,14 +7,12 @@ fieldset{
 input{
     border-radius: 15px;
     border: #66391f solid 1px;
-    padding-left: 10px;
     padding: 3px;
 }
 
 select{
     border-radius: 10px;
     border: #66391f solid 1px;
-    padding-left: 10px;
     padding: 3px;
 }
 

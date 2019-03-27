@@ -1,29 +1,35 @@
-<a routerLink="/reservations">
-  <ng-container *ngIf="loaded && !error">
+<a id="parent" routerLink="/reservations">
+  <ng-container id="showReservations" *ngIf="loaded && !error">
      
-    <div class="alert alert-warning" role="alert">
-      <ng-container *ngIf="userReservations.length == 1">
+    <div *ngIf="userReservations.length == 1" class="alert alert-warning" role="alert">
+      <ng-container>
         You have 1 upcoming appointment! <br>
         {{userReservations[0].startTime | date: 'MM/dd'}} from {{userReservations[0].startTime | date: 'h:mm a'}}
          to {{userReservations[0].endTime | date: 'h:mm a'}} in {{userReservations[0].resource.name}}!
       </ng-container>
-      <ng-container *ngIf="userReservations.length > 1">
-          You have {{userReservations?.length}} upcoming appointments! <br>
-          Your next scheduled appointment is
-            on        {{userReservations[0].startTime | date: 'MM/dd'}} from {{userReservations[0].startTime | date: 'h:mm a'}}
-            to {{userReservations[0].endTime | date: 'h:mm a'}} in {{userReservations[0].resource.name}}!
+    </div>
+
+    <div *ngIf="userReservations.length > 1" class="alert alert-warning" role="alert">
+      <ng-container>
+        You have {{userReservations?.length}} upcoming appointments! <br>
+        Your next scheduled appointment is
+          on        {{userReservations[0].startTime | date: 'MM/dd'}} from {{userReservations[0].startTime | date: 'h:mm a'}}
+          to {{userReservations[0].endTime | date: 'h:mm a'}} in {{userReservations[0].resource.name}}!
       </ng-container>
-      <ng-container *ngIf="userReservations.length == 0">
+    </div>
+
+    <div *ngIf="userReservations.length == 0" class="alert alert-warning" role="alert">
+      <ng-container>
         You have no upcoming reservations for resources!
       </ng-container>
     </div>
   </ng-container>
 
-  <ng-container *ngIf="error && loaded">
-    <div class="alert alert-warning" role="alert">
+  <div *ngIf="error && loaded" id="error" class="alert alert-warning" role="alert">
+    <ng-container>
       There was an error loading your current reservations. <br>
       Please try again later
-    </div>
-  </ng-container>
+    </ng-container>
+  </div>
 </a>
 

@@ -113,6 +113,8 @@ describe('ReservationService', () => {
   });
 
   afterEach(() => {
-    if (testSub) testSub.unsubscribe();
+    if (testSub) {
+      testSub.unsubscribe();
+    }
   });
 });
