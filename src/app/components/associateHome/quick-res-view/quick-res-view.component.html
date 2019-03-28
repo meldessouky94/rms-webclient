@@ -1,6 +1,6 @@
 <a id="parent" routerLink="/reservations">
-  <ng-container id="showReservations" *ngIf="loaded && !error">
-     
+  <!-- Reservations are found -->
+  <div id="showReservations" *ngIf="loaded && !error">
     <div *ngIf="userReservations.length == 1" class="alert alert-warning" role="alert">
       <ng-container>
         You have 1 upcoming appointment! <br>
@@ -23,8 +23,9 @@
         You have no upcoming reservations for resources!
       </ng-container>
     </div>
-  </ng-container>
+  </div>
 
+  <!-- An error occured -->
   <div *ngIf="error && loaded" id="error" class="alert alert-warning" role="alert">
     <ng-container>
       There was an error loading your current reservations. <br>

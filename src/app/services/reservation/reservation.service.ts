@@ -86,6 +86,7 @@ export class ReservationService {
     let url: string;
     if (this.userService.currentUser) {
       url = `${this.apiUrl}/users?id=${this.userService.currentUser.id}`;
+      // url = `${this.apiUrl}/users`;
     }
     return this.httpClient.get<Reservation[]>(url);
   }
