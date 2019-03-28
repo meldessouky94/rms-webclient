@@ -203,6 +203,8 @@ describe('UserService', () => {
   });
 
   afterEach(() => {
-    if (testSub) testSub.unsubscribe();
+    if (testSub) {
+      testSub.unsubscribe();
+    }
   });
 });

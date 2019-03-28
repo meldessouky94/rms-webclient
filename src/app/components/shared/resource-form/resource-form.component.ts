@@ -139,7 +139,9 @@ export class ResourceFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.getCampusesSub) this.getCampusesSub.unsubscribe()
+    if (this.getCampusesSub) {
+      this.getCampusesSub.unsubscribe();
+    }
   }
 
 }
