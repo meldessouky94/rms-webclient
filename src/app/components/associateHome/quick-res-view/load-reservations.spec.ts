@@ -24,7 +24,8 @@ describe('Loading Reservation List for QuickResViewComponent', () => {
     }).compileComponents();
   }));
 
-  it('should send a request to get a list of reservations when the component is created and list multiple reservations if multiple were found', fakeAsync(() => {
+  it('should send a request to get a list of reservations when the component is created and list' + 
+     ' multiple reservations if multiple were found', fakeAsync(() => {
     // Initialize mocks for this specific test
     const dummyResList: Reservation[] = [new Reservation(), new Reservation()];
     dummyResList[0].resource = new Resource();
@@ -48,9 +49,11 @@ describe('Loading Reservation List for QuickResViewComponent', () => {
     // Update the component once more to allow the view to re-render
     fixture.detectChanges();
     const el = fixture.debugElement.query(By.css('#showReservations'));
+    const errorEl = fixture.debugElement.query(By.css('#error'));
 
     // Make assertions
     expect(el).toBeTruthy();
+    expect(errorEl).toBeFalsy();
     expect(component.loaded).toBeTruthy();
     expect(component.error).toBeFalsy();
   }));
