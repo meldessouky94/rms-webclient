@@ -2,7 +2,12 @@ import { ReservationsComponent } from "./reservations.component";
 import { Reservation } from 'src/app/models/reservation';
 import { Subject } from 'rxjs';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CancelReservationPopupComponent } from '../cancel-reservation-popup/cancel-reservation-popup.component';
+/**
+ * Unit Tests for Loading Component
+ * @author Jose Meono
+ */
 describe('ReservationsComponent', () => {
     let component: ReservationsComponent;
 
@@ -11,7 +16,9 @@ describe('ReservationsComponent', () => {
         closeOthers: boolean,
         type: string,
     };
-    let modalServiceStub: {};
+    let modalServiceStub: {
+        open: jasmine.Spy,
+    };
     let reservationServiceStub: {
         userReservations: Reservation[],
         $userReservations: Subject<Reservation[]>,
@@ -25,7 +32,9 @@ describe('ReservationsComponent', () => {
             closeOthers: true,
             type: 'warning',
         };
-        modalServiceStub = {};
+        modalServiceStub = {
+            open: spyOn(NgbModal.prototype, 'open'),
+        };
         reservationServiceStub = {
             userReservations: [new Reservation(), new Reservation()],
             $userReservations: new Subject(),
@@ -47,7 +56,7 @@ describe('ReservationsComponent', () => {
             expect(component.loaded).toBeTruthy();
             expect(component.error).toBeFalsy();
         });
-        fit('should set this.userReservations to be the data passed in the subscriber', () => {
+        it('should set this.userReservations to be the data passed in the subscriber', () => {
             component = new ReservationsComponent(<any>ngbAccordionConfigStub, <any>modalServiceStub, <any>reservationServiceStub);
             const dummyReservationsList = [new Reservation(), new Reservation(), new Reservation()];
             component.ngOnInit();
@@ -72,14 +81,26 @@ describe('ReservationsComponent', () => {
             dummyUserSub.next(dummyListReservation);
             expect(reservationServiceStub.pushNewUserReservations).toHaveBeenCalledWith(dummyListReservation);
         });
-        fit('should unsubscribe on ngOnDestroy', () => {
+        it('should unsubscribe on ngOnDestroy', () => {
             const dummyUserSub = new Subject();
             component = new ReservationsComponent(<any>ngbAccordionConfigStub, <any>modalServiceStub, <any>reservationServiceStub);
             component.userResSub = dummyUserSub.subscribe();
-
             component.ngOnDestroy();
             expect(component.userResSub.closed).toBeTruthy();
+        });
+    });
+    describe('open', () => {
+        it('should open selected instance', () => {
+            const dummyReservation = new Reservation();
+            const modelRef = modalServiceStub.open.and.returnValue(CancelReservationPopupComponent);
+            component = new ReservationsComponent(<any>ngbAccordionConfigStub, <any>modalServiceStub, <any>reservationServiceStub);
+            component.open(dummyReservation);
+            
+            
+
+
 
         });
+
     });
 });
