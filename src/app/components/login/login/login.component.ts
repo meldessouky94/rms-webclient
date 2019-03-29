@@ -34,13 +34,17 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.router.navigate(['home']);
     } else {
       this.currentUserSub = this.userService.$currentUser.subscribe( (user) => {
-        if (user) this.router.navigate(['home']);
+        if (user) {
+          this.router.navigate(['home']);
+        }
       });
     }
   }
 
   ngOnDestroy() {
-    if (this.currentUserSub) this.currentUserSub.unsubscribe();
+    if (this.currentUserSub) {
+      this.currentUserSub.unsubscribe();
+    }
   }
 
 }

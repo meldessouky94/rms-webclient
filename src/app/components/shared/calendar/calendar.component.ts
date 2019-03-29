@@ -50,6 +50,7 @@ export class CalendarComponent implements OnInit {
   modalContent: TemplateRef<any>;
   reservations: Reservation[] = [];
 
+
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
@@ -80,7 +81,7 @@ export class CalendarComponent implements OnInit {
         this.events = this.events.filter((iEvent) => iEvent !== event);
         this.handleEvent('Deleted', event);
       },
-    },
+    }
   ];
 
   refresh: Subject<any> = new Subject();
@@ -134,9 +135,7 @@ export class CalendarComponent implements OnInit {
       id = event.id;
     }
     this.reservationIdBehaviorSetService.changeId(id);
-
     this.router.navigate(['/editReservation']);
-
   }
 
   addEvent(): void {
@@ -159,11 +158,10 @@ export class CalendarComponent implements OnInit {
    * run conversion for reservation to event
    */
   ngOnInit() {
-
-    this.reservationService.getAllReservations().subscribe(
-        (reservations) => { this.reservations = reservations;
-                            this.convertReservationsToCalendarEvent(); },
-        );
+    this.reservationService.getAllReservations().subscribe((reservations) => { 
+      this.reservations = reservations;
+      this.convertReservationsToCalendarEvent(); },
+    );
   }
 
   /*
@@ -171,7 +169,6 @@ export class CalendarComponent implements OnInit {
    * necessary to populate events on calendar
    */
   convertReservationsToCalendarEvent() {
-    console.log('converting reservations to events');
     this.reservations.forEach((reservation) => {
       this.events.push({
         id: reservation.id,
@@ -183,4 +180,6 @@ export class CalendarComponent implements OnInit {
     });
     this.refresh.next();
   }
+
+
 }

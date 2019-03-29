@@ -28,6 +28,8 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   loadValues() {
+    let route = new ActivatedRoute();
+    console.log(route);
     this.paramsSub = this.activatedRoute.queryParams.subscribe( (params) => {
       this.code = params['code'];
     });
@@ -39,8 +41,12 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.userSubscription) this.userSubscription.unsubscribe();
-    if (this.paramsSub) this.paramsSub.unsubscribe();
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
+    if (this.paramsSub) {
+      this.paramsSub.unsubscribe();
+    }
   }
 
 }

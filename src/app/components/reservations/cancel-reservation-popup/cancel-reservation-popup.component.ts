@@ -54,8 +54,12 @@ export class CancelReservationPopupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.cancelResSub) this.cancelResSub.unsubscribe();
-    if (this.getUserResSub) this.getUserResSub.unsubscribe();
+    if (this.cancelResSub) {
+      this.cancelResSub.unsubscribe();
+    }
+    if (this.getUserResSub) {
+      this.getUserResSub.unsubscribe();
+    }
   }
 
 }

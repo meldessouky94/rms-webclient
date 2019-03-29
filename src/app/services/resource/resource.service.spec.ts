@@ -71,11 +71,13 @@ describe('ResourceService', () => {
       httpClientSpy.get.and.returnValue(new Observable<Resource[]>());
       testSub = resourceService.getAvailableResources(dummySearch).subscribe();
       expect(httpClientSpy.get.calls.count()).toBe(1);
-    })
-  })
+    });
+  });
 
-  afterAll(() => {
-    if (testSub) testSub.unsubscribe();
-  })
+  afterEach(() => {
+    if (testSub) {
+      testSub.unsubscribe();
+    }
+  });
 });
 

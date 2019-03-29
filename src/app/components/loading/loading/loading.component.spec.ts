@@ -7,7 +7,11 @@ import { User } from 'src/app/models/user';
 
 /**
  * Unit Tests for Loading Component
+<<<<<<< HEAD
  * @author Tyler Williams & Jose Meono
+=======
+ * @author Tyler Williams
+>>>>>>> 5704a5f251bee4c15437ff6465e26966acabf1b6
  */
 describe('LoadingComponent', () => {
     let component: LoadingComponent;

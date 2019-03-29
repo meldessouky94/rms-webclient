@@ -27,6 +27,8 @@ describe('AdminRegistrationService', () => {
   });
 
   afterEach(() => {
-    if (testSub) testSub.unsubscribe();
+    if (testSub) {
+      testSub.unsubscribe();
+    }
   });
 });
