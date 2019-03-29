@@ -14,11 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  slackUrl =
-    `https://slack.com/oauth/authorize\
-?scope=identity.basic,identity.email,identity.team\
-&client_id=${environment.slackClientId}\
-&redirect_uri=${environment.appUrl}loading`;
+  slackUrl = `https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team&client_id=${environment.slackClientId}&redirect_uri=${environment.appUrl}loading`;
 
   currentUserSub: Subscription;
   
