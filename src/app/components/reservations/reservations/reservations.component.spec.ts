@@ -89,18 +89,4 @@ describe('ReservationsComponent', () => {
             expect(component.userResSub.closed).toBeTruthy();
         });
     });
-    describe('open', () => {
-        it('should open selected instance', () => {
-            const dummyReservation = new Reservation();
-            const modelRef = modalServiceStub.open.and.returnValue(CancelReservationPopupComponent);
-            component = new ReservationsComponent(<any>ngbAccordionConfigStub, <any>modalServiceStub, <any>reservationServiceStub);
-            component.open(dummyReservation);
-            
-            
-
-
-
-        });
-
-    });
 });
